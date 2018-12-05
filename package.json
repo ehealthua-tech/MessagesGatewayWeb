@@ -2,7 +2,7 @@
   "name": "messages.gateway.admin.web",
   "version": "0.1.0",
   "description": "Messages Gateway Service",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "scripts": {
     "postinstall": "[ $PREBUILD ] && npm run build || exit 0",
     "predev": "npm run build",

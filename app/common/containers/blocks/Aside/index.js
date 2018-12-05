@@ -19,7 +19,7 @@ export default class Aside extends React.Component {
     return (
       <aside className={styles.aside}>
         <Link className={styles.logo} to="/">
-          <img src="/images/nhs-logo.svg" alt="Logo" />
+          {/*<img src="" alt="Logo" />*/}
         </Link>
         <hr className={styles.line} />
 

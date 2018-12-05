@@ -20,7 +20,7 @@ export default class SignInPage extends React.Component {
 
         <div className={styles.main__content}>
           <header className={styles.header}>
-            <img src="/images/nhs-logo.svg" alt="Logo" />
+            {/*<img src="" alt="Logo" />*/}
           </header>
           {query.error && (
             <section className={styles.error}>Помилка отримання токена</section>

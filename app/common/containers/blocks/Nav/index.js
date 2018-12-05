@@ -35,7 +35,7 @@ export default class Nav extends React.Component {
         <ul>
           <NavItem to="/dashboard" activeClassName={styles.active}>
             <Link id="dashboard-nav" to="/dashboard">
-              Статистика
+              Головна
             </Link>
           </NavItem>
         </ul>

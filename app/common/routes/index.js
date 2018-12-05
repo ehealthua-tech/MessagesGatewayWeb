@@ -28,7 +28,7 @@ export const configureRoutes = ({ store }) => {
         replace({ pathname: PUBLIC_INDEX_ROUTE });
       }
     } else {
-      // FIXME: We should handle case when there is no token passed
+
       const token = await store.dispatch(getToken());
       const { error } = await store.dispatch(verifyToken(token));
       if (error) {
@@ -50,14 +50,14 @@ export const configureRoutes = ({ store }) => {
     <Route component={App}>
       <Route component={Main} onEnter={requireAuth}>
         <Route path="/" component={PreloadData}>
-          <IndexRedirect to="dashboard" />
-          <Route path="dashboard" component={DashboardPage} />
+          <IndexRedirect to="dashboard"/>
+          <Route path="dashboard" component={DashboardPage}/>
         </Route>
-        <Route path="401" component={AccessDeniedPage} />
+        <Route path="401" component={AccessDeniedPage}/>
       </Route>
-      <Route path="sign-in" component={SignInPage} />
-      <Route path="internal-error" component={InternalErrorPage} />
-      <Route path="*" component={NotFoundPage} />
+      <Route path="sign-in" component={SignInPage}/>
+      <Route path="internal-error" component={InternalErrorPage}/>
+      <Route path="*" component={NotFoundPage}/>
     </Route>
   );
 };
