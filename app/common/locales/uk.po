@@ -1,0 +1,629 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2017-08-14 15:40+0300\n"
+"PO-Revision-Date: 2017-08-14 15:41+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 2.0.2\n"
+
+msgid "Required field"
+msgstr "Обов'язкове поле"
+
+msgid "Invalid email format"
+msgstr "Невірний формат Email"
+
+msgid "Invalid surname"
+msgstr "Невірне прізвище"
+
+msgid "Length must be less than <%= params %>"
+msgstr "Довжина має бути менше ніж <%= params %>"
+
+msgid "Invalid card number"
+msgstr "Невірний номер карти"
+
+msgid "Card with such names already exist"
+msgstr "Карта з такою назвою вже існує"
+
+msgid "Card with such number already exist"
+msgstr "Карта з таким номером вже існує"
+
+msgid "Support only {{types}} cards"
+msgstr "Ми підтримуємо тільки картки {{types}}"
+
+msgid "Minimal value is <%= params %>"
+msgstr "Мінімальне значення <%= params %>"
+
+msgid "Maximum value is <%= params %>"
+msgstr "Максимальне значення <%= params %>"
+
+msgid "Account, password combination is mismatch"
+msgstr "Невірний e-mail або пароль"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid "No"
+msgstr "Ні"
+
+msgid "ap."
+msgstr "кв."
+
+msgid "Region"
+msgstr "Область"
+
+msgid "District"
+msgstr "Район"
+
+msgid "Created date"
+msgstr "Дата створення"
+
+msgid "Name"
+msgstr "Назва"
+
+msgid "edrpou"
+msgstr "ЕДРПОУ"
+
+msgid "address"
+msgstr "Адреса"
+
+msgid "Status"
+msgstr "Статус"
+
+#, fuzzy
+#| msgid "Verification clinics"
+msgid "Verification"
+msgstr "Перевірка медичних закладiв"
+
+msgid "Action"
+msgstr "Дії"
+
+msgid "LE Active"
+msgstr "Діюча"
+
+msgid "LE Closed"
+msgstr "Закрита"
+
+msgid "Verified"
+msgstr "Підтверджено"
+
+msgid "Not verified"
+msgstr "Не підтверджено"
+
+msgid "Details"
+msgstr "Детально"
+
+msgid "You have unsaved changes"
+msgstr "У вас є незбережені зміни"
+
+msgid "Ok"
+msgstr "Добре"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Are you sure want to leave this page?"
+msgstr "Ви впевнені, що хочете залишити цю сторінку?"
+
+msgid "Declaration"
+msgstr "Декларація"
+
+msgid "Back to declarations list"
+msgstr "Повернутися до списку декларацій"
+
+msgid "Declaration ID"
+msgstr "Ідентифікатор декларації"
+
+msgid "Declaration Request ID"
+msgstr "Ідентифікатор запиту на створення декларації"
+
+msgid "Start date"
+msgstr "Дата початку"
+
+msgid "End date"
+msgstr "Кінцева дата"
+
+msgid "Scope"
+msgstr "Область дії"
+
+msgid "Division ID"
+msgstr "Ідентифікатор відділення"
+
+msgid "Division type"
+msgstr "Тип відділення"
+
+msgid "Division name"
+msgstr "Назва відділення"
+
+msgid "Phones"
+msgstr "Телефони"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Addresses"
+msgstr "Адреси"
+
+msgid "Employee ID"
+msgstr "Ідентифікатор працівника"
+
+msgid "Go to employee"
+msgstr "Перейти до працівника"
+
+msgid "Full name"
+msgstr "Повне Ім’я"
+
+msgid "Tax ID"
+msgstr "ІНН"
+
+msgid "Position"
+msgstr "Позиція"
+
+msgid "Clinic ID"
+msgstr "Ідентифікатор медичного закладу"
+
+msgid "Go to clinic"
+msgstr "Перейти до медичного закладу"
+
+msgid "Registration address"
+msgstr "Адреса регістрації"
+
+msgid "area"
+msgstr "область"
+
+msgid "city"
+msgstr "місто"
+
+msgid "Residense address is equal to registration address"
+msgstr "Фактична адреса співпадає з адресою реєстрації"
+
+msgid "Person ID"
+msgstr "Ідентифікатор людини"
+
+msgid "Person name"
+msgstr "Повне Ім’я"
+
+msgid "Birth date"
+msgstr "Дата народження"
+
+msgid "Birth place"
+msgstr "Народжений в"
+
+msgid "Documents"
+msgstr "Документи"
+
+msgid "Authentication methods"
+msgstr "Методи перевірки"
+
+msgid "Closed"
+msgstr "Закрито"
+
+msgid "Open"
+msgstr "Відкрито"
+
+msgid "Total"
+msgstr "Всього"
+
+msgid "Loading..."
+msgstr "Завантаження..."
+
+msgid "Dashboard"
+msgstr "Статистика"
+
+msgid "Declarations"
+msgstr "Декларації"
+
+msgid "Pending declarations"
+msgstr "Декларації на розгляді"
+
+msgid "Employees"
+msgstr "Співробітники"
+
+msgid "Pending employees"
+msgstr "Cпівробітники на розгляді"
+
+msgid "Clinics"
+msgstr "Медичні заклади"
+
+msgid "Clinics verification"
+msgstr "Підтвердження МЗ"
+
+msgid "Reports"
+msgstr "Звіти"
+
+msgid "Dictionaries"
+msgstr "Словники"
+
+msgid "System configuration"
+msgstr "Конфігурація системи"
+
+msgid "Documentation"
+msgstr "Документація"
+
+msgid "Logout"
+msgstr "Вихід"
+
+msgid "Link"
+msgstr "Посилання"
+
+msgid "Download"
+msgstr "Завантажити"
+
+msgid "Show by"
+msgstr "Показати по"
+
+msgid "General"
+msgstr "Загальне"
+
+msgid "Is active"
+msgstr "Активний"
+
+msgid "Saving..."
+msgstr "Збереження..."
+
+msgid "Save Dictionary"
+msgstr "Зберегти словник"
+
+msgid "Saved"
+msgstr "Збережено"
+
+msgid "Labels"
+msgstr "Мітки"
+
+msgid "Label name"
+msgstr "Назва  тегу"
+
+msgid "Remove"
+msgstr "Видалити"
+
+msgid "Add Item"
+msgstr "Додати"
+
+msgid "Values"
+msgstr "Значення"
+
+msgid "Key"
+msgstr "Ключ"
+
+msgid "Item key"
+msgstr "Ключ елемента"
+
+msgid "Description"
+msgstr "Опис"
+
+msgid "Item description"
+msgstr "Опис елемента"
+
+msgid "You have not unique values in key: <%= params %>"
+msgstr "Не унікальні значення в ключі: <%= params %>"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Enter"
+msgstr "Увійти"
+
+msgid "Declaration term"
+msgstr "Термін декларації"
+
+msgid "Declaration request expiration"
+msgstr "Термін дії запиту декларації"
+
+msgid "Employee request expiration"
+msgstr "Термін дії запиту співробітників"
+
+msgid "Verification request expiration"
+msgstr "Термін дії запиту перевірки"
+
+msgid "Adult age"
+msgstr "Дорослий вік"
+
+msgid "Billing date"
+msgstr "Дата розрахунку"
+
+msgid "Save config"
+msgstr "Зберегти конфігурацію"
+
+msgid "head-default-title"
+msgstr "Панель управління"
+
+msgid "head-description"
+msgstr "Messages Gateway - Панель управління"
+
+msgid "head-og-title"
+msgstr "Панель управління"
+
+msgid "head-og-description"
+msgstr "Messages Gateway - Панель управління"
+
+msgid "Access denied"
+msgstr "Доступ обмежений"
+
+msgid ""
+"You have no access to this page. Try to re-login with new role or call to "
+"support."
+msgstr ""
+"Ви не маєте доступу до цієї сторінки. Спробуйте перезайти до системи з новою "
+"роллю або зателефонуйте до підтримки."
+
+msgid "Back to clinics list"
+msgstr "Повернутися до списку медичних закладiв"
+
+msgid "Go to clinic employees list"
+msgstr "Перейти до списку співробітників медичного закладу"
+
+msgid "KVEDs"
+msgstr "КВЕДи"
+
+msgid "Short name"
+msgstr "Скорочена назва"
+
+msgid "Public name"
+msgstr "Публічна назва"
+
+msgid "Property type"
+msgstr "Тип властності"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "License and accreditation"
+msgstr "Ліцензії та акредитації"
+
+msgid "Show documents"
+msgstr "Показати документи"
+
+msgid "Accreditation"
+msgstr "Акредитація"
+
+msgid "Order No."
+msgstr "Номер замовлення"
+
+msgid "Category"
+msgstr "Категорія"
+
+msgid "Expiry date"
+msgstr "Термін придатності"
+
+msgid "Issued date"
+msgstr "Випущено"
+
+msgid "Order date"
+msgstr "Дата замовлення"
+
+msgid "Licenses"
+msgstr "Ліцензії"
+
+msgid "Issued"
+msgstr "Виданий"
+
+msgid "expiry"
+msgstr "закінчується"
+
+msgid "Back to list"
+msgstr "Повернутися до списку"
+
+msgid "Approve clinic"
+msgstr "Підтвердити медичний заклад"
+
+msgid "Cancel verification"
+msgstr "Скасувати підтвердження"
+
+msgid "Verify clinic {{name}}?"
+msgstr "Підтвердити медичний заклад \"{{name}}\"?"
+
+msgid "Deactivate clinic {{name}}?"
+msgstr "Деактивувати медичний заклад {{name}}?"
+
+msgid "Search clinic"
+msgstr "Шукати медичний заклад"
+
+msgid "Find clinic"
+msgstr "Знайти медичний заклад"
+
+msgid "By edrpou"
+msgstr "За ЄДРПОУ"
+
+msgid "By legal entity"
+msgstr "За ID юридичної особи"
+
+msgid "By settlement id"
+msgstr "За ID міста"
+
+msgid "Clinics verification search"
+msgstr "Пошук медичного закладу для перевірки"
+
+msgid "Search clinic for verification"
+msgstr "Пошук медичного закладу для перевірки"
+
+msgid "Go to clinics list"
+msgstr "Перейти до списку медичних закладiв"
+
+msgid "Verification clinics"
+msgstr "Перевірка медичних закладiв"
+
+msgid "Back to search page"
+msgstr "Повернутися до сторінки пошуку"
+
+msgid "Doctors"
+msgstr "Лікарі"
+
+msgid "Medical system providers"
+msgstr "Провайдери медичної системи"
+
+msgid "Search declaration"
+msgstr "Шукати декларацію"
+
+msgid "Find declaration"
+msgstr "Знайти декларацію"
+
+msgid "By employee id"
+msgstr "За ідентифікатором працівника"
+
+msgid "Person"
+msgstr "Людина"
+
+msgid "Legal entity"
+msgstr "Юридична/Фізична особа"
+
+msgid "Dates"
+msgstr "Дати"
+
+msgid "EDRPOU"
+msgstr "ЕДРПОУ"
+
+msgid "Filter by name"
+msgstr "Фільтрувати за назвою"
+
+msgid "All"
+msgstr "Усі"
+
+msgid "Filter by label"
+msgstr "Фільтрувати за тегом"
+
+msgid "Select dictionary to edit"
+msgstr "Виберіть словник для редагування"
+
+msgid "Dictionary Name"
+msgstr "Назва словника"
+
+msgid "Edit"
+msgstr "Редагувати"
+
+msgid "View Dictionary"
+msgstr "Переглянути словник"
+
+msgid "Edit {{name}} dictionary"
+msgstr "Редагувати {{name}} словник"
+
+msgid "Employee"
+msgstr "Співробітник"
+
+msgid "Back to employees list"
+msgstr "Повернутися до списку співробітників"
+
+msgid "User ID"
+msgstr "Ідентифікатор користувача"
+
+msgid "Sex"
+msgstr "Стать"
+
+msgid "Start work date"
+msgstr "Дата початку роботи"
+
+msgid "End work date"
+msgstr "Дата завершення роботи"
+
+msgid "Education and qualifications"
+msgstr "Навчання та кваліфікація"
+
+msgid "Educations"
+msgstr "Освіта"
+
+msgid "diploma"
+msgstr "диплом"
+
+msgid "Qualifications"
+msgstr "Кваліфікація"
+
+msgid "certificate"
+msgstr "сертифікат"
+
+msgid "Find employee"
+msgstr "Знайти співробітника"
+
+msgid "By tax id"
+msgstr "За ИНН"
+
+msgid "By party id"
+msgstr "За party ID"
+
+msgid "Date registration"
+msgstr "Дата реєстрації"
+
+msgid "Tax id"
+msgstr "ІНН"
+
+msgid "Employee name"
+msgstr "Ім'я працівника"
+
+msgid "Page Not Found"
+msgstr "Сторінка не знайдена"
+
+msgid "Requested page not found. Maybe you are looking for"
+msgstr "Запитувана сторінка не знайдена."
+
+msgid "Go to dashboard"
+msgstr "Перейти на головну"
+
+msgid "Scans"
+msgstr "Скани документів"
+
+msgid "Reject"
+msgstr "Відхилити"
+
+msgid "Accept"
+msgstr "Прийняти"
+
+msgid "Approve declaration?"
+msgstr "Прийняти декларацію"
+
+msgid "Reject declaration?"
+msgstr "Відхилити декларацію"
+
+msgid "Pending contracts"
+msgstr "Запити на контракт"
+
+msgid "Contracts"
+msgstr "Перелік контрактів"
+
+msgid "Search contracts"
+msgstr "Пошук контрактів"
+
+#, fuzzy
+#| msgid "Back to employees list"
+msgid "Back to pending employees list"
+msgstr "Повернутися до списку співробітників"
+
+msgid "Employee request ID"
+msgstr "Ідентифікатор "
+
+msgid "Employee type"
+msgstr "Тип працівника"
+
+msgid "legal entity id"
+msgstr "Ідентифікатор Юридичної/Фізичної особи"
+
+#, fuzzy
+#| msgid "Pending employees"
+msgid "Pending Employees"
+msgstr "Cпівробітники на розгляді"
+
+#, fuzzy
+#| msgid "Filter by name"
+msgid "Filter by status"
+msgstr "Фільтрувати за назвою"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "Sign in"
+msgstr "Вхід"
+
+msgid "Auth error {{code}}"
+msgstr "Помилка отримання токена"
+
+msgid "Enter with EHEALTH"
+msgstr "Увійти за допомогою EHEALTH"
+
+#~ msgid "By regions"
+#~ msgstr "По областям"
