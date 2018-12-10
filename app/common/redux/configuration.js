@@ -5,7 +5,7 @@ import { invoke } from "./api";
 
 export const fetchConfiguration = options =>
   invoke({
-    endpoint: createUrl(`${API_URL}/api/global_parameters`, options),
+    endpoint: createUrl(`${API_URL}/get_system_config`, options),
     method: "GET",
     headers: {
       "content-type": "application/json"

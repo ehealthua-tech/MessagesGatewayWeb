@@ -5,13 +5,15 @@ import labels from "../redux/labels";
 import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
 import loading from "../redux/loading";
+import configuration from "../containers/pages/ConfigurationFormPage/redux"
 
 const blocks = combineReducers({
   Aside
 });
 
 const data = combineReducers({
-  labels
+  labels,
+  configuration,
 });
 
 export default combineReducers({
@@ -26,4 +28,7 @@ export default combineReducers({
 
 export const isAuthorized = state => state.session.authorized;
 export const getScope = state => state.session.scope;
+export const getForm = (state, formName) => state.form[formName] || {};
+export const getConfiguration = state => state.data.configuration;
+
 

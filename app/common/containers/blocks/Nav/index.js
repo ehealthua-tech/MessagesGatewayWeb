@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import { Link } from "react-router";
 import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+import ShowWithScope from "containers/blocks/ShowWithScope";
 
 import NavItem from "components/NavItem";
 import Icon from "components/Icon";
@@ -37,6 +38,13 @@ export default class Nav extends React.Component {
             <Link id="dashboard-nav" to="/dashboard">
               Головна
             </Link>
+            <ShowWithScope scope="global_parameters:read">
+              <NavItem to="configuration" activeClassName={styles.active}>
+                <Link id="configuration-nav" to="/configuration">
+                  Конфігурація системи
+                </Link>
+              </NavItem>
+            </ShowWithScope>
           </NavItem>
         </ul>
         <ul className={styles.down}>

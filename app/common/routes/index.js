@@ -9,6 +9,7 @@ import PreloadData from "../containers/layouts/PreloadData";
 import SignInPage from "../containers/pages/SignInPage";
 
 import DashboardPage from "../containers/pages/DashboardPage";
+import SystemConfigurationPage from '../containers/pages/ConfigurationFormPage'
 
 import NotFoundPage from "../containers/pages/NotFoundPage";
 import AccessDeniedPage from "../containers/pages/AccessDeniedPage";
@@ -48,10 +49,15 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main} onEnter={requireAuth}>
+      <Route component={Main} >
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard"/>
           <Route path="dashboard" component={DashboardPage}/>
+          <Route
+            path="configuration"
+            component={SystemConfigurationPage}
+            // onEnter={requireScope(["global_parameters:read"])}
+          />
         </Route>
         <Route path="401" component={AccessDeniedPage}/>
       </Route>
