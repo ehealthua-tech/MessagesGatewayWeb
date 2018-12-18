@@ -28,28 +28,27 @@ export default class Nav extends React.Component {
       document.documentElement.classList.remove(styles.navIsOpen);
     }
   }
+
   render() {
     const { isOpen } = this.props;
 
     return (
       <nav className={classnames(styles.nav, isOpen && styles.open)}>
         <ul>
-          <NavItem to="/dashboard" activeClassName={styles.active}>
-            <Link id="dashboard-nav" to="/dashboard">
-              Головна
+          <NavItem to="/priority" activeClassName={styles.active}>
+            <Link id="priority-nav" to="/priority">
+              Сторінка пріорітезації
             </Link>
-            <ShowWithScope scope="global_parameters:read">
-              <NavItem to="configuration" activeClassName={styles.active}>
-                <Link id="configuration-nav" to="/configuration">
-                  Конфігурація системи
-                </Link>
-              </NavItem>
-            </ShowWithScope>
+          </NavItem>
+          <NavItem to="configuration" activeClassName={styles.active}>
+            <Link id="configuration-nav" to="/configuration">
+              Конфігурація системи
+            </Link>
           </NavItem>
         </ul>
         <ul className={styles.down}>
           <li className={styles.logout} onClick={() => this.props.logOut()}>
-            <Icon name="exit" />
+            <Icon name="exit"/>
             Вихід
           </li>
         </ul>

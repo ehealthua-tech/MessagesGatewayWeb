@@ -9,7 +9,6 @@ export const showConfiguration = createAction(
 export const fetchConfiguration = () => dispatch =>
   dispatch(fromConfiguration.fetchConfiguration()).then(action => {
     if (action.error) throw action;
-    console.log(action);
     return dispatch(showConfiguration(action.payload));
   });
 
@@ -18,6 +17,8 @@ const configuration = handleAction(
   (state, action) => action.payload,
   []
 );
+
+
 
 export default combineReducers({
   configuration

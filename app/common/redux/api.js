@@ -1,10 +1,12 @@
 import { CALL_API } from "redux-api-middleware";
 
-export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (dispatch, getState, { req }) =>
-  dispatch({
+
+export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (dispatch, getState, { req }) => {
+  const wrappedBody = body && { resource: body };
+  return dispatch({
     [CALL_API]: {
       ...config,
-      body: typeof body === "string" ? body : JSON.stringify(body),
+      body: JSON.stringify(wrappedBody),
       headers: {
         Pragma: "no-cache",
         "Cache-Control": "no-cache",
@@ -14,3 +16,5 @@ export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (d
       credentials: auth ? "same-origin" : "omit"
     }
   });
+};
+

@@ -21,6 +21,7 @@ import { PUBLIC_INDEX_ROUTE } from "../config";
 import { hasScope } from "../helpers/scope";
 import { getToken, verifyToken } from "../redux/session";
 import InternalErrorPage from "../containers/pages/InternalErrorPage";
+import PriorityPage from "../containers/pages/PriorityPage";
 
 export const configureRoutes = ({ store }) => {
   const requireAuth = async (nextState, replace, next) => {
@@ -53,6 +54,7 @@ export const configureRoutes = ({ store }) => {
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard"/>
           <Route path="dashboard" component={DashboardPage}/>
+          <Route path="priority" component={PriorityPage}/>
           <Route
             path="configuration"
             component={SystemConfigurationPage}
