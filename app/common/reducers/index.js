@@ -5,6 +5,7 @@ import labels from "../redux/labels";
 import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
 import loading from "../redux/loading";
+import notification from "../redux/notification"
 import configuration from "../containers/pages/ConfigurationFormPage/redux";
 import priority from "../containers/pages/PriorityPage/redux";
 
@@ -26,7 +27,8 @@ export default combineReducers({
   // external libraries
   form,
   routing,
-  loading
+  loading,
+  notification
 });
 
 export const isAuthorized = state => state.session.authorized;

@@ -14,7 +14,6 @@ export const icons = [
   "pdf",
   "doc",
   "trash",
-  "nebo15",
   "exit",
   "close",
   "envelope",

@@ -2,6 +2,8 @@ import { combineReducers } from "redux";
 import { arrayMove } from "react-sortable-hoc";
 import { combineActions, createAction, handleAction } from "redux-actions";
 import * as fromPriority from "../../../redux/priority";
+import * as fromNotifications from "../../../redux/notification";
+
 
 export const showPriority = createAction(
   "PriorityPage/SHOW_PRIORITY"
@@ -16,6 +18,7 @@ export const fetchPriority = () => dispatch =>
   dispatch(fromPriority.fetchPriority()).then(action => {
     if (action.error) throw action;
     const sortedPayload = action.payload.sort(sortPrioritybyId);
+
     return dispatch(showPriority(sortedPayload));
   });
 
@@ -45,7 +48,20 @@ export const updatePriorityState = ({ priorityState, values }) => dispatch => {
   });
 
   dispatch(fromPriority.updatePriority(newUpdatedState)).then(action => {
-    if (action.error) throw action;
+    action.error ?
+      dispatch(fromNotifications.showNotification({
+        showing: true,
+        message: action.payload.message,
+        type: "warning"
+      }))
+      :
+      dispatch(fromNotifications.showNotification({
+        showing: true,
+        message: action.payload.status,
+        type: "success"
+      }));
+
+
     dispatch(fromPriority.fetchPriority()).then(action => {
       if (action.error) throw action;
       const sortedPayload = action.payload.sort(sortPrioritybyId);

@@ -12,7 +12,7 @@ import {  getPriorityFormFields } from "../../../reducers";
 const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, handleChange,onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <ul>
+      <div>
         {items.map((value, index) => (
           <SortableItem
             key={index}
@@ -22,7 +22,7 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
             onChange={handleChange}
           />
         ))}
-      </ul>
+      </div>
       <div>
         <Button type="submit" disabled={submitting}>
           {submitting ? "Збереження..." : "Зберегти пріорітезацію"}
