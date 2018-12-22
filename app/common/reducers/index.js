@@ -5,9 +5,9 @@ import labels from "../redux/labels";
 import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
 import loading from "../redux/loading";
-import notification from "../redux/notification"
+import notification from "../redux/notification";
 import configuration from "../containers/pages/ConfigurationFormPage/redux";
-import priority from "../containers/pages/PriorityPage/redux";
+import operatorsTypesData from "../containers/pages/OperatorsTypesListPage/redux";
 
 
 const blocks = combineReducers({
@@ -17,7 +17,7 @@ const blocks = combineReducers({
 const data = combineReducers({
   labels,
   configuration,
-  priority
+  operatorsTypesData
 });
 
 export default combineReducers({
@@ -35,14 +35,17 @@ export const isAuthorized = state => state.session.authorized;
 export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
 export const getConfiguration = state => state.data.configuration;
-export const getPriority = state => state.data.priority.priority;
-export const getPriorityFormFields = (state) => {
-  return Object.assign({}, ...getPriority(state).map((operator) => {
+export const getOperatorsTypes = state => state.data.operatorsTypesData.operatorsTypes;
+export const getOperatorsFormFields = (state) => {
+  return Object.assign({}, ...getOperatorsTypes(state).map((operator) => {
+    const { name, active } = operator;
     return {
-      [operator.name]: operator.active
+      [name]: active
     };
   }));
 };
+// export const getOperatorsTypes = state => state.data.priority.operatorsTypesList;
+
 
 
 

@@ -3,7 +3,7 @@ import { API_URL } from "config";
 import { createUrl } from "helpers/url";
 import { invoke } from "./api";
 
-export const fetchPriority = options =>
+export const fetchOperatorsTypes = options =>
   invoke({
     endpoint: createUrl(`${API_URL}/operators`, options),
     method: "GET",
@@ -11,16 +11,16 @@ export const fetchPriority = options =>
       "content-type": "application/json"
     },
     types: [
-      "priority_requests/FETCH_PRIORITY_REQUEST",
+      "operatorsTypes/FETCH_OPERATORS_TYPES_REQUEST",
       {
-        type: "priority_requests/FETCH_PRIORITY_SUCCESS",
+        type: "operatorsTypes/FETCH_OPERATORS_TYPES_SUCCESS",
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
-      "priority_requests/FETCH_PRIORITY_FAILURE"
+      "operatorsTypes/FETCH_OPERATORS_TYPES_FAILURE"
     ]
   });
 
-export const updatePriority = (body) =>
+export const updateOperatorsTypes = body =>
   invoke({
     endpoint: `${API_URL}/operators/update_priority`,
     method: "POST",
@@ -28,12 +28,12 @@ export const updatePriority = (body) =>
       "content-type": "application/json"
     },
     types: [
-      "priority_requests/UPDATE_PRIORITY_REQUEST",
+      "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_REQUEST",
       {
-        type: "priority_requests/UPDATE_PRIORITY_SUCCESS",
+        type: "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_SUCCESS",
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
-      "priority_requests/UPDATE_PRIORITY_FAILURE"
+      "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_FAILURE"
     ],
     body
   });

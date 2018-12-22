@@ -9,10 +9,12 @@ import PreloadData from "../containers/layouts/PreloadData";
 import SignInPage from "../containers/pages/SignInPage";
 
 import DashboardPage from "../containers/pages/DashboardPage";
-import SystemConfigurationPage from '../containers/pages/ConfigurationFormPage'
-
+import SystemConfigurationPage from "../containers/pages/ConfigurationFormPage";
 import NotFoundPage from "../containers/pages/NotFoundPage";
 import AccessDeniedPage from "../containers/pages/AccessDeniedPage";
+import InternalErrorPage from "../containers/pages/InternalErrorPage";
+import OperatorsTypesListPage from "../containers/pages/OperatorsTypesListPage";
+import OperatorTypeCreatePage from "../containers/pages/OperatorTypeCreatePage";
 
 import { isAuthorized, getScope } from "../reducers";
 
@@ -20,8 +22,7 @@ import { PUBLIC_INDEX_ROUTE } from "../config";
 
 import { hasScope } from "../helpers/scope";
 import { getToken, verifyToken } from "../redux/session";
-import InternalErrorPage from "../containers/pages/InternalErrorPage";
-import PriorityPage from "../containers/pages/PriorityPage";
+
 
 export const configureRoutes = ({ store }) => {
   const requireAuth = async (nextState, replace, next) => {
@@ -50,11 +51,14 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main} >
+      <Route component={Main}>
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard"/>
           <Route path="dashboard" component={DashboardPage}/>
-          <Route path="priority" component={PriorityPage}/>
+          <Route path="operators-types">
+            <IndexRoute component={OperatorsTypesListPage}/>
+            <Route path="create" component={OperatorTypeCreatePage}/>
+          </Route>
           <Route
             path="configuration"
             component={SystemConfigurationPage}

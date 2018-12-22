@@ -35,9 +35,9 @@ export default class Nav extends React.Component {
     return (
       <nav className={classnames(styles.nav, isOpen && styles.open)}>
         <ul>
-          <NavItem to="/priority" activeClassName={styles.active}>
-            <Link id="priority-nav" to="/priority">
-              Сторінка пріорітезації
+          <NavItem to="/operators-types" activeClassName={styles.active}>
+            <Link id="operator-types-nav" to="/operators-types">
+              Типи операторів
             </Link>
           </NavItem>
           <NavItem to="configuration" activeClassName={styles.active}>

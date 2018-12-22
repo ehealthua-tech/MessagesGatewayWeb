@@ -7,10 +7,10 @@ import Button from "components/Button";
 import { Field, reduxForm } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { getPriorityFormFields } from "../../../reducers";
+import { getOperatorsFormFields } from "../../../reducers";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 
-const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, handleChange, onSubmit }) => {
+const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, openPopup, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -20,7 +20,6 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
             index={index}
             value={value}
             sortIndex={index}
-            onChange={handleChange}
           />
         ))}
         <Field
@@ -29,9 +28,15 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
           component={FieldCheckbox}
         />
       </div>
-      <div>
+      <div className={styles.buttons_block}>
         <Button type="submit" disabled={submitting}>
           {submitting ? "Збереження..." : "Зберегти"}
+        </Button>
+        {/*<Button onClick={openPopup}>*/}
+        {/*Додати тип оператора*/}
+        {/*</Button>*/}
+        <Button to={"operators-types/create/"}>
+          Додати тип оператора
         </Button>
       </div>
     </form>
@@ -41,7 +46,7 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
 export default compose(
   connect((state => {
     return {
-      initialValues: getPriorityFormFields(state)
+      initialValues: getOperatorsFormFields(state)
     };
   })),
   reduxForm({
