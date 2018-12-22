@@ -9,8 +9,18 @@
 
 }
 
+.title {
+  display: inline-block;
+  width: 230px;
+  > span {
+    text-transform: uppercase;
+    font-weight:bold ;
+  }
+}
+
 .text {
   font-size: 16px;
+
   > span {
     padding: 0 10px;
   }

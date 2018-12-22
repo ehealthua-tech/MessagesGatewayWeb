@@ -35,6 +35,7 @@ export const showChangedPriority = ({ priorityState, oldIndex, newIndex }) => di
 };
 
 export const updatePriorityState = ({ priorityState, values }) => dispatch => {
+  console.log(values);
   const newUpdatedState = priorityState.map((operator) => {
     for (let [key, value] of Object.entries(values)) {
       if (key === operator.name) {

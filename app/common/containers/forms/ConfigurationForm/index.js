@@ -37,27 +37,17 @@ export default class ApiForm extends React.Component {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.form}>
-          <div>
-            <Field
-              name="config_item_one"
-              labelText={initialValues.configuration.auth}
-              placeholder={initialValues.configuration.auth}
-              component={FieldInput}
-            />
-          </div>
-          <div>
-            <Field
-              name="config_item_two"
-              labelText=""
-              component={FieldInput}
-            />
-          </div>
-
-          <div>
-            <Button type="submit" disabled={!this.isChanged || submitting}>
-              {submitting ? "Збереження..." : "Зберегти конфігурацію"}
-            </Button>
-          </div>
+          <Field
+            name="config_item_one"
+            labelText="192.168.0.1"
+            placeholder="Порт"
+            component={FieldInput}
+          />
+        </div>
+        <div>
+          <Button type="submit" disabled={!this.isChanged || submitting}>
+            {submitting ? "Збереження..." : "Зберегти"}
+          </Button>
         </div>
       </form>
     );

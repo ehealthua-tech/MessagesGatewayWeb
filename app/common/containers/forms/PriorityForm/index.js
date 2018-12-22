@@ -4,12 +4,13 @@ import styles from "./styles.scss";
 import { SortableContainer } from "react-sortable-hoc";
 import SortableItem from "../../../components/SortableElement";
 import Button from "components/Button";
-import { reduxForm } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import {  getPriorityFormFields } from "../../../reducers";
+import { getPriorityFormFields } from "../../../reducers";
+import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 
-const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, handleChange,onSubmit }) => {
+const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, handleChange, onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
@@ -22,10 +23,15 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
             onChange={handleChange}
           />
         ))}
+        <Field
+          name='automatic_prioritization'
+          labelText='Автоматична пріоритизація'
+          component={FieldCheckbox}
+        />
       </div>
       <div>
         <Button type="submit" disabled={submitting}>
-          {submitting ? "Збереження..." : "Зберегти пріорітезацію"}
+          {submitting ? "Збереження..." : "Зберегти"}
         </Button>
       </div>
     </form>

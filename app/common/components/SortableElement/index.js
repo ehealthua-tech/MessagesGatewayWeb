@@ -11,10 +11,9 @@ const SortableItem = SortableElement(({ value, handleChange, sortIndex }) =>
   <div className={styles.item}>
     <Handle title="Handle"/>
     <div className={styles.text}>
-      <span>Активніть типу оператора</span>
+      <div className={styles.title}>Активність типу <span>{value.name}</span></div>
       <Field
         name={value.name}
-        labelText={value.name}
         component={FieldCheckbox}
       />
     </div>

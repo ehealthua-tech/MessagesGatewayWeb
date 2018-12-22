@@ -35,10 +35,9 @@ export default class PriorityPage extends React.Component {
           meta={[{ property: "og:title", content: "Сторінка пріорітезації" }]}
         />
 
-        <H1>Сторінка пріорітезації</H1>
+        <H1>Визначення пріоритетів</H1>
 
         <div>
-
           <SortableList
             classname={styles.form}
             items={priorityState}
