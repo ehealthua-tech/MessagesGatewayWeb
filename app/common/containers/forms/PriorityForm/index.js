@@ -32,9 +32,6 @@ const SortableList = SortableContainer(({ items, initialValues, submitting, hand
         <Button type="submit" disabled={submitting}>
           {submitting ? "Збереження..." : "Зберегти"}
         </Button>
-        {/*<Button onClick={openPopup}>*/}
-        {/*Додати тип оператора*/}
-        {/*</Button>*/}
         <Button to={"operators-types/create/"}>
           Додати тип оператора
         </Button>

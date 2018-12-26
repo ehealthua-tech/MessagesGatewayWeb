@@ -40,6 +40,11 @@ export default class Nav extends React.Component {
               Типи операторів
             </Link>
           </NavItem>
+          <NavItem to="/operators" activeClassName={styles.active}>
+            <Link id="operator-nav" to="/operators">
+               Оператори
+            </Link>
+          </NavItem>
           <NavItem to="configuration" activeClassName={styles.active}>
             <Link id="configuration-nav" to="/configuration">
               Конфігурація системи

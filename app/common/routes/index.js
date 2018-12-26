@@ -13,6 +13,8 @@ import SystemConfigurationPage from "../containers/pages/ConfigurationFormPage";
 import NotFoundPage from "../containers/pages/NotFoundPage";
 import AccessDeniedPage from "../containers/pages/AccessDeniedPage";
 import InternalErrorPage from "../containers/pages/InternalErrorPage";
+import OperatorsListPage from "../containers/pages/OperatorsListPage";
+import OperatorCreatePage from  "../containers/pages/OperatorCreatePage";
 import OperatorsTypesListPage from "../containers/pages/OperatorsTypesListPage";
 import OperatorTypeCreatePage from "../containers/pages/OperatorTypeCreatePage";
 
@@ -51,13 +53,17 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main}>
+      <Route component={Main} onEnter={requireAuth}>
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard"/>
           <Route path="dashboard" component={DashboardPage}/>
           <Route path="operators-types">
             <IndexRoute component={OperatorsTypesListPage}/>
             <Route path="create" component={OperatorTypeCreatePage}/>
+          </Route>
+          <Route path="operators">
+            <IndexRoute component={OperatorsListPage}/>
+            <Route path="create/:id" component={OperatorCreatePage}/>
           </Route>
           <Route
             path="configuration"

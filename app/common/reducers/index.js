@@ -7,6 +7,7 @@ import session from "../redux/session";
 import loading from "../redux/loading";
 import notification from "../redux/notification";
 import configuration from "../containers/pages/ConfigurationFormPage/redux";
+import operatorsData from "../containers/pages/OperatorsListPage/redux";
 import operatorsTypesData from "../containers/pages/OperatorsTypesListPage/redux";
 
 
@@ -17,7 +18,8 @@ const blocks = combineReducers({
 const data = combineReducers({
   labels,
   configuration,
-  operatorsTypesData
+  operatorsTypesData,
+  operatorsData
 });
 
 export default combineReducers({
@@ -35,6 +37,7 @@ export const isAuthorized = state => state.session.authorized;
 export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
 export const getConfiguration = state => state.data.configuration;
+export const getOperators = state => state.data.operatorsData.operators;
 export const getOperatorsTypes = state => state.data.operatorsTypesData.operatorsTypes;
 export const getOperatorsFormFields = (state) => {
   return Object.assign({}, ...getOperatorsTypes(state).map((operator) => {

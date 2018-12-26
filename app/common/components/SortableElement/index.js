@@ -26,3 +26,5 @@ const SortableItem = SortableElement(({ value, handleChange, sortIndex }) =>
 
 export default withStyles(styles)(SortableItem);
 
+
+
