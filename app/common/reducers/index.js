@@ -8,6 +8,7 @@ import loading from "../redux/loading";
 import notification from "../redux/notification";
 import configuration from "../containers/pages/ConfigurationFormPage/redux";
 import operatorsData from "../containers/pages/OperatorsListPage/redux";
+import operatorData from "../containers/pages/OperatorDetailPage/redux";
 import operatorsTypesData from "../containers/pages/OperatorsTypesListPage/redux";
 
 
@@ -19,7 +20,8 @@ const data = combineReducers({
   labels,
   configuration,
   operatorsTypesData,
-  operatorsData
+  operatorsData,
+  operatorData
 });
 
 export default combineReducers({
@@ -47,6 +49,10 @@ export const getOperatorsFormFields = (state) => {
     };
   }));
 };
+export const getOperatorsDetailFormFields = (state) => {
+  return state.data.operatorData.operatorDetails
+};
+
 // export const getOperatorsTypes = state => state.data.priority.operatorsTypesList;
 
 

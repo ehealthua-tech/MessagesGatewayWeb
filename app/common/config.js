@@ -11,7 +11,7 @@ export const HOSTNAME =
   typeof window !== "undefined"
     ? window.location.origin
     : config.HOSTNAME || "http://localhost:8080";
-export const API_HOST =  "https://dev-messagesgateway.skywell.com.ua";
+export const API_HOST =  "http://192.168.100.165:4011";
 
 export const MOCK_API_HOST = "";
 
@@ -28,7 +28,7 @@ export const PRIVATE_INDEX_ROUTE = "/dashboard";
 
 export const CLIENT_ID = "a50c9298-badd-47db-a6bd-7850ef8727fe";
 export const SCOPES = config.SCOPES || process.env.SCOPES || "";
-export const OAUTH_URL = `${API_HOST}/sign-in`;
+export const OAUTH_URL = `${API_HOST}`;
 export const SIGN_URL =  `${API_HOST}/sign`;
 export const OAUTH_REDIRECT_PATH = "/auth/redirect";
 export const OAUTH_REDIRECT_URL = `${HOSTNAME}${OAUTH_REDIRECT_PATH}`;
