@@ -14,7 +14,8 @@ import NotFoundPage from "../containers/pages/NotFoundPage";
 import AccessDeniedPage from "../containers/pages/AccessDeniedPage";
 import InternalErrorPage from "../containers/pages/InternalErrorPage";
 import OperatorsListPage from "../containers/pages/OperatorsListPage";
-import OperatorCreatePage from  "../containers/pages/OperatorCreatePage";
+import OperatorCreatePage from "../containers/pages/OperatorCreatePage";
+import OperatorDetailPage from "../containers/pages/OperatorDetailPage";
 import OperatorsTypesListPage from "../containers/pages/OperatorsTypesListPage";
 import OperatorTypeCreatePage from "../containers/pages/OperatorTypeCreatePage";
 
@@ -53,7 +54,7 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main} onEnter={requireAuth}>
+      <Route component={Main}>
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard"/>
           <Route path="dashboard" component={DashboardPage}/>
@@ -64,6 +65,8 @@ export const configureRoutes = ({ store }) => {
           <Route path="operators">
             <IndexRoute component={OperatorsListPage}/>
             <Route path="create/:id" component={OperatorCreatePage}/>
+            <Route path="detail/:id" component={OperatorDetailPage}/>
+
           </Route>
           <Route
             path="configuration"

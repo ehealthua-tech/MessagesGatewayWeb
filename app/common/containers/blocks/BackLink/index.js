@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { Link } from "react-router";
 import withStyles from "withStyles";
 
-import Icon from "components/Icon";
+import Icon from "../../../components/Icon";
 
 import styles from "./styles.scss";
 

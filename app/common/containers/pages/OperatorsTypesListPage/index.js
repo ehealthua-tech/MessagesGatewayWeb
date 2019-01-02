@@ -32,7 +32,7 @@ export default class OperatorsTypesListPage extends React.Component {
   };
 
   render() {
-    const { operatorsTypes } = this.props;
+    const { operatorsTypes, combineOperatorsTypes } = this.props;
     return (
       <div id="priority-page">
         <Helmet
@@ -47,7 +47,7 @@ export default class OperatorsTypesListPage extends React.Component {
             className={styles.form}
             items={operatorsTypes}
             onSortEnd={this.onSortEnd}
-            onSubmit={values => this.props.combineOperatorsTypes({ operatorsTypes, values })}
+            onSubmit={values => combineOperatorsTypes({ operatorsTypes, values })}
             useDragHandle
             hideSortableGhost={true}
             lockAxis="y"

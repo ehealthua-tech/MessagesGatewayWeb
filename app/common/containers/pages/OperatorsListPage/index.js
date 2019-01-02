@@ -35,7 +35,6 @@ export default class OperatorsListPage extends React.Component {
     });
   };
 
-
   render() {
     const { operators } = this.props;
     const { isOpened } = this.state;
@@ -47,11 +46,23 @@ export default class OperatorsListPage extends React.Component {
         />
 
         <H1>Оператори</H1>
+        {console.log(this.props.router)}
 
         <div className={styles.operators_container}>
-          {operators.map((operator, index) => (
-            <div className={styles.operator_type} key={index}>{operator.name}</div>
-          ))}
+          {operators.map((operator, index) => {
+            const { name, id } = operator;
+            return <Button
+              className={styles.operator_type}
+              key={index}
+              onClick={() => this.props.router.push({
+                pathname: `/operators/detail/${id}/`,
+                params: {
+                  name
+                }
+              })}>
+              {operator.name}
+            </Button>;
+          })}
           <div>
             <Button onClick={this.openPopup}>
               Додати оператора
@@ -72,8 +83,8 @@ export default class OperatorsListPage extends React.Component {
                         key={index}
                         onClick={() => this.props.router.push({
                           pathname: `/operators/create/${id}/`,
-                          state: {
-                            name: name
+                          params: {
+                            name
                           }
                         })}
                 >
