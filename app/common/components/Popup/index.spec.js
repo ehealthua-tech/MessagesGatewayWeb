@@ -15,7 +15,7 @@ describe("Popup", () => {
   });
 
   describe("props", () => {
-    const elem = mount(<Popup title="Popup title" active theme="error"/>);
+    const elem = mount(<Popup title="Popup title" active theme="error" />);
 
     it("title", () => {
       expect(elem.text()).toBe("Popup title");
@@ -44,7 +44,6 @@ describe("Popup", () => {
   });
 });
 
-
 describe("Confirm", () => {
   it("children", () => {
     const elem = shallow(
@@ -56,7 +55,7 @@ describe("Confirm", () => {
   });
 
   it("use popup", () => {
-    const elem = mount(<Confirm/>);
+    const elem = mount(<Confirm />);
     expect(elem.find(Popup)).toHaveLength(1);
   });
 

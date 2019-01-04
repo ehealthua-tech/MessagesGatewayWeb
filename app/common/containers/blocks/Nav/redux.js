@@ -1,5 +1,5 @@
 import { push } from "react-router-redux";
-import { logout } from "redux/session";
+import { logout } from "../../../redux/session";
 
 export const logOut = () => dispatch =>
-  dispatch(logout()).then(() => dispatch(push("/sign-in")));
+  dispatch(logout()).then(() => dispatch(push("/auth")));

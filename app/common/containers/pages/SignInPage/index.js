@@ -2,7 +2,12 @@ import React from "react";
 import withStyles from "withStyles";
 import Helmet from "react-helmet";
 
-import { OAUTH_URL, SCOPES, CLIENT_ID, OAUTH_REDIRECT_URL } from "../../../config";
+import {
+  OAUTH_URL,
+  SCOPES,
+  CLIENT_ID,
+  OAUTH_REDIRECT_URL
+} from "../../../config";
 
 import styles from "./styles.scss";
 

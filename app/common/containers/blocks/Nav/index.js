@@ -8,7 +8,6 @@ import ShowWithScope from "containers/blocks/ShowWithScope";
 import NavItem from "components/NavItem";
 import Icon from "components/Icon";
 
-
 import { logOut } from "./redux";
 
 import styles from "./styles.scss";
@@ -42,7 +41,7 @@ export default class Nav extends React.Component {
           </NavItem>
           <NavItem to="/operators" activeClassName={styles.active}>
             <Link id="operator-nav" to="/operators">
-               Оператори
+              Оператори
             </Link>
           </NavItem>
           <NavItem to="configuration" activeClassName={styles.active}>
@@ -53,7 +52,7 @@ export default class Nav extends React.Component {
         </ul>
         <ul className={styles.down}>
           <li className={styles.logout} onClick={() => this.props.logOut()}>
-            <Icon name="exit"/>
+            <Icon name="exit" />
             Вихід
           </li>
         </ul>

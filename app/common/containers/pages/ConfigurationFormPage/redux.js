@@ -18,8 +18,6 @@ const configuration = handleAction(
   []
 );
 
-
-
 export default combineReducers({
   configuration
 });

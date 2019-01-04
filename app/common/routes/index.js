@@ -26,7 +26,6 @@ import { PUBLIC_INDEX_ROUTE } from "../config";
 import { hasScope } from "../helpers/scope";
 import { getToken, verifyToken } from "../redux/session";
 
-
 export const configureRoutes = ({ store }) => {
   const requireAuth = async (nextState, replace, next) => {
     if (__CLIENT__) {
@@ -34,7 +33,6 @@ export const configureRoutes = ({ store }) => {
         replace({ pathname: PUBLIC_INDEX_ROUTE });
       }
     } else {
-
       const token = await store.dispatch(getToken());
       const { error } = await store.dispatch(verifyToken(token));
       if (error) {
@@ -54,19 +52,18 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main}>
+      <Route component={Main} onEnter={requireAuth}>
         <Route path="/" component={PreloadData}>
-          <IndexRedirect to="dashboard"/>
-          <Route path="dashboard" component={DashboardPage}/>
+          <IndexRedirect to="dashboard" />
+          <Route path="dashboard" component={DashboardPage} />
           <Route path="operators-types">
-            <IndexRoute component={OperatorsTypesListPage}/>
-            <Route path="create" component={OperatorTypeCreatePage}/>
+            <IndexRoute component={OperatorsTypesListPage} />
+            <Route path="create" component={OperatorTypeCreatePage} />
           </Route>
           <Route path="operators">
-            <IndexRoute component={OperatorsListPage}/>
-            <Route path="create/:id" component={OperatorCreatePage}/>
-            <Route path="detail/:id" component={OperatorDetailPage}/>
-
+            <IndexRoute component={OperatorsListPage} />
+            <Route path="create/:id" component={OperatorCreatePage} />
+            <Route path="detail/:id" component={OperatorDetailPage} />
           </Route>
           <Route
             path="configuration"
@@ -74,11 +71,11 @@ export const configureRoutes = ({ store }) => {
             // onEnter={requireScope(["global_parameters:read"])}
           />
         </Route>
-        <Route path="401" component={AccessDeniedPage}/>
+        <Route path="401" component={AccessDeniedPage} />
       </Route>
-      <Route path="sign-in" component={SignInPage}/>
-      <Route path="internal-error" component={InternalErrorPage}/>
-      <Route path="*" component={NotFoundPage}/>
+      <Route path="auth" component={SignInPage} />
+      <Route path="internal-error" component={InternalErrorPage} />
+      <Route path="*" component={NotFoundPage} />
     </Route>
   );
 };

@@ -11,50 +11,55 @@ import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
   form: "operator-detail-form"
 })
 export default class OperatorDetailForm extends React.Component {
-
   render() {
     const { initialValues, handleSubmit, onSubmit, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <FormSection name={null}>
-            {Object.entries(initialValues).map((([key, value], index) => {
-              if (typeof value === "boolean") {
-                return <Field
+          {Object.entries(initialValues).map(([key, value], index) => {
+            if (typeof value === "boolean") {
+              return (
+                <Field
                   name={key}
                   key={index}
                   labelText={key}
                   component={FieldCheckbox}
-                />;
-              }
-              if (key === "config") {
-                return null;
-              }
-              return <Field
+                />
+              );
+            }
+            if (key === "config") {
+              return null;
+            }
+            return (
+              <Field
                 name={key}
                 key={index}
                 labelText={key}
                 component={FieldInput}
-              />;
-            }))}
-          </FormSection>
+              />
+            );
+          })}
           <FormSection name="config">
-            {Object.entries(initialValues.config).map((([key, value], index) => {
+            {Object.entries(initialValues.config).map(([key, value], index) => {
               if (typeof value === "boolean") {
-                return <Field
+                return (
+                  <Field
+                    name={key}
+                    key={index}
+                    labelText={key}
+                    component={FieldCheckbox}
+                  />
+                );
+              }
+              return (
+                <Field
                   name={key}
                   key={index}
                   labelText={key}
-                  component={FieldCheckbox}
-                />;
-              }
-              return <Field
-                name={key}
-                key={index}
-                labelText={key}
-                component={FieldInput}
-              />;
-            }))}
+                  component={FieldInput}
+                />
+              );
+            })}
           </FormSection>
         </div>
         <div>

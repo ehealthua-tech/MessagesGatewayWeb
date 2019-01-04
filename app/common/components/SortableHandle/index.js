@@ -5,9 +5,9 @@ import styles from "./styles.scss";
 
 const Handle = SortableHandle(({ title }) => (
   <div className={styles.handle} title={title}>
-    <div/>
-    <div/>
-    <div/>
+    <div />
+    <div />
+    <div />
   </div>
 ));
 

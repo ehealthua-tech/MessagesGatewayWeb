@@ -24,11 +24,13 @@ import { getOperatorsTypes } from "../../../reducers";
   { showChangedOperatorsTypes, combineOperatorsTypes }
 )
 export default class OperatorsTypesListPage extends React.Component {
-
-
   onSortEnd = ({ oldIndex, newIndex }) => {
     const { operatorsTypes } = this.props;
-    this.props.showChangedOperatorsTypes({ operatorsTypes, oldIndex, newIndex });
+    this.props.showChangedOperatorsTypes({
+      operatorsTypes,
+      oldIndex,
+      newIndex
+    });
   };
 
   render() {
@@ -47,7 +49,9 @@ export default class OperatorsTypesListPage extends React.Component {
             className={styles.form}
             items={operatorsTypes}
             onSortEnd={this.onSortEnd}
-            onSubmit={values => combineOperatorsTypes({ operatorsTypes, values })}
+            onSubmit={values =>
+              combineOperatorsTypes({ operatorsTypes, values })
+            }
             useDragHandle
             hideSortableGhost={true}
             lockAxis="y"
@@ -59,4 +63,3 @@ export default class OperatorsTypesListPage extends React.Component {
     );
   }
 }
-

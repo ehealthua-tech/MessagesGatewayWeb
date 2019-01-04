@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 
-
 const { APP_ENV = "local" } = global.process.env;
 
 const ENV_TITLE = {
@@ -15,7 +14,9 @@ const App = ({ children }) => (
   <div>
     <Helmet
       htmlAttributes={{ lang: "ru", amp: undefined }} // amp takes no value
-      titleTemplate={[ENV_TITLE[APP_ENV], "Messages Gateway  - %s"].filter(Boolean).join(" ")}
+      titleTemplate={[ENV_TITLE[APP_ENV], "Messages Gateway  - %s"]
+        .filter(Boolean)
+        .join(" ")}
       defaultTitle="Панель управління"
       link={[
         {
@@ -46,10 +47,16 @@ const App = ({ children }) => (
       meta={[
         { charset: "utf-8" },
         { name: "format-detection", content: "telephone=no" },
-        { name: "description", content: "Messages Gateway - Панель управління" },
+        {
+          name: "description",
+          content: "Messages Gateway - Панель управління"
+        },
         { property: "og:title", content: "Панель управління" },
         { property: "og:site_name", content: "Messages Gateway" },
-        { property: "og:description", content: "Messages Gateway - Панель управління" },
+        {
+          property: "og:description",
+          content: "Messages Gateway - Панель управління"
+        },
         { name: "apple-mobile-web-app-title", content: "Messages Gateway" },
         { name: "application-name", content: "Messages Gateway" },
         { name: "msapplication-TileColor", content: "#2b5797" },

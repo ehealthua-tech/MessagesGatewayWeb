@@ -55,12 +55,8 @@ export const updateOperatorDetail = body =>
     body
   });
 
-
-
 export default handleAction(
-  combineActions(
-    "operators/FETCH_PRIORITY_SUCCESS",
-  ),
+  combineActions("operators/FETCH_PRIORITY_SUCCESS"),
   (state, action) => ({
     ...state,
     ...action.payload
