@@ -11,7 +11,6 @@ import operatorsData from "../containers/pages/OperatorsListPage/redux";
 import operatorData from "../containers/pages/OperatorDetailPage/redux";
 import operatorsTypesData from "../containers/pages/OperatorsTypesListPage/redux";
 
-
 const blocks = combineReducers({
   Aside
 });
@@ -40,24 +39,22 @@ export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
 export const getConfiguration = state => state.data.configuration;
 export const getOperators = state => state.data.operatorsData.operators;
-export const getOperatorsTypes = state => state.data.operatorsTypesData.operatorsTypes;
-export const getOperatorsFormFields = (state) => {
-  return Object.assign({}, ...getOperatorsTypes(state).map((operator) => {
-    const { name, active } = operator;
-    return {
-      [name]: active
-    };
-  }));
+export const getProtocols = state => state.data.operatorsData.protocols;
+export const getOperatorsTypes = state =>
+  state.data.operatorsTypesData.operatorsTypes;
+export const getOperatorsFormFields = state => {
+  return Object.assign(
+    {},
+    ...getOperatorsTypes(state).map(operator => {
+      const { name, active } = operator;
+      return {
+        [name]: active
+      };
+    })
+  );
 };
-export const getOperatorsDetailFormFields = (state) => {
-  return state.data.operatorData.operatorDetails
+export const getOperatorsDetailFormFields = state => {
+  return state.data.operatorData.operatorDetails;
 };
 
 // export const getOperatorsTypes = state => state.data.priority.operatorsTypesList;
-
-
-
-
-
-
-

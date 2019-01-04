@@ -10,47 +10,45 @@ import { connect } from "react-redux";
 import { getOperatorsFormFields } from "../../../reducers";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 
-const SortableList = SortableContainer(({ items, initialValues, submitting, handleSubmit, openPopup, onSubmit }) => {
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        {items.map((value, index) => (
-          <SortableItem
-            key={index}
-            index={index}
-            value={value}
-            sortIndex={index}
+const SortableList = SortableContainer(
+  ({ items, initialValues, submitting, handleSubmit, openPopup, onSubmit }) => {
+    return (
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          {items.map((value, index) => (
+            <SortableItem
+              key={index}
+              index={index}
+              value={value}
+              sortIndex={index}
+            />
+          ))}
+          <Field
+            name="automatic_prioritization"
+            labelText="Автоматична пріоритизація"
+            component={FieldCheckbox}
           />
-        ))}
-        <Field
-          name='automatic_prioritization'
-          labelText='Автоматична пріоритизація'
-          component={FieldCheckbox}
-        />
-      </div>
-      <div className={styles.buttons_block}>
-        <Button type="submit" disabled={submitting}>
-          {submitting ? "Збереження..." : "Зберегти"}
-        </Button>
-        <Button to={"operators-types/create/"}>
-          Додати тип оператора
-        </Button>
-      </div>
-    </form>
-  );
-});
+        </div>
+        <div className={styles.buttons_block}>
+          <Button type="submit" disabled={submitting}>
+            {submitting ? "Збереження..." : "Зберегти"}
+          </Button>
+          <Button to={"operators-types/create/"}>Додати тип оператора</Button>
+        </div>
+      </form>
+    );
+  }
+);
 
 export default compose(
-  connect((state => {
+  connect(state => {
     return {
       initialValues: getOperatorsFormFields(state)
     };
-  })),
+  }),
   reduxForm({
     form: "priorityForm",
     enableReinitialize: true
   }),
   withStyles(styles)
 )(SortableList);
-
-

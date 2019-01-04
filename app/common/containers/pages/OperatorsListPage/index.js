@@ -7,24 +7,23 @@ import { Popup } from "../../../components/Popup";
 import styles from "./styles.scss";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
-import {
-  fetchOperators
-} from "./redux";
-import { getOperators } from "../../../reducers";
-
+import { fetchOperators, fetchProtocols } from "./redux";
+import { getOperators, getProtocols } from "../../../reducers";
+import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
 
 @withStyles(styles)
 @provideHooks({
-  fetch: ({ dispatch }) => dispatch(fetchOperators())
+  fetch: ({ dispatch }) =>
+    Promise.all([dispatch(fetchOperators()), dispatch(fetchProtocols())])
 })
 @connect(
   state => ({
-    operators: getOperators(state)
+    operators: getOperators(state),
+    protocols: getProtocols(state)
   }),
   null
 )
 export default class OperatorsListPage extends React.Component {
-
   state = {
     isOpened: false
   };
@@ -36,7 +35,7 @@ export default class OperatorsListPage extends React.Component {
   };
 
   render() {
-    const { operators } = this.props;
+    const { operators, protocols } = this.props;
     const { isOpened } = this.state;
     return (
       <div id="priority-page">
@@ -46,53 +45,44 @@ export default class OperatorsListPage extends React.Component {
         />
 
         <H1>Оператори</H1>
-        {console.log(this.props.router)}
 
         <div className={styles.operators_container}>
           {operators.map((operator, index) => {
             const { name, id } = operator;
-            return <Button
-              className={styles.operator_type}
-              key={index}
-              onClick={() => this.props.router.push({
-                pathname: `/operators/detail/${id}/`,
-                params: {
-                  name
+            return (
+              <Button
+                className={styles.operator_type}
+                key={index}
+                onClick={() =>
+                  this.props.router.push({
+                    pathname: `/operators/detail/${id}/`,
+                    params: {
+                      name
+                    }
+                  })
                 }
-              })}>
-              {operator.name}
-            </Button>;
+              >
+                {operator.name}
+              </Button>
+            );
           })}
           <div>
-            <Button onClick={this.openPopup}>
-              Додати оператора
-            </Button>
+            <Button onClick={this.openPopup}>Додати оператора</Button>
           </div>
         </div>
 
         <Popup
-          title={<span>Віберіть тип оператора</span>}
+          title={<span>Оберіть налаштування для створення</span>}
           active={isOpened}
           onClose={() => this.setState({ isOpened: false })}
         >
-          <div>
-            {operators.map((operator, index) => {
-              const { name, id } = operator.operator_type;
-              return (
-                <Button className={styles.operator_type}
-                        key={index}
-                        onClick={() => this.props.router.push({
-                          pathname: `/operators/create/${id}/`,
-                          params: {
-                            name
-                          }
-                        })}
-                >
-                  {name}
-                </Button>
-              );
-            })}
-          </div>
+          <OperatorTypeSelectionForm
+            operators={operators}
+            protocols={protocols}
+            onSubmit={values => {
+              console.log(values);
+            }}
+          />
         </Popup>
       </div>
     );

@@ -10,7 +10,7 @@ const Main = ({ children }) => (
     <main>
       <Aside />
       <div className={styles.content}>{children}</div>
-      <NotificationContainer/>
+      <NotificationContainer />
     </main>
     <footer className={styles.footer} />
   </div>

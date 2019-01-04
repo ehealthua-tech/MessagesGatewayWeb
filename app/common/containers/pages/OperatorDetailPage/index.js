@@ -10,7 +10,6 @@ import { connect } from "react-redux";
 import { getOperatorsDetailFormFields } from "../../../reducers";
 import { fetchOperator, updateOperator } from "./redux";
 
-
 @withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch, params: { id } }) => dispatch(fetchOperator(id))
@@ -41,7 +40,6 @@ export default class OperatorDetailPage extends React.Component {
           initialValues={operatorFields}
           onSubmit={values => updateOperator(values)}
         />
-
       </div>
     );
   }

@@ -5,18 +5,13 @@ import { connect } from "react-redux";
 import { hideNotification } from "../../redux/notification";
 import classnames from "classnames";
 
-
 @withStyles(styles)
-@connect(
-  null,
-  (dispatch) => {
-    return {
-      hideNotification: () => dispatch(hideNotification({ showing: false }))
-    };
-  }
-)
+@connect(null, dispatch => {
+  return {
+    hideNotification: () => dispatch(hideNotification({ showing: false }))
+  };
+})
 export default class Toast extends React.Component {
-
   componentDidMount() {
     this.timeout = setTimeout(() => {
       const { hideNotification } = this.props;
@@ -30,12 +25,15 @@ export default class Toast extends React.Component {
 
   render() {
     const { message, type } = this.props;
-    return (<div className={classnames(styles.notification, styles[`notification_${type}`])}>{message}</div>);
+    return (
+      <div
+        className={classnames(
+          styles.notification,
+          styles[`notification_${type}`]
+        )}
+      >
+        {message}
+      </div>
+    );
   }
 }
-
-
-
-
-
-

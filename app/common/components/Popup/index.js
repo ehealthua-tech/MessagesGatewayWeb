@@ -17,14 +17,14 @@ const THEMES_COLOR = {
 };
 
 const PopupComponent = ({
-                          children,
-                          title,
-                          active = false,
-                          theme,
-                          onClose,
-                          bgCloser = true,
-                          id
-                        }) => (
+  children,
+  title,
+  active = false,
+  theme,
+  onClose,
+  bgCloser = true,
+  id
+}) => (
   <section
     id={id}
     className={classnames(
@@ -58,8 +58,6 @@ PopupComponent.defaultProps = {
   active: false,
   bgCloser: true
 };
-
-
 
 const ConfirmComponent = props => {
   const {

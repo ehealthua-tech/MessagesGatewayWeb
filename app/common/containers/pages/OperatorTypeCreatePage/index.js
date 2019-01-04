@@ -5,7 +5,6 @@ import Helmet from "react-helmet";
 import { H1 } from "../../../components/Title";
 import styles from "../OperatorsTypesListPage/styles.scss";
 
-
 @withStyles(styles)
 export default class OperatorCreatePage extends React.Component {
   render() {
@@ -17,8 +16,6 @@ export default class OperatorCreatePage extends React.Component {
         />
 
         <H1>Створення типу оператора</H1>
-
-
       </div>
     );
   }

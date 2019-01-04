@@ -8,15 +8,15 @@ import Icon from "components/Icon";
 import styles from "./styles.scss";
 
 const Checkbox = ({
-                    checked = false,
-                    onChange = e => e,
-                    onBlur,
-                    onFocus,
-                    error,
-                    name,
-                    labelText,
-                    disabled
-                  }) => (
+  checked = false,
+  onChange = e => e,
+  onBlur,
+  onFocus,
+  error,
+  name,
+  labelText,
+  disabled
+}) => (
   <label
     className={classnames(
       styles.wrap,

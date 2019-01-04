@@ -1,7 +1,10 @@
 import { CALL_API } from "redux-api-middleware";
 
-
-export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (dispatch, getState, { req }) => {
+export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (
+  dispatch,
+  getState,
+  { req }
+) => {
   const wrappedBody = body && { resource: body };
   return dispatch({
     [CALL_API]: {
@@ -17,4 +20,3 @@ export const invoke = ({ body, headers, ...config }, { auth = true } = {}) => (d
     }
   });
 };
-

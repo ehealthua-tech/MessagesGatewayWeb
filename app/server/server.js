@@ -69,14 +69,14 @@ server.use(auth);
 server.get("*", page());
 
 server.use((req, res, err) => {
-  console.log(err.stack,'err.stack');
+  console.log(err.stack, "err.stack");
   // TODO report error here or do some further handlings
   res.status(500).send("something went wrong...");
 });
 
 server.listen(server.get("port"), err => {
   if (err) {
-    console.log(err,'err');
+    console.log(err, "err");
     return;
   }
 
