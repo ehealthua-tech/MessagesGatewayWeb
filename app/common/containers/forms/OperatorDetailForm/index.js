@@ -5,6 +5,7 @@ import FieldInput from "../../../components/reduxForm/FieldInput";
 import Button from "../../../components/Button";
 import styles from "./styles.scss";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
+import isNumber from "../../../helpers/validators/number";
 
 @withStyles(styles)
 @reduxForm({
@@ -34,6 +35,7 @@ export default class OperatorDetailForm extends React.Component {
               <Field
                 name={key}
                 key={index}
+                parse={isNumber}
                 labelText={key}
                 component={FieldInput}
               />

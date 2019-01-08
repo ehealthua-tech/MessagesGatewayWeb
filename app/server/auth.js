@@ -6,7 +6,7 @@ import { CLIENT_SECRET } from "./config";
 const router = new Express.Router();
 
 const createSessionToken = code =>
-  fetch(`${config.API_HOST}/oauth/tokens`, {
+  fetch(`${config.HOST}/oauth/tokens`, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({
