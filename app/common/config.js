@@ -11,8 +11,8 @@ export const HOSTNAME =
   typeof window !== "undefined"
     ? window.location.origin
     : config.HOSTNAME || "http://localhost:8080";
-export const API_HOST = "http://dev-messagesgateway.skywell.com.ua/api";
 export const HOST = "http://dev-messagesgateway.skywell.com.ua";
+export const API_HOST = `${HOST}/api`;
 export const MOCK_API_HOST = "";
 
 export const SITEMAP_HOSTNAME = "http://localhost:8080"; // used in sitemap
