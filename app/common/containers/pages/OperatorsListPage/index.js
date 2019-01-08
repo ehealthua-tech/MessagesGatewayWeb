@@ -7,9 +7,10 @@ import { Popup } from "../../../components/Popup";
 import styles from "./styles.scss";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
-import { fetchOperators, fetchProtocols } from "./redux";
+import { createOperator, fetchOperators, fetchProtocols } from "./redux";
 import { getOperators, getProtocols } from "../../../reducers";
 import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
+import { fetchOperatorFields } from "../../../redux/operators";
 
 @withStyles(styles)
 @provideHooks({
@@ -21,7 +22,7 @@ import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
     operators: getOperators(state),
     protocols: getProtocols(state)
   }),
-  null
+  { fetchOperatorFields }
 )
 export default class OperatorsListPage extends React.Component {
   state = {
@@ -35,7 +36,7 @@ export default class OperatorsListPage extends React.Component {
   };
 
   render() {
-    const { operators, protocols } = this.props;
+    const { router, operators, protocols, fetchOperatorFields } = this.props;
     const { isOpened } = this.state;
     return (
       <div id="priority-page">
@@ -54,7 +55,7 @@ export default class OperatorsListPage extends React.Component {
                 className={styles.operator_type}
                 key={index}
                 onClick={() =>
-                  this.props.router.push({
+                  router.push({
                     pathname: `/operators/detail/${id}/`,
                     params: {
                       name
@@ -81,6 +82,17 @@ export default class OperatorsListPage extends React.Component {
             protocols={protocols}
             onSubmit={values => {
               console.log(values);
+              const { id } = values.operator_type;
+              const { name } = values.protocol;
+              fetchOperatorFields(name).then(action => {
+                console.log(action);
+                return router.push({
+                  pathname: `/operators/create/${id}/`,
+                  state: {
+                    fields: action.payload.fields
+                  }
+                });
+              });
             }}
           />
         </Popup>

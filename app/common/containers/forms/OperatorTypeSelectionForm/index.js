@@ -20,17 +20,18 @@ export default class OperatorTypeSelectionForm extends React.Component {
       onSubmit,
       submitting
     } = this.props;
+
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <Field
           name="operator_type"
           placeholder="Виберіть тип оператора"
           component={SelectUniversal}
-          onChangeSearch={v => console.log(v)}
           options={operators.map(operator => {
             return {
               name: operator.name,
-              title: operator.name
+              title: operator.name,
+              id: operator.id
             };
           })}
         />
@@ -38,11 +39,10 @@ export default class OperatorTypeSelectionForm extends React.Component {
           name="protocol"
           placeholder="Виберіть протокол"
           component={SelectUniversal}
-          onChangeSearch={v => console.log(v)}
           options={protocols.protocols.map(protocol => {
             return {
-              name: protocol.name,
-              title: protocol.name
+              name: protocol,
+              title: protocol
             };
           })}
         />

@@ -3,9 +3,27 @@ import { API_URL } from "config";
 import { createUrl } from "helpers/url";
 import { invoke } from "./api";
 
+export const addOperatorTypeDetail = body =>
+  invoke({
+    endpoint: `${API_URL}/operator_type`,
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    types: [
+      "operatorsTypes/ADD_OPERATOR_TYPE_REQUEST",
+      {
+        type: "operatorsTypes/ADD_OPERATOR_TYPE_SUCCESS",
+        payload: (action, state, res) => res.json().then(resp => resp.data)
+      },
+      "operatorsTypes/ADD_OPERATOR_TYPE_FAILURE"
+    ],
+    body
+  });
+
 export const fetchOperatorsTypes = options =>
   invoke({
-    endpoint: createUrl(`${API_URL}/operators`, options),
+    endpoint: createUrl(`${API_URL}/operator_type`, options),
     method: "GET",
     headers: {
       "content-type": "application/json"

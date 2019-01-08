@@ -52,7 +52,7 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main} onEnter={requireAuth}>
+      <Route component={Main}>
         <Route path="/" component={PreloadData}>
           <IndexRedirect to="dashboard" />
           <Route path="dashboard" component={DashboardPage} />

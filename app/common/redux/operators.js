@@ -37,6 +37,23 @@ export const fetchOperatorDetail = id =>
     ]
   });
 
+export const fetchOperatorFields = name =>
+  invoke({
+    endpoint: `${API_URL}/get_protocol/${name}`,
+    method: "GET",
+    headers: {
+      "content-type": "application/json"
+    },
+    types: [
+      "operators/FETCH_OPERATOR_FIELDS_REQUEST",
+      {
+        type: "operators/FETCH_OPERATOR_FIELDS_SUCCESS",
+        payload: (action, state, res) => res.json().then(resp => resp.data)
+      },
+      "operators/FETCH_OPERATOR_FIELDS_FAILURE"
+    ]
+  });
+
 export const updateOperatorDetail = body =>
   invoke({
     endpoint: `${API_URL}/operators/change`,
@@ -51,6 +68,24 @@ export const updateOperatorDetail = body =>
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
       "operators/UPDATE_OPERATOR_FAILURE"
+    ],
+    body
+  });
+
+export const addOperatorDetail = body =>
+  invoke({
+    endpoint: `${API_URL}/operators`,
+    method: "POST",
+    headers: {
+      "content-type": "application/json"
+    },
+    types: [
+      "operators/ADD_OPERATOR_REQUEST",
+      {
+        type: "operators/ADD_OPERATOR_SUCCESS",
+        payload: (action, state, res) => res.json().then(resp => resp.data)
+      },
+      "operators/ADD_OPERATOR_FAILURE"
     ],
     body
   });

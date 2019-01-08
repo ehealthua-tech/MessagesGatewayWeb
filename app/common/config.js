@@ -11,9 +11,8 @@ export const HOSTNAME =
   typeof window !== "undefined"
     ? window.location.origin
     : config.HOSTNAME || "http://localhost:8080";
-export const HOST = "https://dev-messagesgateway.skywell.com.ua";
-export const API_HOST = `${HOST}/api`;
-
+export const API_HOST = "http://dev-messagesgateway.skywell.com.ua/api";
+export const HOST = "http://dev-messagesgateway.skywell.com.ua";
 export const MOCK_API_HOST = "";
 
 export const SITEMAP_HOSTNAME = "http://localhost:8080"; // used in sitemap
@@ -29,8 +28,8 @@ export const PRIVATE_INDEX_ROUTE = "/dashboard";
 
 export const CLIENT_ID = "a50c9298-badd-47db-a6bd-7850ef8727fe";
 export const SCOPES = config.SCOPES || process.env.SCOPES || "";
-export const OAUTH_URL = `${HOST}/sign-in`;
-// export const SIGN_URL = `${API_HOST}/sign`;
+export const OAUTH_URL = `${API_HOST}`;
+export const SIGN_URL = `${API_HOST}/sign`;
 export const OAUTH_REDIRECT_PATH = "/auth/redirect";
 export const OAUTH_REDIRECT_URL = `${HOSTNAME}${OAUTH_REDIRECT_PATH}`;
 
