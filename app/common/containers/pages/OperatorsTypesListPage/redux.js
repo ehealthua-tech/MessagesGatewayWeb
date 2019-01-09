@@ -20,6 +20,18 @@ export const fetchOperatorsTypes = () => dispatch =>
     return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
 
+export const deleteOperatorType = id => dispatch =>
+  dispatch(OperatorsTypesAPI.deleteOperatorTypeDetail(id)).then(action => {
+    if (action.error) throw action;
+
+    dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
+      if (action.error) throw action;
+
+      const sortedOperatorsTypes = action.payload.sort(sortOperatorsTypesById);
+      return dispatch(showOperatorsTypes(sortedOperatorsTypes));
+    });
+  });
+
 export const showChangedOperatorsTypes = ({
   operatorsTypes,
   oldIndex,

@@ -11,18 +11,33 @@ import { getOperatorsFormFields } from "../../../reducers";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 
 const SortableList = SortableContainer(
-  ({ items, initialValues, submitting, handleSubmit, openPopup, onSubmit }) => {
+  ({
+    items,
+    onDeleteType,
+    initialValues,
+    submitting,
+    handleSubmit,
+    openPopup,
+    onSubmit
+  }) => {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          {items.map((value, index) => (
-            <SortableItem
-              key={index}
-              index={index}
-              value={value}
-              sortIndex={index}
-            />
-          ))}
+          {items.length ? (
+            items.map((value, index) => (
+              <SortableItem
+                key={index}
+                index={index}
+                value={value}
+                sortIndex={index}
+                onDeleteType={onDeleteType}
+              />
+            ))
+          ) : (
+            <div className={styles.not_found}>
+              <h2>Нажаль, жодного типу оператора не додано</h2>
+            </div>
+          )}
           <Field
             name="automatic_prioritization"
             labelText="Автоматична пріоритизація"

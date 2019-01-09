@@ -30,7 +30,7 @@ export default class OperatorTypeCreateForm extends React.Component {
           />
         </div>
         <div>
-          <Button type="submit">
+          <Button type="submit" disabled={submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

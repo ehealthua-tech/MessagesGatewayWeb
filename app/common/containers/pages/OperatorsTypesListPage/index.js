@@ -9,7 +9,8 @@ import { provideHooks } from "redial";
 import {
   fetchOperatorsTypes,
   showChangedOperatorsTypes,
-  combineOperatorsTypes
+  combineOperatorsTypes,
+  deleteOperatorType
 } from "./redux";
 import { getOperatorsTypes } from "../../../reducers";
 
@@ -21,12 +22,12 @@ import { getOperatorsTypes } from "../../../reducers";
   state => ({
     operatorsTypes: getOperatorsTypes(state)
   }),
-  { showChangedOperatorsTypes, combineOperatorsTypes }
+  { showChangedOperatorsTypes, combineOperatorsTypes, deleteOperatorType }
 )
 export default class OperatorsTypesListPage extends React.Component {
   onSortEnd = ({ oldIndex, newIndex }) => {
-    const { operatorsTypes } = this.props;
-    this.props.showChangedOperatorsTypes({
+    const { operatorsTypes, showChangedOperatorsTypes } = this.props;
+    showChangedOperatorsTypes({
       operatorsTypes,
       oldIndex,
       newIndex
@@ -34,7 +35,11 @@ export default class OperatorsTypesListPage extends React.Component {
   };
 
   render() {
-    const { operatorsTypes, combineOperatorsTypes } = this.props;
+    const {
+      operatorsTypes,
+      combineOperatorsTypes,
+      deleteOperatorType
+    } = this.props;
     return (
       <div id="priority-page">
         <Helmet
@@ -46,9 +51,9 @@ export default class OperatorsTypesListPage extends React.Component {
 
         <div>
           <SortableList
-            className={styles.form}
             items={operatorsTypes}
             onSortEnd={this.onSortEnd}
+            onDeleteType={id => deleteOperatorType(id)}
             onSubmit={values =>
               combineOperatorsTypes({ operatorsTypes, values })
             }

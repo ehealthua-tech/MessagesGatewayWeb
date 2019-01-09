@@ -14,7 +14,7 @@ import { SelectUniversal } from "../../../components/SelectUniversal";
 export default class OperatorTypeSelectionForm extends React.Component {
   render() {
     const {
-      operators,
+      operatorsTypes,
       protocols,
       handleSubmit,
       onSubmit,
@@ -27,11 +27,12 @@ export default class OperatorTypeSelectionForm extends React.Component {
           name="operator_type"
           placeholder="Виберіть тип оператора"
           component={SelectUniversal}
-          options={operators.map(operator => {
+          options={operatorsTypes.map(operatorType => {
+            const { name, id } = operatorType;
             return {
-              name: operator.name,
-              title: operator.name,
-              id: operator.id
+              name,
+              title: name,
+              id
             };
           })}
         />
@@ -47,7 +48,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
           })}
         />
         <div>
-          <Button type="submit">
+          <Button type="submit" disabled={submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

@@ -22,7 +22,7 @@ import { fetchOperator, updateOperator } from "./redux";
 )
 export default class OperatorDetailPage extends React.Component {
   render() {
-    const { operatorFields, updateOperator } = this.props;
+    const { router, operatorFields, updateOperator } = this.props;
     return (
       <div id="operator-detail-page">
         <Helmet
@@ -30,7 +30,7 @@ export default class OperatorDetailPage extends React.Component {
           meta={[{ property: "og:title", content: "Деталі  оператора" }]}
         />
 
-        <BackLink onClick={() => this.props.router.goBack()}>
+        <BackLink onClick={() => router.goBack()}>
           Повернутись до cписку операторів
         </BackLink>
 

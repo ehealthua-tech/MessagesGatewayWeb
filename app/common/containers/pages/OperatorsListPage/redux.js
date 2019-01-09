@@ -2,8 +2,14 @@ import { combineReducers } from "redux";
 import { combineActions, createAction, handleAction } from "redux-actions";
 import * as OperatorsAPI from "../../../redux/operators";
 import * as ProtocolsAPI from "../../../redux/protocols";
+import * as OperatorsTypesAPI from "../../../redux/operators-types";
+import { sortOperatorsTypesById } from "../OperatorsTypesListPage/redux";
 
 export const showOperators = createAction("operatorsPage/SHOW_OPERATORS");
+
+export const showOperatorsTypes = createAction(
+  "operatorsTypesPage/SHOW_OPERATORS_TYPES"
+);
 
 export const changeOperators = createAction("operatorsPage/CHANGE_OPERATORS");
 
@@ -14,6 +20,14 @@ export const fetchOperators = () => dispatch =>
     if (action.error) throw action;
 
     return dispatch(showOperators(action.payload));
+  });
+
+export const fetchOperatorsTypes = () => dispatch =>
+  dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
+    if (action.error) throw action;
+    const sortedOperatorsTypes = action.payload.sort(sortOperatorsTypesById);
+
+    return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
 
 export const fetchProtocols = () => dispatch =>
