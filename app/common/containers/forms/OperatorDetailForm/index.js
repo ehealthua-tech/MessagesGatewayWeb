@@ -65,7 +65,7 @@ export default class OperatorDetailForm extends React.Component {
           </FormSection>
         </div>
         <div>
-          <Button type="submit">
+          <Button type="submit" disabled={submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

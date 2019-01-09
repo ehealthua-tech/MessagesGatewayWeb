@@ -7,19 +7,28 @@ import { Popup } from "../../../components/Popup";
 import styles from "./styles.scss";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
-import { createOperator, fetchOperators, fetchProtocols } from "./redux";
-import { getOperators, getProtocols } from "../../../reducers";
+import { fetchOperators, fetchOperatorsTypes, fetchProtocols } from "./redux";
+import {
+  getOperators,
+  getOperatorsTypes,
+  getProtocols
+} from "../../../reducers";
 import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
 import { fetchOperatorFields } from "../../../redux/operators";
 
 @withStyles(styles)
 @provideHooks({
   fetch: ({ dispatch }) =>
-    Promise.all([dispatch(fetchOperators()), dispatch(fetchProtocols())])
+    Promise.all([
+      dispatch(fetchOperators()),
+      dispatch(fetchOperatorsTypes()),
+      dispatch(fetchProtocols())
+    ])
 })
 @connect(
   state => ({
     operators: getOperators(state),
+    operatorsTypes: getOperatorsTypes(state),
     protocols: getProtocols(state)
   }),
   { fetchOperatorFields }
@@ -36,7 +45,13 @@ export default class OperatorsListPage extends React.Component {
   };
 
   render() {
-    const { router, operators, protocols, fetchOperatorFields } = this.props;
+    const {
+      router,
+      operators,
+      operatorsTypes,
+      protocols,
+      fetchOperatorFields
+    } = this.props;
     const { isOpened } = this.state;
     return (
       <div id="priority-page">
@@ -78,14 +93,12 @@ export default class OperatorsListPage extends React.Component {
           onClose={() => this.setState({ isOpened: false })}
         >
           <OperatorTypeSelectionForm
-            operators={operators}
+            operatorsTypes={operatorsTypes}
             protocols={protocols}
             onSubmit={values => {
-              console.log(values);
               const { id } = values.operator_type;
               const { name } = values.protocol;
               fetchOperatorFields(name).then(action => {
-                console.log(action);
                 return router.push({
                   pathname: `/operators/create/${id}/`,
                   state: {

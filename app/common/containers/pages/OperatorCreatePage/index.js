@@ -24,14 +24,14 @@ import { getOperatorsDetailFormFields } from "../../../reducers";
 export default class OperatorCreatePage extends React.Component {
   render() {
     const { fields } = this.props.location.state;
-    const { operatorFields, addOperator } = this.props;
+    const { router, operatorFields, addOperator } = this.props;
     return (
       <div id="operator-type-create-page">
         <Helmet
           title="Створення  оператора"
           meta={[{ property: "og:title", content: "Створення  оператора" }]}
         />
-        <BackLink onClick={() => this.props.router.goBack()}>
+        <BackLink onClick={() => router.goBack()}>
           Повернутись до cписку операторів
         </BackLink>
         <H1>Створення оператора </H1>

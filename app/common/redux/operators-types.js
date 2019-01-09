@@ -3,6 +3,23 @@ import { API_URL } from "config";
 import { createUrl } from "helpers/url";
 import { invoke } from "./api";
 
+export const fetchOperatorsTypes = options =>
+  invoke({
+    endpoint: createUrl(`${API_URL}/operator_type`, options),
+    method: "GET",
+    headers: {
+      "content-type": "application/json"
+    },
+    types: [
+      "operatorsTypes/FETCH_OPERATORS_TYPES_REQUEST",
+      {
+        type: "operatorsTypes/FETCH_OPERATORS_TYPES_SUCCESS",
+        payload: (action, state, res) => res.json().then(resp => resp.data)
+      },
+      "operatorsTypes/FETCH_OPERATORS_TYPES_FAILURE"
+    ]
+  });
+
 export const addOperatorTypeDetail = body =>
   invoke({
     endpoint: `${API_URL}/operator_type`,
@@ -21,26 +38,26 @@ export const addOperatorTypeDetail = body =>
     body
   });
 
-export const fetchOperatorsTypes = options =>
+export const deleteOperatorTypeDetail = id =>
   invoke({
-    endpoint: createUrl(`${API_URL}/operator_type`, options),
-    method: "GET",
+    endpoint: `${API_URL}/operator_type/${id}`,
+    method: "DELETE",
     headers: {
       "content-type": "application/json"
     },
     types: [
-      "operatorsTypes/FETCH_OPERATORS_TYPES_REQUEST",
+      "operatorsTypes/DELETE_OPERATOR_TYPE_REQUEST",
       {
-        type: "operatorsTypes/FETCH_OPERATORS_TYPES_SUCCESS",
+        type: "operatorsTypes/DELETE_OPERATOR_TYPE_SUCCESS",
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
-      "operatorsTypes/FETCH_OPERATORS_TYPES_FAILURE"
+      "operatorsTypes/DELETE_OPERATOR_TYPE_FAILURE"
     ]
   });
 
 export const updateOperatorsTypes = body =>
   invoke({
-    endpoint: `${API_URL}/operators/update_priority`,
+    endpoint: `${API_URL}/operator_type/update_priority`,
     method: "POST",
     headers: {
       "content-type": "application/json"
