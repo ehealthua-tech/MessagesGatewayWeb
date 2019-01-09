@@ -1,19 +1,4 @@
 .delete_button {
-  position: relative;
-  width: 29px;
-  height: 29px;
-  div {
-    height: 3px;
-    width: 30px;
-    background: #000;
-    margin: 2px 0;
-    position: absolute;
-    bottom: 50%;
-  }
-  div:nth-child(1) {
-    transform: rotate(45deg);
-  }
-  div:nth-child(2) {
-    transform: rotate(-45deg);
-  }
+  font-size: 20px;
+  cursor: pointer;
 }
