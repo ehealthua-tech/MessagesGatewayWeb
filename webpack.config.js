@@ -17,7 +17,6 @@ const genConfig = webpackMerge(
       })
     ]
   },
-
   parts.setupJs(),
   parts.setupFont(),
   parts.setupImages(),
