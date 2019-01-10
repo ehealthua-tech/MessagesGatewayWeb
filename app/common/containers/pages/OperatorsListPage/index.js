@@ -7,7 +7,12 @@ import { Popup } from "../../../components/Popup";
 import styles from "./styles.scss";
 import { connect } from "react-redux";
 import { provideHooks } from "redial";
-import { fetchOperators, fetchOperatorsTypes, fetchProtocols } from "./redux";
+import {
+  deleteOperator,
+  fetchOperators,
+  fetchOperatorsTypes,
+  fetchProtocols
+} from "./redux";
 import {
   getOperators,
   getOperatorsTypes,
@@ -15,6 +20,7 @@ import {
 } from "../../../reducers";
 import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
 import { fetchOperatorFields } from "../../../redux/operators";
+import DeleteButton from "../../../components/DeleteButton";
 
 @withStyles(styles)
 @provideHooks({
@@ -31,7 +37,7 @@ import { fetchOperatorFields } from "../../../redux/operators";
     operatorsTypes: getOperatorsTypes(state),
     protocols: getProtocols(state)
   }),
-  { fetchOperatorFields }
+  { fetchOperatorFields, deleteOperator }
 )
 export default class OperatorsListPage extends React.Component {
   state = {
@@ -50,14 +56,17 @@ export default class OperatorsListPage extends React.Component {
       operators,
       operatorsTypes,
       protocols,
-      fetchOperatorFields
+      fetchOperatorFields,
+      deleteOperator
     } = this.props;
+
     const { isOpened } = this.state;
+
     return (
-      <div id="priority-page">
+      <div id="operator-list-page">
         <Helmet
           title="Оператори"
-          meta={[{ property: "og:title", content: "Сторінка пріорітезації" }]}
+          meta={[{ property: "og:title", content: "Сторінка операторів" }]}
         />
 
         <H1>Оператори</H1>
@@ -66,20 +75,25 @@ export default class OperatorsListPage extends React.Component {
           {operators.map((operator, index) => {
             const { name, id } = operator;
             return (
-              <Button
-                className={styles.operator_type}
-                key={index}
-                onClick={() =>
-                  router.push({
-                    pathname: `/operators/detail/${id}/`,
-                    params: {
-                      name
+              <div className={styles.operator_type} key={index}>
+                <div>{operator.name}</div>
+                <div>
+                  <DeleteButton onClick={() => deleteOperator(id)} />
+                  <Button
+                    className={styles.detail_button}
+                    onClick={() =>
+                      router.push({
+                        pathname: `/operators/detail/${id}/`,
+                        params: {
+                          name
+                        }
+                      })
                     }
-                  })
-                }
-              >
-                {operator.name}
-              </Button>
+                  >
+                    Деталі
+                  </Button>
+                </div>
+              </div>
             );
           })}
           <div>
@@ -102,7 +116,9 @@ export default class OperatorsListPage extends React.Component {
                 return router.push({
                   pathname: `/operators/create/${id}/`,
                   state: {
-                    fields: action.payload.fields
+                    fields: action.payload.fields,
+                    name,
+                    id
                   }
                 });
               });

@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-import { combineActions, createAction, handleAction } from "redux-actions";
 import * as OperatorsTypesAPI from "../../../redux/operators-types";
 import * as Notifications from "../../../redux/notification";
 

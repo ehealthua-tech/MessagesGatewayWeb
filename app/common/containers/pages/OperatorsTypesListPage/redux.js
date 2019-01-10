@@ -22,7 +22,21 @@ export const fetchOperatorsTypes = () => dispatch =>
 
 export const deleteOperatorType = id => dispatch =>
   dispatch(OperatorsTypesAPI.deleteOperatorTypeDetail(id)).then(action => {
-    if (action.error) throw action;
+    action.error
+      ? dispatch(
+          Notifications.showNotification({
+            showing: true,
+            message: action.payload.response.error.message,
+            type: "warning"
+          })
+        )
+      : dispatch(
+          Notifications.showNotification({
+            showing: true,
+            message: action.payload.status,
+            type: "success"
+          })
+        );
 
     dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
       if (action.error) throw action;
