@@ -22,7 +22,7 @@ export const fetchOperators = options =>
 
 export const fetchOperatorDetail = id =>
   invoke({
-    endpoint: createUrl(`${API_URL}/operators/${id}`),
+    endpoint: `${API_URL}/operators/${id}`,
     method: "GET",
     headers: {
       "content-type": "application/json"
@@ -88,6 +88,23 @@ export const addOperatorDetail = body =>
       "operators/ADD_OPERATOR_FAILURE"
     ],
     body
+  });
+
+export const deleteOperatorDetail = id =>
+  invoke({
+    endpoint: `${API_URL}/operators/${id}`,
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json"
+    },
+    types: [
+      "operators/DELETE_OPERATOR_REQUEST",
+      {
+        type: "operators/DELETE_OPERATOR_SUCCESS",
+        payload: (action, state, res) => res.json().then(resp => resp.data)
+      },
+      "operators/DELETE_OPERATOR_FAILURE"
+    ]
   });
 
 export default handleAction(

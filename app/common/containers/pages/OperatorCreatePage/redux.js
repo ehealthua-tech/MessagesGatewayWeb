@@ -7,25 +7,33 @@ export const showOperatorDetails = createAction(
   "operatorsPage/SHOW_OPERATOR_DETAILS"
 );
 
-export const addOperator = values => dispatch =>
-  dispatch(OperatorsAPI.addOperatorDetail(values)).then(action => {
-    if (action.error) throw action;
-    action.error
-      ? dispatch(
-          Notifications.showNotification({
-            showing: true,
-            message: action.payload.message,
-            type: "warning"
-          })
-        )
-      : dispatch(
-          Notifications.showNotification({
-            showing: true,
-            message: action.payload.status,
-            type: "success"
-          })
-        );
-  });
+export const addOperator = ({ values, id, name }) => dispatch => {
+  const newOperatorDetail = {
+    ...values,
+    operator_type_id: id,
+    protocol_name: name
+  };
+
+  return dispatch(OperatorsAPI.addOperatorDetail(newOperatorDetail)).then(
+    action => {
+      action.error
+        ? dispatch(
+            Notifications.showNotification({
+              showing: true,
+              message: action.payload.message,
+              type: "warning"
+            })
+          )
+        : dispatch(
+            Notifications.showNotification({
+              showing: true,
+              message: action.payload.status,
+              type: "success"
+            })
+          );
+    }
+  );
+};
 
 const operatorDetails = handleAction(
   combineActions(showOperatorDetails),

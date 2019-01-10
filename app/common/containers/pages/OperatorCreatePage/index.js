@@ -7,14 +7,9 @@ import OperatorCreateForm from "../../forms/OperatorCreateForm";
 import BackLink from "../../blocks/BackLink";
 import { connect } from "react-redux";
 import { addOperator } from "./redux";
-import { provideHooks } from "redial";
-import { fetchOperator } from "../OperatorDetailPage/redux";
 import { getOperatorsDetailFormFields } from "../../../reducers";
 
 @withStyles(styles)
-@provideHooks({
-  fetch: ({ dispatch, params: { id } }) => dispatch(fetchOperator(id))
-})
 @connect(
   state => ({
     operatorFields: getOperatorsDetailFormFields(state)
@@ -23,8 +18,9 @@ import { getOperatorsDetailFormFields } from "../../../reducers";
 )
 export default class OperatorCreatePage extends React.Component {
   render() {
-    const { fields } = this.props.location.state;
-    const { router, operatorFields, addOperator } = this.props;
+    const { fields, id, name } = this.props.location.state;
+    const { router, addOperator } = this.props;
+
     return (
       <div id="operator-type-create-page">
         <Helmet
@@ -34,12 +30,12 @@ export default class OperatorCreatePage extends React.Component {
         <BackLink onClick={() => router.goBack()}>
           Повернутись до cписку операторів
         </BackLink>
+
         <H1>Створення оператора </H1>
 
         <OperatorCreateForm
-          intialValues={operatorFields}
           fields={fields}
-          onSubmit={values => addOperator(values)}
+          onSubmit={values => addOperator({ values, id, name })}
         />
       </div>
     );

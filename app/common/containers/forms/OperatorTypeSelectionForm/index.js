@@ -49,7 +49,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
         />
         <div>
           <Button type="submit" disabled={submitting}>
-            {submitting ? "Збереження..." : "Зберегти"}
+            {submitting ? "Додавання..." : "Додати"}
           </Button>
         </div>
       </form>
