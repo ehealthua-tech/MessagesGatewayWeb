@@ -34,9 +34,9 @@ router.get(config.OAUTH_REDIRECT_PATH, (req, resp) => {
     }
 
     const cookieOption = { secure: false, httpOnly: true };
-    if (req.secure) {
-      cookieOption.secure = true;
-    }
+    // if (req.secure) {
+    //   cookieOption.secure = true;
+    // }
 
     resp.cookie(config.AUTH_COOKIE_NAME, data.value, cookieOption);
 

@@ -29,10 +29,10 @@ export const PRIVATE_INDEX_ROUTE = "/dashboard";
 
 export const CLIENT_ID = "a50c9298-badd-47db-a6bd-7850ef8727fe";
 export const SCOPES = config.SCOPES || process.env.SCOPES || "";
-export const OAUTH_URL = `${HOST}/sign-in`;
+export const OAUTH_URL = `${HOST}:3000/sign-in`;
 // export const SIGN_URL = `${API_HOST}/sign`;
 export const OAUTH_REDIRECT_PATH = "/auth/redirect";
-export const OAUTH_REDIRECT_URL = `${HOSTNAME}${OAUTH_REDIRECT_PATH}`;
+export const OAUTH_REDIRECT_URL = `${HOST}${OAUTH_REDIRECT_PATH}`;
 
 // for internal app usage. for example for XHR requests or server side rendering
 export const API_URL =
