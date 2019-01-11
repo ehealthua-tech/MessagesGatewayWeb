@@ -18,6 +18,7 @@ const SortableList = SortableContainer(
     submitting,
     handleSubmit,
     openPopup,
+    pristine,
     onSubmit
   }) => {
     return (
@@ -45,7 +46,7 @@ const SortableList = SortableContainer(
           />
         </div>
         <div className={styles.buttons_block}>
-          <Button type="submit" disabled={submitting}>
+          <Button type="submit" disabled={pristine || submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
           <Button to={"operators-types/create/"}>Додати тип оператора</Button>
@@ -62,7 +63,7 @@ export default compose(
     };
   }),
   reduxForm({
-    form: "priorityForm",
+    form: "operator-type-form",
     enableReinitialize: true
   }),
   withStyles(styles)

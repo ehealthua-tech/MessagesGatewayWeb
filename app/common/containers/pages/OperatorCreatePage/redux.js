@@ -7,7 +7,7 @@ export const showOperatorDetails = createAction(
   "operatorsPage/SHOW_OPERATOR_DETAILS"
 );
 
-export const addOperator = ({ values, id, name }) => dispatch => {
+export const addOperator = ({ values, id, name, router }) => dispatch => {
   const newOperatorDetail = {
     ...values,
     operator_type_id: id,
@@ -24,13 +24,7 @@ export const addOperator = ({ values, id, name }) => dispatch => {
               type: "warning"
             })
           )
-        : dispatch(
-            Notifications.showNotification({
-              showing: true,
-              message: action.payload.status,
-              type: "success"
-            })
-          );
+        : router.push({ pathname: `/operators/` });
     }
   );
 };

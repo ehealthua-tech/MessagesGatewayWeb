@@ -6,6 +6,7 @@ import Button from "../../../components/Button";
 import styles from "./styles.scss";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 import isNumber from "../../../helpers/validators/number";
+import { reduxFormValidate, collectionOf } from "react-nebo15-validate";
 
 @withStyles(styles)
 @reduxForm({
@@ -13,7 +14,14 @@ import isNumber from "../../../helpers/validators/number";
 })
 export default class OperatorDetailForm extends React.Component {
   render() {
-    const { initialValues, handleSubmit, onSubmit, submitting } = this.props;
+    const {
+      initialValues,
+      handleSubmit,
+      onSubmit,
+      pristine,
+      submitting
+    } = this.props;
+
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -28,6 +36,17 @@ export default class OperatorDetailForm extends React.Component {
                 />
               );
             }
+            if (typeof value === "number") {
+              return (
+                <Field
+                  name={key}
+                  key={index}
+                  labelText={key}
+                  parse={isNumber}
+                  component={FieldInput}
+                />
+              );
+            }
             if (key === "config") {
               return null;
             }
@@ -35,7 +54,6 @@ export default class OperatorDetailForm extends React.Component {
               <Field
                 name={key}
                 key={index}
-                parse={isNumber}
                 labelText={key}
                 component={FieldInput}
               />
@@ -53,6 +71,17 @@ export default class OperatorDetailForm extends React.Component {
                   />
                 );
               }
+              if (typeof value === "number") {
+                return (
+                  <Field
+                    name={key}
+                    key={index}
+                    labelText={key}
+                    parse={isNumber}
+                    component={FieldInput}
+                  />
+                );
+              }
               return (
                 <Field
                   name={key}
@@ -65,7 +94,7 @@ export default class OperatorDetailForm extends React.Component {
           </FormSection>
         </div>
         <div>
-          <Button type="submit" disabled={submitting}>
+          <Button type="submit" disabled={pristine || submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

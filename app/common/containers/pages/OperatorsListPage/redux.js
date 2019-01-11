@@ -31,6 +31,30 @@ export const fetchOperatorsTypes = () => dispatch =>
     return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
 
+export const fetchOperatorFields = (values, router) => dispatch => {
+  const { id } = values.operator_type || null;
+  const { name } = values.protocol || null;
+
+  return dispatch(OperatorsAPI.fetchOperatorFieldsDetail(name)).then(action => {
+    action.error
+      ? dispatch(
+          Notifications.showNotification({
+            showing: true,
+            message: action.payload.message,
+            type: "warning"
+          })
+        )
+      : router.push({
+          pathname: `/operators/create/${id}/`,
+          state: {
+            fields: action.payload.fields,
+            name,
+            id
+          }
+        });
+  });
+};
+
 export const deleteOperator = id => dispatch =>
   dispatch(OperatorsAPI.deleteOperatorDetail(id)).then(action => {
     action.error

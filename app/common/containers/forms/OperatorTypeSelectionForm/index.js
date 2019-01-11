@@ -1,15 +1,22 @@
 import React from "react";
 import withStyles from "withStyles";
-import { reduxForm, Field, FormSection } from "redux-form";
-import FieldInput from "../../../components/reduxForm/FieldInput";
+import { reduxForm, Field } from "redux-form";
 import Button from "../../../components/Button";
 import styles from "./styles.scss";
-import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
+import { reduxFormValidate } from "react-nebo15-validate";
 import { SelectUniversal } from "../../../components/SelectUniversal";
 
 @withStyles(styles)
 @reduxForm({
-  form: "operator-type-selection-form"
+  form: "operator-type-selection-form",
+  validate: reduxFormValidate({
+    operator_type: {
+      required: true
+    },
+    protocol: {
+      required: true
+    }
+  })
 })
 export default class OperatorTypeSelectionForm extends React.Component {
   render() {
@@ -18,6 +25,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
       protocols,
       handleSubmit,
       onSubmit,
+      pristine,
       submitting
     } = this.props;
 
@@ -48,7 +56,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
           })}
         />
         <div>
-          <Button type="submit" disabled={submitting}>
+          <Button type="submit" disabled={pristine || submitting}>
             {submitting ? "Додавання..." : "Додати"}
           </Button>
         </div>
