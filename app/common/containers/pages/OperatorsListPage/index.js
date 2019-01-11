@@ -11,7 +11,8 @@ import {
   deleteOperator,
   fetchOperators,
   fetchOperatorsTypes,
-  fetchProtocols
+  fetchProtocols,
+  fetchOperatorFields
 } from "./redux";
 import {
   getOperators,
@@ -19,7 +20,6 @@ import {
   getProtocols
 } from "../../../reducers";
 import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
-import { fetchOperatorFields } from "../../../redux/operators";
 import DeleteButton from "../../../components/DeleteButton";
 
 @withStyles(styles)
@@ -72,30 +72,36 @@ export default class OperatorsListPage extends React.Component {
         <H1>Оператори</H1>
 
         <div className={styles.operators_container}>
-          {operators.map((operator, index) => {
-            const { name, id } = operator;
-            return (
-              <div className={styles.operator_type} key={index}>
-                <div>{operator.name}</div>
-                <div>
-                  <DeleteButton onClick={() => deleteOperator(id)} />
-                  <Button
-                    className={styles.detail_button}
-                    onClick={() =>
-                      router.push({
-                        pathname: `/operators/detail/${id}/`,
-                        params: {
-                          name
-                        }
-                      })
-                    }
-                  >
-                    Деталі
-                  </Button>
+          {operators.length ? (
+            operators.map((operator, index) => {
+              const { name, id } = operator;
+              return (
+                <div className={styles.operator_type} key={index}>
+                  <div>{operator.name}</div>
+                  <div>
+                    <DeleteButton onClick={() => deleteOperator(id)} />
+                    <Button
+                      className={styles.detail_button}
+                      onClick={() =>
+                        router.push({
+                          pathname: `/operators/detail/${id}/`,
+                          params: {
+                            name
+                          }
+                        })
+                      }
+                    >
+                      Деталі
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <div className={styles.not_found}>
+              <h2>Нажаль, жодного оператора не додано</h2>
+            </div>
+          )}
           <div>
             <Button onClick={this.openPopup}>Додати оператора</Button>
           </div>
@@ -109,20 +115,7 @@ export default class OperatorsListPage extends React.Component {
           <OperatorTypeSelectionForm
             operatorsTypes={operatorsTypes}
             protocols={protocols}
-            onSubmit={values => {
-              const { id } = values.operator_type;
-              const { name } = values.protocol;
-              fetchOperatorFields(name).then(action => {
-                return router.push({
-                  pathname: `/operators/create/${id}/`,
-                  state: {
-                    fields: action.payload.fields,
-                    name,
-                    id
-                  }
-                });
-              });
-            }}
+            onSubmit={values => fetchOperatorFields(values, router)}
           />
         </Popup>
       </div>

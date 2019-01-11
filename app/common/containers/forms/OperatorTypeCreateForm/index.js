@@ -6,14 +6,26 @@ import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 import Button from "../../../components/Button";
 import styles from "./styles.scss";
 import isNumber from "../../../helpers/validators/number";
+import { reduxFormValidate } from "react-nebo15-validate";
 
 @withStyles(styles)
 @reduxForm({
-  form: "operator-type-create-form"
+  form: "operator-type-create-form",
+  validate: reduxFormValidate({
+    form: {
+      required: true
+    },
+    operator_type_name: {
+      required: true
+    },
+    priority: {
+      required: true
+    }
+  })
 })
 export default class OperatorTypeCreateForm extends React.Component {
   render() {
-    const { handleSubmit, onSubmit, submitting } = this.props;
+    const { handleSubmit, onSubmit, pristine, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -30,7 +42,7 @@ export default class OperatorTypeCreateForm extends React.Component {
           />
         </div>
         <div>
-          <Button type="submit" disabled={submitting}>
+          <Button type="submit" disabled={pristine || submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

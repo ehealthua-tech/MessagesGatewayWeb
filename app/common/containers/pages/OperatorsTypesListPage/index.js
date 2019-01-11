@@ -40,6 +40,7 @@ export default class OperatorsTypesListPage extends React.Component {
       combineOperatorsTypes,
       deleteOperatorType
     } = this.props;
+
     return (
       <div id="priority-page">
         <Helmet

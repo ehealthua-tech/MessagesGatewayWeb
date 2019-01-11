@@ -37,7 +37,7 @@ export const fetchOperatorDetail = id =>
     ]
   });
 
-export const fetchOperatorFields = name =>
+export const fetchOperatorFieldsDetail = name =>
   invoke({
     endpoint: `${API_URL}/get_protocol/${name}`,
     method: "GET",
