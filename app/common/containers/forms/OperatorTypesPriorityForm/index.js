@@ -18,6 +18,7 @@ const SortableList = SortableContainer(
     submitting,
     handleSubmit,
     openPopup,
+    valid,
     pristine,
     onSubmit
   }) => {

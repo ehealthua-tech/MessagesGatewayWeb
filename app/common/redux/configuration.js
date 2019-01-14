@@ -5,43 +5,43 @@ import { invoke } from "./api";
 
 export const fetchConfiguration = options =>
   invoke({
-    endpoint: createUrl(`${API_URL}/get_system_config`, options),
+    endpoint: createUrl(`${API_URL}/system_config`, options),
     method: "GET",
     headers: {
       "content-type": "application/json"
     },
     types: [
-      "dictionaries/FETCH_CONFIGURATION_REQUEST",
+      "configuration/FETCH_CONFIGURATION_REQUEST",
       {
-        type: "dictionaries/FETCH_CONFIGURATION_SUCCESS",
+        type: "configuration/FETCH_CONFIGURATION_SUCCESS",
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
-      "dictionaries/FETCH_CONFIGURATION_FAILURE"
+      "configuration/FETCH_CONFIGURATION_FAILURE"
     ]
   });
 
-export const updateConfiguration = body =>
+export const updateConfigurationDetail = body =>
   invoke({
-    endpoint: `${API_URL}/api/global_parameters`,
-    method: "PUT",
+    endpoint: `${API_URL}/system_config`,
+    method: "POST",
     headers: {
       "content-type": "application/json"
     },
     types: [
-      "dictionaries/UPDATE_CONFIGURATION_REQUEST",
+      "configuration/UPDATE_CONFIGURATION_REQUEST",
       {
-        type: "dictionaries/UPDATE_CONFIGURATION_SUCCESS",
+        type: "configuration/UPDATE_CONFIGURATION_SUCCESS",
         payload: (action, state, res) => res.json().then(resp => resp.data)
       },
-      "dictionaries/UPDATE_CONFIGURATION_FAILURE"
+      "configuration/UPDATE_CONFIGURATION_FAILURE"
     ],
     body
   });
 
 export default handleAction(
   combineActions(
-    "dictionaries/FETCH_CONFIGURATION_SUCCESS",
-    "dictionaries/UPDATE_CONFIGURATION_SUCCESS"
+    "configuration/FETCH_CONFIGURATION_SUCCESS",
+    "configuration/UPDATE_CONFIGURATION_SUCCESS"
   ),
   (state, action) => ({
     ...state,

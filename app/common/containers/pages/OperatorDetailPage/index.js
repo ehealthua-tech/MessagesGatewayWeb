@@ -23,6 +23,7 @@ import { fetchOperator, updateOperator } from "./redux";
 export default class OperatorDetailPage extends React.Component {
   render() {
     const { router, operatorFields, updateOperator } = this.props;
+    // const { id, last_update, operator_type_id } = operatorFields;
     return (
       <div id="operator-detail-page">
         <Helmet
@@ -38,7 +39,7 @@ export default class OperatorDetailPage extends React.Component {
 
         <OperatorDetailForm
           initialValues={operatorFields}
-          onSubmit={values => updateOperator(values)}
+          onSubmit={values => updateOperator({ values })}
         />
       </div>
     );

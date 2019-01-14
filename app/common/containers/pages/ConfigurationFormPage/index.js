@@ -9,15 +9,13 @@ import SystemConfigurationForm from "../../../containers/forms/ConfigurationForm
 
 import { getConfiguration } from "../../../reducers";
 
-import { updateConfiguration } from "../../../redux/configuration";
-
-import { fetchConfiguration } from "./redux";
+import { fetchConfiguration, updateConfiguration } from "./redux";
 import styles from "./styles.scss";
 
 @withStyles(styles)
-// @provideHooks({
-//   fetch: ({ dispatch }) => dispatch(fetchConfiguration())
-// })
+@provideHooks({
+  fetch: ({ dispatch }) => dispatch(fetchConfiguration())
+})
 @connect(
   state => ({
     configuration: getConfiguration(state)
@@ -26,7 +24,7 @@ import styles from "./styles.scss";
 )
 export default class SystemConfigurationPage extends React.Component {
   render() {
-    // const { configuration = {} } = this.props;
+    const { updateConfiguration, configuration } = this.props;
     return (
       <div id="system-configuration-page">
         <Helmet
@@ -37,8 +35,8 @@ export default class SystemConfigurationPage extends React.Component {
         <H1>Конфігурація системи</H1>
 
         <SystemConfigurationForm
-          // initialValues={config}
-          onSubmit={values => this.props.updateConfiguration(values)}
+          initialValues={configuration}
+          onSubmit={values => updateConfiguration(values)}
         />
       </div>
     );

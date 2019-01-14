@@ -10,12 +10,7 @@ import { addOperator } from "./redux";
 import { getOperatorsDetailFormFields } from "../../../reducers";
 
 @withStyles(styles)
-@connect(
-  state => ({
-    operatorFields: getOperatorsDetailFormFields(state)
-  }),
-  { addOperator }
-)
+@connect(null, { addOperator })
 export default class OperatorCreatePage extends React.Component {
   render() {
     const { fields, id, name } = this.props.location.state;
