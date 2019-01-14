@@ -1,32 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import withStyles from "withStyles";
-import { reduxForm, Field, getFormValues } from "redux-form";
+import { reduxForm, Field, getFormValues, FormSection } from "redux-form";
 import FieldInput from "../../../components/reduxForm/FieldInput";
 import Button from "components/Button";
-
-import ShowWithScope from "../../../containers/blocks/ShowWithScope";
-
-import { reduxFormValidate } from "react-nebo15-validate";
-
 import styles from "./styles.scss";
+import requiredValidate from "../../../helpers/validators/required-validate";
+import isRequired from "../../../helpers/validators/required";
 
 @withStyles(styles)
 @reduxForm({
-  form: "system-configuration-form",
-  validate: reduxFormValidate({
-    config_item_one: {
-      required: true
-    },
-    config_item_two: {
-      required: true
-    }
-  })
+  form: "system-configuration-form"
 })
 @connect(state => ({
   values: getFormValues("system-configuration-form")(state)
 }))
-export default class ApiForm extends React.Component {
+export default class ConfigurationForm extends React.Component {
   get isChanged() {
     const { values = {}, initialValues = {} } = this.props;
     return JSON.stringify(values) !== JSON.stringify(initialValues);
@@ -36,16 +25,21 @@ export default class ApiForm extends React.Component {
     const { handleSubmit, initialValues, onSubmit, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.form}>
-          <Field
-            name="config_item_one"
-            labelText="192.168.0.1"
-            placeholder="Порт"
-            component={FieldInput}
-          />
+        <div>
+          {Object.entries(initialValues).map(([key], index) => {
+            return (
+              <Field
+                name={key}
+                key={index}
+                labelText={key}
+                component={FieldInput}
+                validate={requiredValidate}
+              />
+            );
+          })}
         </div>
         <div>
-          <Button type="submit" disabled={!this.isChanged || submitting}>
+          <Button type="submit">
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
         </div>

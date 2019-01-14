@@ -1,5 +1,3 @@
-import isRequired from "./required";
-
 /**
  * We need this wrapper because:
  * 1. Redux-form has strange logic, we need to return undefined if value is valid.
@@ -9,9 +7,11 @@ import isRequired from "./required";
  *
  * @param value string Value to be validated.
  *
- * @returns {function(*=): *} Undefined for ok, string for errors.
+ * @returns {(undefined|string)} Undefined for ok, string for errors.
  */
-const requiredValidate = value =>
-  isRequired(value) ? undefined : "Обов'язкове поле";
 
-export default requiredValidate;
+const numberValidate = value => {
+  return parseInt(value, 10) ? undefined : "Тількі число";
+};
+
+export default numberValidate;

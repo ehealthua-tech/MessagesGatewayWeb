@@ -3,20 +3,12 @@ import withStyles from "withStyles";
 import { reduxForm, Field } from "redux-form";
 import Button from "../../../components/Button";
 import styles from "./styles.scss";
-import { reduxFormValidate } from "react-nebo15-validate";
 import { SelectUniversal } from "../../../components/SelectUniversal";
+import requiredValidate from "../../../helpers/validators/required-validate";
 
 @withStyles(styles)
 @reduxForm({
-  form: "operator-type-selection-form",
-  validate: reduxFormValidate({
-    operator_type: {
-      required: true
-    },
-    protocol: {
-      required: true
-    }
-  })
+  form: "operator-type-selection-form"
 })
 export default class OperatorTypeSelectionForm extends React.Component {
   render() {
@@ -25,6 +17,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
       protocols,
       handleSubmit,
       onSubmit,
+      valid,
       pristine,
       submitting
     } = this.props;
@@ -35,6 +28,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
           name="operator_type"
           placeholder="Виберіть тип оператора"
           component={SelectUniversal}
+          validate={requiredValidate}
           options={operatorsTypes.map(operatorType => {
             const { name, id } = operatorType;
             return {
@@ -48,6 +42,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
           name="protocol"
           placeholder="Виберіть протокол"
           component={SelectUniversal}
+          validate={requiredValidate}
           options={protocols.protocols.map(protocol => {
             return {
               name: protocol,

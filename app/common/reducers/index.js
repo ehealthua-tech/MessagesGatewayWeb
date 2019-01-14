@@ -6,7 +6,7 @@ import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
 import loading from "../redux/loading";
 import notification from "../redux/notification";
-import configuration from "../containers/pages/ConfigurationFormPage/redux";
+import configurationData from "../containers/pages/ConfigurationFormPage/redux";
 import operatorsData from "../containers/pages/OperatorsListPage/redux";
 import operatorData from "../containers/pages/OperatorDetailPage/redux";
 import operatorsTypesData from "../containers/pages/OperatorsTypesListPage/redux";
@@ -17,7 +17,7 @@ const blocks = combineReducers({
 
 const data = combineReducers({
   labels,
-  configuration,
+  configurationData,
   operatorsTypesData,
   operatorsData,
   operatorData
@@ -37,7 +37,8 @@ export default combineReducers({
 export const isAuthorized = state => state.session.authorized;
 export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
-export const getConfiguration = state => state.data.configuration;
+export const getConfiguration = state =>
+  state.data.configurationData.configuration;
 export const getOperators = state => state.data.operatorsData.operators;
 export const getProtocols = state => state.data.operatorsData.protocols;
 export const getOperatorsTypes = state =>
@@ -53,8 +54,5 @@ export const getOperatorsFormFields = state => {
     })
   );
 };
-export const getOperatorsDetailFormFields = state => {
-  return state.data.operatorData.operatorDetails;
-};
-
-// export const getOperatorsTypes = state => state.data.priority.operatorsTypesList;
+export const getOperatorsDetailFormFields = state =>
+  state.data.operatorData.operatorDetails;

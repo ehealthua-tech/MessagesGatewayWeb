@@ -6,7 +6,8 @@ import Button from "../../../components/Button";
 import styles from "./styles.scss";
 import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
 import isNumber from "../../../helpers/validators/number";
-import { reduxFormValidate, collectionOf } from "react-nebo15-validate";
+import requiredValidate from "../../../helpers/validators/required-validate";
+import numberValidate from "../../../helpers/validators/number-validate";
 
 @withStyles(styles)
 @reduxForm({
@@ -18,6 +19,7 @@ export default class OperatorDetailForm extends React.Component {
       initialValues,
       handleSubmit,
       onSubmit,
+      valid,
       pristine,
       submitting
     } = this.props;
@@ -25,71 +27,83 @@ export default class OperatorDetailForm extends React.Component {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          {Object.entries(initialValues).map(([key, value], index) => {
-            if (typeof value === "boolean") {
+          {Object.entries(initialValues)
+            .filter(([key]) => {
               return (
-                <Field
-                  name={key}
-                  key={index}
-                  labelText={key}
-                  component={FieldCheckbox}
-                />
+                key !== "id" &&
+                key !== "last_update" &&
+                key !== "operator_type_id" &&
+                key !== "config"
               );
-            }
-            if (typeof value === "number") {
-              return (
-                <Field
-                  name={key}
-                  key={index}
-                  labelText={key}
-                  parse={isNumber}
-                  component={FieldInput}
-                />
-              );
-            }
-            if (key === "config") {
-              return null;
-            }
-            return (
-              <Field
-                name={key}
-                key={index}
-                labelText={key}
-                component={FieldInput}
-              />
-            );
-          })}
+            })
+            .map(([key, value], index) => {
+              switch (typeof value) {
+                case "boolean":
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      component={FieldCheckbox}
+                    />
+                  );
+                case "number":
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      parse={isNumber}
+                      component={FieldInput}
+                      validate={[requiredValidate, numberValidate]}
+                    />
+                  );
+                default:
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      component={FieldInput}
+                      validate={requiredValidate}
+                    />
+                  );
+              }
+            })}
           <FormSection name="config">
             {Object.entries(initialValues.config).map(([key, value], index) => {
-              if (typeof value === "boolean") {
-                return (
-                  <Field
-                    name={key}
-                    key={index}
-                    labelText={key}
-                    component={FieldCheckbox}
-                  />
-                );
+              switch (typeof value) {
+                case "boolean":
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      component={FieldCheckbox}
+                    />
+                  );
+                case "number":
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      parse={isNumber}
+                      component={FieldInput}
+                      validate={[requiredValidate, numberValidate]}
+                    />
+                  );
+                default:
+                  return (
+                    <Field
+                      name={key}
+                      key={index}
+                      labelText={key}
+                      component={FieldInput}
+                      validate={requiredValidate}
+                    />
+                  );
               }
-              if (typeof value === "number") {
-                return (
-                  <Field
-                    name={key}
-                    key={index}
-                    labelText={key}
-                    parse={isNumber}
-                    component={FieldInput}
-                  />
-                );
-              }
-              return (
-                <Field
-                  name={key}
-                  key={index}
-                  labelText={key}
-                  component={FieldInput}
-                />
-              );
             })}
           </FormSection>
         </div>

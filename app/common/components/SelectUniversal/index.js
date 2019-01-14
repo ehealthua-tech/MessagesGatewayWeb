@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+import withStyles from "withStyles";
 import { ErrorMessages } from "react-nebo15-validate";
 import findFn from "lodash/find";
 

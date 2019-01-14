@@ -14,7 +14,7 @@ export const fetchOperator = id => dispatch =>
     return dispatch(showOperatorDetails(action.payload));
   });
 
-export const updateOperator = values => dispatch => {
+export const updateOperator = ({ values }) => dispatch =>
   dispatch(OperatorsAPI.updateOperatorDetail(values)).then(action => {
     action.error
       ? dispatch(
@@ -32,7 +32,6 @@ export const updateOperator = values => dispatch => {
           })
         );
   });
-};
 
 const operatorDetails = handleAction(
   combineActions(showOperatorDetails),
