@@ -13,7 +13,7 @@ import requiredValidate from "../../../helpers/validators/required-validate";
 })
 export default class OperatorTypeCreateForm extends React.Component {
   render() {
-    const { handleSubmit, onSubmit, valid, pristine, submitting } = this.props;
+    const { handleSubmit, onSubmit, pristine, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>

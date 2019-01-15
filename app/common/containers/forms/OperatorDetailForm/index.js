@@ -19,7 +19,6 @@ export default class OperatorDetailForm extends React.Component {
       initialValues,
       handleSubmit,
       onSubmit,
-      valid,
       pristine,
       submitting
     } = this.props;
@@ -28,14 +27,13 @@ export default class OperatorDetailForm extends React.Component {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           {Object.entries(initialValues)
-            .filter(([key]) => {
-              return (
+            .filter(
+              ([key]) =>
                 key !== "id" &&
                 key !== "last_update" &&
                 key !== "operator_type_id" &&
                 key !== "config"
-              );
-            })
+            )
             .map(([key, value], index) => {
               switch (typeof value) {
                 case "boolean":

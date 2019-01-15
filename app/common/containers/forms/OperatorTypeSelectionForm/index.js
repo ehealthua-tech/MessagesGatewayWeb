@@ -17,7 +17,6 @@ export default class OperatorTypeSelectionForm extends React.Component {
       protocols,
       handleSubmit,
       onSubmit,
-      valid,
       pristine,
       submitting
     } = this.props;
@@ -43,12 +42,10 @@ export default class OperatorTypeSelectionForm extends React.Component {
           placeholder="Виберіть протокол"
           component={SelectUniversal}
           validate={requiredValidate}
-          options={protocols.protocols.map(protocol => {
-            return {
-              name: protocol,
-              title: protocol
-            };
-          })}
+          options={protocols.protocols.map(protocol => ({
+            name: protocol,
+            title: protocol
+          }))}
         />
         <div>
           <Button type="submit" disabled={pristine || submitting}>
