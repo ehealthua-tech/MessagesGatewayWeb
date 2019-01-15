@@ -7,7 +7,6 @@ import OperatorCreateForm from "../../forms/OperatorCreateForm";
 import BackLink from "../../blocks/BackLink";
 import { connect } from "react-redux";
 import { addOperator } from "./redux";
-import { getOperatorsDetailFormFields } from "../../../reducers";
 
 @withStyles(styles)
 @connect(null, { addOperator })
