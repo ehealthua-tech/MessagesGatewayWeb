@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { combineActions, createAction, handleAction } from "redux-actions";
+import { createAction, handleAction } from "redux-actions";
 import * as OperatorsAPI from "../../../redux/operators";
 import * as Notifications from "../../../redux/notification";
 
@@ -34,7 +34,7 @@ export const updateOperator = ({ values }) => dispatch =>
   });
 
 const operatorDetails = handleAction(
-  combineActions(showOperatorDetails),
+  showOperatorDetails,
   (state, action) => action.payload,
   {}
 );

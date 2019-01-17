@@ -29,7 +29,7 @@ export default class OperatorCreatePage extends React.Component {
 
         <OperatorCreateForm
           fields={fields}
-          onSubmit={values => addOperator({ values, id, name, router })}
+          onSubmit={values => addOperator({ values, id, name })}
         />
       </div>
     );

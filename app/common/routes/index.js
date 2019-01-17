@@ -4,7 +4,6 @@ import { Route, IndexRoute, IndexRedirect } from "react-router";
 
 import App from "../containers/layouts/App";
 import Main from "../containers/layouts/Main";
-import PreloadData from "../containers/layouts/PreloadData";
 
 import SignInPage from "../containers/pages/SignInPage";
 
@@ -53,7 +52,7 @@ export const configureRoutes = ({ store }) => {
   return (
     <Route component={App}>
       <Route component={Main}>
-        <Route path="/" component={PreloadData}>
+        <Route path="/">
           <IndexRedirect to="dashboard" />
           <Route path="dashboard" component={DashboardPage} />
           <Route path="operators-types">
