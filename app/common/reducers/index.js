@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
 import { reducer as form } from "redux-form";
 import { routerReducer as routing } from "react-router-redux";
-import labels from "../redux/labels";
 import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
 import loading from "../redux/loading";
@@ -16,7 +15,6 @@ const blocks = combineReducers({
 });
 
 const data = combineReducers({
-  labels,
   configurationData,
   operatorsTypesData,
   operatorsData,
@@ -35,16 +33,16 @@ export default combineReducers({
 });
 
 export const isAuthorized = state => state.session.authorized;
-export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
+export const getScope = state => state.session.scope;
 export const getConfiguration = state =>
   state.data.configurationData.configuration;
 export const getOperators = state => state.data.operatorsData.operators;
 export const getProtocols = state => state.data.operatorsData.protocols;
 export const getOperatorsTypes = state =>
   state.data.operatorsTypesData.operatorsTypes;
-export const getOperatorsFormFields = state => {
-  return Object.assign(
+export const getOperatorsFormFields = state =>
+  Object.assign(
     {},
     ...getOperatorsTypes(state).map(operator => {
       const { name, active } = operator;
@@ -53,6 +51,6 @@ export const getOperatorsFormFields = state => {
       };
     })
   );
-};
+
 export const getOperatorsDetailFormFields = state =>
   state.data.operatorData.operatorDetails;

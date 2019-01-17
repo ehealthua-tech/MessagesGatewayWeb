@@ -3,8 +3,9 @@ import { combineActions, createAction, handleAction } from "redux-actions";
 import * as OperatorsAPI from "../../../redux/operators";
 import * as ProtocolsAPI from "../../../redux/protocols";
 import * as OperatorsTypesAPI from "../../../redux/operators-types";
-import { sortOperatorsTypesById } from "../OperatorsTypesListPage/redux";
 import * as Notifications from "../../../redux/notification";
+import { sortOperatorsTypesById } from "../OperatorsTypesListPage/redux";
+import { push } from "react-router-redux";
 
 export const showOperators = createAction("operatorsPage/SHOW_OPERATORS");
 
@@ -31,7 +32,7 @@ export const fetchOperatorsTypes = () => dispatch =>
     return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
 
-export const fetchOperatorFields = (values, router) => dispatch => {
+export const fetchOperatorFields = ({ values }) => dispatch => {
   const { id } = values.operator_type || null;
   const { name } = values.protocol || null;
 
@@ -44,14 +45,16 @@ export const fetchOperatorFields = (values, router) => dispatch => {
             type: "warning"
           })
         )
-      : router.push({
-          pathname: `/operators/create/${id}/`,
-          state: {
-            fields: action.payload.fields,
-            name,
-            id
-          }
-        });
+      : dispatch(
+          push({
+            pathname: `/operators/create/${id}/`,
+            state: {
+              fields: action.payload.fields,
+              name,
+              id
+            }
+          })
+        );
   });
 };
 
@@ -93,7 +96,7 @@ const operators = handleAction(
 );
 
 const protocols = handleAction(
-  combineActions(showProtocols),
+  showProtocols,
   (state, action) => action.payload,
   []
 );
