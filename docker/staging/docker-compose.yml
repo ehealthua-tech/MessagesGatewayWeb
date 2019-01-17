@@ -1,5 +1,6 @@
 version: '2'
 
+
 services:
   mgaw:
     image: 'docker.skywell/message_gateway_admin_web/mgaw:latest'
