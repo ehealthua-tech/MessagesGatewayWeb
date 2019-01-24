@@ -38,7 +38,7 @@ export default class OperatorDetailPage extends React.Component {
 
         <OperatorDetailForm
           initialValues={operatorFields}
-          onSubmit={values => updateOperator({ values })}
+          onSubmit={values => updateOperator(values)}
         />
       </div>
     );

@@ -3,7 +3,7 @@ import config from "../config";
 
 // This suite should be rewritten to test only OAuth 2 compliace instead of
 // testing whole authentication service UI
-xdescribe("Login", () => {
+describe("Login", () => {
   it(
     "User can login",
     async () => {

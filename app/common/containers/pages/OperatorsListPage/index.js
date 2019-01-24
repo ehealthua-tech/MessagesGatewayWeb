@@ -115,7 +115,7 @@ export default class OperatorsListPage extends React.Component {
           <OperatorTypeSelectionForm
             operatorsTypes={operatorsTypes}
             protocols={protocols}
-            onSubmit={values => fetchOperatorFields({ values })}
+            onSubmit={values => fetchOperatorFields(values)}
           />
         </Popup>
       </div>

@@ -6,8 +6,6 @@ import { useRedial } from "react-router-redial";
 
 import { I18nextProvider } from "react-i18next";
 
-import { showLoading, hideLoading } from "redux/loading";
-
 const trackPage = route => {};
 
 export default class RootComponent extends React.Component {
@@ -42,20 +40,10 @@ export default class RootComponent extends React.Component {
                   process.env.NODE_ENV === "production"
                     ? null
                     : () => <div>Loading...</div>,
-                onStarted: () => {
-                  store.dispatch(showLoading());
-                },
                 onCompleted: transition => {
-                  store.dispatch([hideLoading()]);
                   if (transition === "beforeTransition") {
                     window.scrollTo(0, 0);
                   }
-                },
-                onAborted: () => {
-                  store.dispatch(hideLoading());
-                },
-                onError: () => {
-                  store.dispatch(hideLoading());
                 }
               })
             )}

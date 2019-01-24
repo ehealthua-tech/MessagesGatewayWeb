@@ -6,6 +6,9 @@ node_modules
 static
 screenshots
 .env
+.env.test
+.env.production
+.env.development
 coverage
 lcov.info
 tests_output

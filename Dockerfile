@@ -10,13 +10,17 @@ RUN apt-get update
 RUN apt-get install python
 
 COPY package.json /tmp/package.json
-RUN cd /tmp && npm install && mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
+RUN cd /tmp && npm install --production && mkdir -p /opt/app && cp -a /tmp/node_modules /opt/app/
 
 WORKDIR /opt/app
 
 COPY . /opt/app
 
-RUN npm run preproduction
+RUN npm run build
+
+RUN rm -rf ./app/client \
+	rm -rf ./app/common \
+	rm -rf ./node_modules/webpack
 
 RUN apt-get autoremove python -y && rm -rf /var/cache/apk/*
 

@@ -17,12 +17,22 @@ export const changeOperators = createAction("operatorsPage/CHANGE_OPERATORS");
 
 export const showProtocols = createAction("operatorsPage/SHOW_PROTOCOLS");
 
+/**
+ * Receives operators from server
+ * @returns {function}
+ */
+
 export const fetchOperators = () => dispatch =>
   dispatch(OperatorsAPI.fetchOperators()).then(action => {
     if (action.error) throw action;
 
     return dispatch(showOperators(action.payload));
   });
+
+/**
+ * Receives operators types from server
+ * @returns {function}
+ */
 
 export const fetchOperatorsTypes = () => dispatch =>
   dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
@@ -32,7 +42,13 @@ export const fetchOperatorsTypes = () => dispatch =>
     return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
 
-export const fetchOperatorFields = ({ values }) => dispatch => {
+/**
+ * Receives operators fields from server
+ * @param {Object} values
+ * @returns {function}
+ */
+
+export const fetchOperatorFields = values => dispatch => {
   const { id } = values.operator_type || null;
   const { name } = values.protocol || null;
 
@@ -58,6 +74,12 @@ export const fetchOperatorFields = ({ values }) => dispatch => {
   });
 };
 
+/**
+ * Deletes operator from server
+ * @param {string} id
+ * @returns {function}
+ */
+
 export const deleteOperator = id => dispatch =>
   dispatch(OperatorsAPI.deleteOperatorDetail(id)).then(action => {
     action.error
@@ -76,11 +98,21 @@ export const deleteOperator = id => dispatch =>
           })
         );
 
+    /**
+     * Receives operators from server
+     * @returns {function}
+     */
+
     dispatch(OperatorsAPI.fetchOperators()).then(action => {
       if (action.error) throw action;
       return dispatch(showOperators(action.payload));
     });
   });
+
+/**
+ * Receives protocols from server
+ * @returns {function}
+ */
 
 export const fetchProtocols = () => dispatch =>
   dispatch(ProtocolsAPI.fetchProtocols()).then(action => {

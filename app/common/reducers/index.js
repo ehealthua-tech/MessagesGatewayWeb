@@ -3,7 +3,6 @@ import { reducer as form } from "redux-form";
 import { routerReducer as routing } from "react-router-redux";
 import Aside from "../containers/blocks/Aside/redux";
 import session from "../redux/session";
-import loading from "../redux/loading";
 import notification from "../redux/notification";
 import configurationData from "../containers/pages/ConfigurationFormPage/redux";
 import operatorsData from "../containers/pages/OperatorsListPage/redux";
@@ -28,7 +27,6 @@ export default combineReducers({
   // external libraries
   form,
   routing,
-  loading,
   notification
 });
 

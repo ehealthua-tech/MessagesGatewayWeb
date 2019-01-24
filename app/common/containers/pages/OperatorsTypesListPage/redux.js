@@ -12,6 +12,11 @@ export const changeOperatorsTypes = createAction(
   "operatorsTypesPage/CHANGE_OPERATORS_TYPES_PRIORITY"
 );
 
+/**
+ * Receives operators types from server
+ * @returns {function}
+ */
+
 export const fetchOperatorsTypes = () => dispatch =>
   dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
     if (action.error) throw action;
@@ -19,6 +24,11 @@ export const fetchOperatorsTypes = () => dispatch =>
 
     return dispatch(showOperatorsTypes(sortedOperatorsTypes));
   });
+
+/**
+ * Deletes operator type from server
+ * @returns {function}
+ */
 
 export const deleteOperatorType = id => dispatch =>
   dispatch(OperatorsTypesAPI.deleteOperatorTypeDetail(id)).then(action => {
@@ -38,19 +48,30 @@ export const deleteOperatorType = id => dispatch =>
           })
         );
 
-    dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
-      if (action.error) throw action;
+    /**
+     * Receives operators types from server
+     * @returns {function}
+     */
 
+    dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
       const sortedOperatorsTypes = action.payload.sort(sortOperatorsTypesById);
       return dispatch(showOperatorsTypes(sortedOperatorsTypes));
     });
   });
 
-export const showChangedOperatorsTypes = ({
+/**
+ * Changes operator types priority
+ * @param {Array} operatorsTypes
+ * @param {number} oldIndex
+ * @param {number} newIndex
+ * @returns {function}
+ */
+
+export const showChangedOperatorsTypes = (
   operatorsTypes,
   oldIndex,
   newIndex
-}) => dispatch => {
+) => dispatch => {
   const changedOperatorsTypesPriority = arrayMove(
     operatorsTypes,
     oldIndex,
@@ -61,13 +82,17 @@ export const showChangedOperatorsTypes = ({
       priority: index + 1
     };
   });
-  dispatch(changeOperatorsTypes(changedOperatorsTypesPriority));
+  return dispatch(changeOperatorsTypes(changedOperatorsTypesPriority));
 };
 
-export const combineOperatorsTypes = ({
-  operatorsTypes,
-  values
-}) => dispatch => {
+/**
+ * Combines values from form with operator type Object
+ * @param {Array} operatorsTypes
+ * @param {Object} values
+ * @returns {function}
+ */
+
+export const combineOperatorsTypes = (operatorsTypes, values) => dispatch => {
   const changedOperatorsTypesState = operatorsTypes.map(operator => {
     for (const [key, value] of Object.entries(values)) {
       if (key === operator.name) {
@@ -79,7 +104,13 @@ export const combineOperatorsTypes = ({
     }
   });
 
-  dispatch(
+  /**
+   * Updating operator types configuration ,and sending that to server
+   * @param {Array} changedOperatorsTypesState
+   * @returns {function}
+   */
+
+  return dispatch(
     OperatorsTypesAPI.updateOperatorsTypes(changedOperatorsTypesState)
   ).then(action => {
     action.error
@@ -98,7 +129,12 @@ export const combineOperatorsTypes = ({
           })
         );
 
-    dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
+    /**
+     * Receives operators types from server
+     * @returns {function}
+     */
+
+    return dispatch(OperatorsTypesAPI.fetchOperatorsTypes()).then(action => {
       if (action.error) throw action;
       const sortedOperatorsTypes = action.payload.sort(sortOperatorsTypesById);
       return dispatch(showOperatorsTypes(sortedOperatorsTypes));

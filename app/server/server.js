@@ -51,10 +51,6 @@ cookieOptions.cookieRewrite = "." + stripProtocol(config.API_HOST);
 server.use(config.API_PROXY_PATH, proxy(cookieOptions));
 server.enable("trust proxy");
 
-cookieOptions = url.parse(config.MOCK_API_HOST);
-cookieOptions.cookieRewrite = "." + stripProtocol(config.API_HOST);
-server.use(config.MOCK_API_PROXY_PATH, proxy(cookieOptions));
-
 server.use(Express.static(path.join(__dirname, "../../public")));
 server.use("/static", Express.static(path.join(__dirname, "../../static")));
 server.use(
@@ -70,7 +66,6 @@ server.get("*", page());
 
 server.use((req, res, err) => {
   console.log(err.stack, "err.stack");
-  // TODO report error here or do some further handlings
   res.status(500).send("something went wrong...");
 });
 

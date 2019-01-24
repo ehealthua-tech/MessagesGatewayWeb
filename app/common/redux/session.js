@@ -7,7 +7,6 @@ export const getToken = () => (dispatch, getState, { req }) =>
   req.cookies[AUTH_COOKIE_NAME];
 
 export const verifyToken = token => {
-  console.log(token);
   return invoke({
     endpoint: `${HOST}/admin/tokens/${token}/verify`,
     method: "GET",

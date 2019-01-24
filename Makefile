@@ -1,4 +1,4 @@
-.PHONY: all run build push
+b.PHONY: all run build push
 
 COMPOSE_PROJECT_NAME?=message_gateway_admin_web
 COMPOSE_FILE?=docker/staging/docker-compose.yml

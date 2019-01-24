@@ -27,9 +27,7 @@ export default class OperatorCreatePage extends React.Component {
 
         <H1>Створення типу оператора</H1>
 
-        <OperatorTypeCreateForm
-          onSubmit={values => addOperatorType(values, router)}
-        />
+        <OperatorTypeCreateForm onSubmit={values => addOperatorType(values)} />
       </div>
     );
   }

@@ -47,7 +47,7 @@ const SortableList = SortableContainer(
           />
         </div>
         <div className={styles.buttons_block}>
-          <Button type="submit" disabled={pristine || submitting}>
+          <Button type="submit" disabled={submitting}>
             {submitting ? "Збереження..." : "Зберегти"}
           </Button>
           <Button to={"operators-types/create/"}>Додати тип оператора</Button>

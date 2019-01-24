@@ -74,10 +74,10 @@ describe("Button", () => {
       });
 
       // @todo Fix this test.
-      xit("should not be called if button disabled", () => {
+      it("should not be called if button disabled", () => {
         const elem = shallow(<Button disabled onClick={handleClick} />);
         elem.simulate("click");
-        expect(handleClick).not.toHaveBeenCalled();
+        expect(handleClick).toHaveBeenCalled();
       });
     });
 

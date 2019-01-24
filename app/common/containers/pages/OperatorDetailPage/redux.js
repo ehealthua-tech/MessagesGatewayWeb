@@ -7,6 +7,11 @@ export const showOperatorDetails = createAction(
   "operatorsPage/SHOW_OPERATOR_DETAILS"
 );
 
+/**
+ * Receives operator configuration from server
+ * @returns {function}
+ */
+
 export const fetchOperator = id => dispatch =>
   dispatch(OperatorsAPI.fetchOperatorDetail(id)).then(action => {
     if (action.error) throw action;
@@ -14,7 +19,13 @@ export const fetchOperator = id => dispatch =>
     return dispatch(showOperatorDetails(action.payload));
   });
 
-export const updateOperator = ({ values }) => dispatch =>
+/**
+ * Updating operator configuration ,and sending that to server
+ * @param {Object} values
+ * @returns {function}
+ */
+
+export const updateOperator = values => dispatch =>
   dispatch(OperatorsAPI.updateOperatorDetail(values)).then(action => {
     action.error
       ? dispatch(
