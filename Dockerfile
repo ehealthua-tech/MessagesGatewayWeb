@@ -16,7 +16,7 @@ WORKDIR /opt/app
 
 COPY . /opt/app
 
-RUN npm run build
+RUN npm run preproduction
 
 RUN rm -rf ./app/client \
 	rm -rf ./app/common \
