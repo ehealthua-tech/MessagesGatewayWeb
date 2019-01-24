@@ -20,7 +20,6 @@ RUN npm run preproduction
 
 RUN rm -rf ./app/client \
 	rm -rf ./app/common \
-	rm -rf ./node_modules/webpack
 
 RUN apt-get autoremove python -y && rm -rf /var/cache/apk/*
 
