@@ -18,9 +18,6 @@ COPY . /opt/app
 
 RUN npm run preproduction
 
-RUN rm -rf ./app/client \
-	rm -rf ./app/common \
-
 RUN apt-get autoremove python -y && rm -rf /var/cache/apk/*
 
 CMD ["npm", "run", "production"]
