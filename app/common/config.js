@@ -31,7 +31,7 @@ export const CLIENT_ID =
   "a50c9298-badd-47db-a6bd-7850ef8727fe";
 export const SCOPES = config.SCOPES || process.env.SCOPES || "";
 export const OAUTH_URL =
-  config.OAUTH_URL || process.env.OAUTH_URL || `${HOST}/sign-in`;
+  config.OAUTH_URL || process.env.OAUTH_URL || `${HOST}:3000/sign-in`;
 export const OAUTH_REDIRECT_PATH =
   config.OAUTH_REDIRECT_PATH ||
   process.env.OAUTH_REDIRECT_PATH ||
