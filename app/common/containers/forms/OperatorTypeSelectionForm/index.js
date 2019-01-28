@@ -17,6 +17,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
       protocols,
       handleSubmit,
       onSubmit,
+      isOpenedNew,
       pristine,
       submitting
     } = this.props;
@@ -47,10 +48,11 @@ export default class OperatorTypeSelectionForm extends React.Component {
             title: protocol
           }))}
         />
-        <div>
+        <div className={styles.buttons_block}>
           <Button type="submit" disabled={pristine || submitting}>
             {submitting ? "Додавання..." : "Додати"}
           </Button>
+          <Button onClick={() => isOpenedNew()}>Cкасувати</Button>
         </div>
       </form>
     );

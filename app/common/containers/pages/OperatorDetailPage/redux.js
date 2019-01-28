@@ -36,13 +36,7 @@ export const updateOperator = values => dispatch =>
             type: "warning"
           })
         )
-      : dispatch(
-          Notifications.showNotification({
-            showing: true,
-            message: action.payload.status,
-            type: "success"
-          })
-        );
+      : dispatch(push({ pathname: `/operators/` }));
   });
 
 const operatorDetails = handleAction(

@@ -24,7 +24,7 @@ export const fetchConfiguration = () => dispatch =>
  * @returns {function}
  */
 
-export const updateConfiguration = ({values}) => dispatch =>
+export const updateConfiguration = ({ values }) => dispatch =>
   dispatch(fromConfiguration.updateConfigurationDetail(values)).then(action => {
     action.error
       ? dispatch(
