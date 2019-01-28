@@ -16,8 +16,8 @@ WORKDIR /opt/app
 
 COPY . /opt/app
 
-RUN npm run preproduction
+RUN npm run build
 
 RUN apt-get autoremove python -y && rm -rf /var/cache/apk/*
 
-CMD ["npm", "run", "production"]
+CMD ["npm", "start"]
