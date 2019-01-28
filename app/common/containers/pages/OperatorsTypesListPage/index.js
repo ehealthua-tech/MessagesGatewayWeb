@@ -78,7 +78,7 @@ export default class OperatorsTypesListPage extends React.Component {
           />
         </div>
         <Popup
-          title={<span>Ви впевнені,що хочете видалити</span>}
+          title={<span>Ви впевнені, що хочете видалити тип оператора?</span>}
           active={isOpened}
           onClose={() => this.setState({ isOpened: false })}
         >
