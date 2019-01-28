@@ -12,7 +12,7 @@ export const HOSTNAME =
     ? window.location.origin
     : config.HOSTNAME || "http://localhost:8080";
 export const HOST =
-  process.env.HOST || "http://dev-messagesgateway.skywell.software";
+  process.env.HOST || "http://admin-dev-messagesgateway.skywell.software";
 export const API_HOST = `${HOST}/api`;
 
 export const SITEMAP_HOSTNAME = process.env.SITEMAP_HOSTNAME || "http://localhost:8080"; // used in sitemap

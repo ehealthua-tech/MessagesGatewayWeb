@@ -10,7 +10,7 @@ import { push } from "react-router-redux";
  * @returns {function} dispatch
  */
 
-export const addOperator = (values, id, name) => dispatch => {
+export const addOperator = ({values, id, name}) => dispatch => {
   const newOperatorDetail = {
     ...values,
     operator_type_id: id,

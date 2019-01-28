@@ -67,11 +67,11 @@ export const deleteOperatorType = id => dispatch =>
  * @returns {function}
  */
 
-export const showChangedOperatorsTypes = (
+export const showChangedOperatorsTypes = ({
   operatorsTypes,
   oldIndex,
   newIndex
-) => dispatch => {
+}) => dispatch => {
   const changedOperatorsTypesPriority = arrayMove(
     operatorsTypes,
     oldIndex,
@@ -92,7 +92,10 @@ export const showChangedOperatorsTypes = (
  * @returns {function}
  */
 
-export const combineOperatorsTypes = (operatorsTypes, values) => dispatch => {
+export const combineOperatorsTypes = ({
+  operatorsTypes,
+  values
+}) => dispatch => {
   const changedOperatorsTypesState = operatorsTypes.map(operator => {
     for (const [key, value] of Object.entries(values)) {
       if (key === operator.name) {

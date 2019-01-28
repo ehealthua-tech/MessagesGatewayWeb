@@ -27,7 +27,7 @@ import { getOperatorsTypes } from "../../../reducers";
 export default class OperatorsTypesListPage extends React.Component {
   onSortEnd = ({ oldIndex, newIndex }) => {
     const { operatorsTypes, showChangedOperatorsTypes } = this.props;
-    showChangedOperatorsTypes(operatorsTypes, oldIndex, newIndex);
+    showChangedOperatorsTypes({operatorsTypes, oldIndex, newIndex});
   };
 
   render() {
@@ -51,7 +51,7 @@ export default class OperatorsTypesListPage extends React.Component {
             items={operatorsTypes}
             onSortEnd={this.onSortEnd}
             onDeleteType={id => deleteOperatorType(id)}
-            onSubmit={values => combineOperatorsTypes(operatorsTypes, values)}
+            onSubmit={values => combineOperatorsTypes({operatorsTypes, values})}
             useDragHandle
             hideSortableGhost={true}
             lockAxis="y"

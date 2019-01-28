@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { createAction, handleAction } from "redux-actions";
 import * as OperatorsAPI from "../../../redux/operators";
 import * as Notifications from "../../../redux/notification";
+import { push } from "react-router-redux";
 
 export const showOperatorDetails = createAction(
   "operatorsPage/SHOW_OPERATOR_DETAILS"
@@ -14,9 +15,9 @@ export const showOperatorDetails = createAction(
 
 export const fetchOperator = id => dispatch =>
   dispatch(OperatorsAPI.fetchOperatorDetail(id)).then(action => {
-    if (action.error) throw action;
-
-    return dispatch(showOperatorDetails(action.payload));
+    return action.error
+      ? dispatch(push({ pathname: `/operators/` }))
+      : dispatch(showOperatorDetails(action.payload));
   });
 
 /**

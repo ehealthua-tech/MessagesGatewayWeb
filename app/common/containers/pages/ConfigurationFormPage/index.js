@@ -36,7 +36,7 @@ export default class SystemConfigurationPage extends React.Component {
 
         <SystemConfigurationForm
           initialValues={configuration}
-          onSubmit={values => updateConfiguration(values)}
+          onSubmit={values => updateConfiguration({values})}
         />
       </div>
     );
