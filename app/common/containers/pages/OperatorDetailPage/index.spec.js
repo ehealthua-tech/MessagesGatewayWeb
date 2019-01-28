@@ -75,17 +75,12 @@ describe("async operators actions", () => {
       {
         type: "operators/UPDATE_OPERATOR_SUCCESS",
         payload: { status: "success" }
-      },
-      {
-        type: "toast/SHOW_NOTIFICATION",
-        payload: { showing: true, message: "success", type: "success" }
       }
     ];
 
     return store.dispatch(updateOperator({ operator })).then(() => {
       expect(store.getActions()[0]).toEqual(expectedActions[0]);
       expect(store.getActions()[1]).toEqual(expectedActions[1]);
-      expect(store.getActions()[2]).toEqual(expectedActions[2]);
     });
   });
 });

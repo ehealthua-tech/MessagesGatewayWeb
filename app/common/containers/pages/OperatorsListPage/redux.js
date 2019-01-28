@@ -48,7 +48,7 @@ export const fetchOperatorsTypes = () => dispatch =>
  * @returns {function}
  */
 
-export const fetchOperatorFields = ({values}) => dispatch => {
+export const fetchOperatorFields = ({ values }) => dispatch => {
   const { id } = values.operator_type || null;
   const { name } = values.protocol || null;
 

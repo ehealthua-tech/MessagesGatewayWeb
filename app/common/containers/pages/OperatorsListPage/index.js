@@ -41,12 +41,22 @@ import DeleteButton from "../../../components/DeleteButton";
 )
 export default class OperatorsListPage extends React.Component {
   state = {
-    isOpened: false
+    isOpenedNew: false,
+    isOpenedDelete: false,
+    id: ""
   };
 
-  openPopup = () => {
+  openPopupNew = () => {
     this.setState({
-      isOpened: true
+      isOpenedNew: true
+    });
+  };
+
+  openPopupDelete = id => {
+    console.log(id);
+    this.setState({
+      isOpenedDelete: true,
+      id
     });
   };
 
@@ -60,7 +70,7 @@ export default class OperatorsListPage extends React.Component {
       deleteOperator
     } = this.props;
 
-    const { isOpened } = this.state;
+    const { isOpenedNew, isOpenedDelete, id } = this.state;
 
     return (
       <div id="operator-list-page">
@@ -79,7 +89,7 @@ export default class OperatorsListPage extends React.Component {
                 <div className={styles.operator_type} key={index}>
                   <div>{operator.name}</div>
                   <div>
-                    <DeleteButton onClick={() => deleteOperator(id)} />
+                    <DeleteButton onClick={() => this.openPopupDelete(id)} />
                     <Button
                       className={styles.detail_button}
                       onClick={() =>
@@ -103,20 +113,41 @@ export default class OperatorsListPage extends React.Component {
             </div>
           )}
           <div>
-            <Button onClick={this.openPopup}>Додати оператора</Button>
+            <Button onClick={this.openPopupNew}>Додати оператора</Button>
           </div>
         </div>
-
         <Popup
           title={<span>Оберіть налаштування для створення</span>}
-          active={isOpened}
-          onClose={() => this.setState({ isOpened: false })}
+          active={isOpenedNew}
+          onClose={() => this.setState({ isOpenedNew: false })}
         >
           <OperatorTypeSelectionForm
             operatorsTypes={operatorsTypes}
             protocols={protocols}
-            onSubmit={values => fetchOperatorFields({values})}
+            isOpenedNew={() => this.setState({ isOpenedNew: false })}
+            onSubmit={values => fetchOperatorFields({ values })}
           />
+        </Popup>
+
+        <Popup
+          title={<span>Ви впевнені,що хочете видалити</span>}
+          active={isOpenedDelete}
+          onClose={() => this.setState({ isOpenedDelete: false })}
+        >
+          <div className={styles.buttons_block}>
+            <Button
+              onClick={() => {
+                return deleteOperator(id).then(() => {
+                  this.setState({ isOpenedDelete: false });
+                });
+              }}
+            >
+              Видалити
+            </Button>
+            <Button onClick={() => this.setState({ isOpenedDelete: false })}>
+              Cкасувати
+            </Button>
+          </div>
         </Popup>
       </div>
     );
