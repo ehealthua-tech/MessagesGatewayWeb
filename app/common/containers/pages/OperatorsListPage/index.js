@@ -130,7 +130,7 @@ export default class OperatorsListPage extends React.Component {
         </Popup>
 
         <Popup
-          title={<span>Ви впевнені,що хочете видалити</span>}
+          title={<span>Ви впевнені, що хочете видалити оператора?</span>}
           active={isOpenedDelete}
           onClose={() => this.setState({ isOpenedDelete: false })}
         >
