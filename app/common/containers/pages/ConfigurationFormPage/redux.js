@@ -45,9 +45,9 @@ export const updateConfiguration = ({ values }) => dispatch =>
      * @returns {function}
      */
 
-    dispatch(fromConfiguration.fetchConfiguration()).then((action) => {
-      return dispatch(showConfiguration(action.payload));
-    });
+    dispatch(fromConfiguration.fetchConfiguration()).then(action =>
+      dispatch(showConfiguration(action.payload))
+    );
   });
 
 const configuration = handleAction(showConfiguration, (state, action) => action.payload, []);

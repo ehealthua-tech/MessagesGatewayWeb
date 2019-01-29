@@ -1,9 +1,9 @@
 import nock from 'nock';
-import { API_URL } from '../../../config';
-import { fetchConfiguration, updateConfiguration } from './redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
+import { API_URL } from '../../../config';
+import { fetchConfiguration, updateConfiguration } from './redux';
 
 const mockStore = configureMockStore([thunk, apiMiddleware]);
 

@@ -67,12 +67,10 @@ export const deleteOperatorType = id => dispatch =>
 
 export const showChangedOperatorsTypes = ({ operatorsTypes, oldIndex, newIndex }) => (dispatch) => {
   const changedOperatorsTypesPriority = arrayMove(operatorsTypes, oldIndex, newIndex).map(
-    (operatorType, index) => {
-      return {
-        ...operatorType,
-        priority: index + 1,
-      };
-    }
+    (operatorType, index) => ({
+      ...operatorType,
+      priority: index + 1,
+    })
   );
   return dispatch(changeOperatorsTypes(changedOperatorsTypesPriority));
 };

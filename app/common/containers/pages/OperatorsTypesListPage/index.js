@@ -1,11 +1,11 @@
 import React from 'react';
 import withStyles from 'withStyles';
 import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { provideHooks } from 'redial';
 import SortableList from '../../forms/OperatorTypesPriorityForm';
 import { H1 } from '../../../components/Title';
 import styles from './styles.scss';
-import { connect } from 'react-redux';
-import { provideHooks } from 'redial';
 import {
   fetchOperatorsTypes,
   showChangedOperatorsTypes,
@@ -78,11 +78,11 @@ export default class OperatorsTypesListPage extends React.Component {
         >
           <div className={styles.buttons_block}>
             <Button
-              onClick={() => {
-                return deleteOperatorType(id).then(() => {
+              onClick={() =>
+                deleteOperatorType(id).then(() => {
                   this.setState({ isOpened: false });
-                });
-              }}
+                })
+              }
             >
               Видалити
             </Button>

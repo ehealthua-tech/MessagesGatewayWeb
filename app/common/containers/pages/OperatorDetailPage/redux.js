@@ -14,7 +14,7 @@ export const showOperatorDetails = createAction('operatorsPage/SHOW_OPERATOR_DET
 
 export const fetchOperator = id => dispatch =>
   dispatch(OperatorsAPI.fetchOperatorDetail(id)).then((action) => {
-    return action.error
+    action.error
       ? dispatch(push({ pathname: '/operators/' }))
       : dispatch(showOperatorDetails(action.payload));
   });

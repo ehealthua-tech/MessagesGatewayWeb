@@ -1,4 +1,7 @@
 import nock from 'nock';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import { apiMiddleware } from 'redux-api-middleware';
 import { API_URL } from '../../../config';
 import {
   fetchOperators,
@@ -7,9 +10,6 @@ import {
   fetchProtocols,
   deleteOperator,
 } from './redux';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
-import { apiMiddleware } from 'redux-api-middleware';
 
 const mockStore = configureMockStore([thunk, apiMiddleware]);
 

@@ -131,11 +131,11 @@ export default class OperatorsListPage extends React.Component {
         >
           <div className={styles.buttons_block}>
             <Button
-              onClick={() => {
-                return deleteOperator(id).then(() => {
+              onClick={() =>
+                deleteOperator(id).then(() => {
                   this.setState({ isOpenedDelete: false });
-                });
-              }}
+                })
+              }
             >
               Видалити
             </Button>
