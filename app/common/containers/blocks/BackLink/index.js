@@ -1,22 +1,16 @@
-import React from "react";
-import classnames from "classnames";
-import { Link } from "react-router";
-import withStyles from "withStyles";
+import React from 'react';
+import classnames from 'classnames';
+import { Link } from 'react-router';
+import withStyles from 'withStyles';
 
-import Icon from "../../../components/Icon";
+import Icon from '../../../components/Icon';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
-const BackLink = ({
-  children,
-  to,
-  iconPosition = "left",
-  detached,
-  onClick
-}) => (
+const BackLink = ({ children, to, iconPosition = 'left', detached, onClick }) => (
   <div
     className={classnames(styles.back, styles[`back_icon_${iconPosition}`], {
-      [styles.back_detached]: detached
+      [styles.back_detached]: detached,
     })}
   >
     <Link onClick={onClick} to={to}>

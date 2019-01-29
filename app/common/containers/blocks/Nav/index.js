@@ -1,21 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import classnames from "classnames";
-import { Link } from "react-router";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-import ShowWithScope from "containers/blocks/ShowWithScope";
+import React from 'react';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
+import { Link } from 'react-router';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import ShowWithScope from 'containers/blocks/ShowWithScope';
 
-import NavItem from "components/NavItem";
-import Icon from "components/Icon";
+import NavItem from 'components/NavItem';
+import Icon from 'components/Icon';
 
-import { logOut } from "./redux";
+import { logOut } from './redux';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
 @withStyles(styles)
 @connect(
   state => ({
-    location: state.routing
+    location: state.routing,
   }),
   { logOut }
 )

@@ -1,32 +1,32 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router";
-import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router';
+import classnames from 'classnames';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 
-import Icon, { icons } from "components/Icon";
+import Icon, { icons } from 'components/Icon';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
 const URL_TEST_REG_EXP = /^((?:[a-z]+:)?\/\/)|mailto:/i;
 
-const Button = props => {
+const Button = (props) => {
   const {
-    theme = "fill",
-    size = "middle",
-    color = "orange",
+    theme = 'fill',
+    size = 'middle',
+    color = 'orange',
     active = false,
     disabled = false,
     block = false,
     inheritColor = false,
-    type = "button",
+    type = 'button',
     to,
     children,
     onClick,
     id,
     icon,
     name,
-    ...rest
+    ...rest,
   } = props;
 
   const className = classnames(
@@ -37,7 +37,7 @@ const Button = props => {
     active && styles.active,
     disabled && styles.disabled,
     block && styles.block,
-    inheritColor && styles["inherit-color"]
+    inheritColor && styles['inherit-color']
   );
 
   const content = (
@@ -53,14 +53,7 @@ const Button = props => {
 
   if (to === undefined) {
     return (
-      <button
-        name={name}
-        id={id}
-        onClick={onClick}
-        type={type}
-        className={className}
-        {...rest}
-      >
+      <button name={name} id={id} onClick={onClick} type={type} className={className} {...rest}>
         {content}
       </button>
     );
@@ -81,9 +74,9 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  theme: PropTypes.oneOf(["fill", "border", "link"]),
-  size: PropTypes.oneOf(["small", "middle"]),
-  color: PropTypes.oneOf(["orange", "blue", "green", "red"]),
+  theme: PropTypes.oneOf(['fill', 'border', 'link']),
+  size: PropTypes.oneOf(['small', 'middle']),
+  color: PropTypes.oneOf(['orange', 'blue', 'green', 'red']),
   type: PropTypes.string,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -92,7 +85,7 @@ Button.propTypes = {
   to: PropTypes.string,
   id: PropTypes.string,
   icon: PropTypes.oneOf(icons),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default withStyles(styles)(Button);

@@ -1,1 +1,1 @@
-export { default as ParentClient } from "./ParentClient";
+export { default as ParentClient } from './ParentClient';

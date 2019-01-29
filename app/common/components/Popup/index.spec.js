@@ -1,11 +1,11 @@
-import React from "react";
-import { shallow, mount } from "enzyme";
+import React from 'react';
+import { shallow, mount } from 'enzyme';
 
-import styles from "./styles.scss";
-import { Popup, Confirm } from "./index";
+import styles from './styles.scss';
+import { Popup, Confirm } from './index';
 
-describe("Popup", () => {
-  it("children", () => {
+describe('Popup', () => {
+  it('children', () => {
     const elem = shallow(
       <Popup>
         <span>Content</span>
@@ -14,38 +14,38 @@ describe("Popup", () => {
     expect(elem.contains(<span>Content</span>)).toBeTruthy();
   });
 
-  describe("props", () => {
+  describe('props', () => {
     const elem = mount(<Popup title="Popup title" active theme="error" />);
 
-    it("title", () => {
-      expect(elem.text()).toBe("Popup title");
+    it('title', () => {
+      expect(elem.text()).toBe('Popup title');
     });
 
-    it("active", () => {
+    it('active', () => {
       expect(elem.find(`.${styles.active}`)).toHaveLength(1);
     });
 
-    it("theme", () => {
-      expect(elem.find(`.${styles["theme-error"]}`)).toHaveLength(1);
+    it('theme', () => {
+      expect(elem.find(`.${styles['theme-error']}`)).toHaveLength(1);
     });
 
-    it("bgCloser", () => {
+    it('bgCloser', () => {
       expect(elem.find(`.${styles.closer}`)).toHaveLength(1);
     });
 
-    it("onClose", () => {
+    it('onClose', () => {
       const onClose = jest.fn();
 
       elem.setProps({ onClose });
-      elem.find(`.${styles.closer}`).simulate("click");
+      elem.find(`.${styles.closer}`).simulate('click');
 
       expect(onClose).toHaveBeenCalledTimes(1);
     });
   });
 });
 
-describe("Confirm", () => {
-  it("children", () => {
+describe('Confirm', () => {
+  it('children', () => {
     const elem = shallow(
       <Confirm>
         <span>Content</span>
@@ -54,46 +54,40 @@ describe("Confirm", () => {
     expect(elem.contains(<span>Content</span>)).toBeTruthy();
   });
 
-  it("use popup", () => {
+  it('use popup', () => {
     const elem = mount(<Confirm />);
     expect(elem.find(Popup)).toHaveLength(1);
   });
 
-  describe("props", () => {
+  describe('props', () => {
     const elem = mount(
-      <Confirm
-        title="Confirm"
-        confirm="Done"
-        cancel="Cancel"
-        active
-        theme="error"
-      />
+      <Confirm title="Confirm" confirm="Done" cancel="Cancel" active theme="error" />
     );
 
-    it("confirm, cancel", () => {
-      expect(elem.find("Button")).toHaveLength(2);
+    it('confirm, cancel', () => {
+      expect(elem.find('Button')).toHaveLength(2);
     });
 
-    it("onCancel", () => {
+    it('onCancel', () => {
       const onCancel = jest.fn();
 
       elem.setProps({ onCancel });
       elem
-        .find("Button")
+        .find('Button')
         .first()
-        .simulate("click");
+        .simulate('click');
 
       expect(onCancel).toHaveBeenCalledTimes(1);
     });
 
-    it("onConfirm", () => {
+    it('onConfirm', () => {
       const onConfirm = jest.fn();
 
       elem.setProps({ onConfirm });
       elem
-        .find("Button")
+        .find('Button')
         .last()
-        .simulate("click");
+        .simulate('click');
 
       expect(onConfirm).toHaveBeenCalledTimes(1);
     });

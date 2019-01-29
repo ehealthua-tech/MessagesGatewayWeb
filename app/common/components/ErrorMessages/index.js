@@ -1,9 +1,5 @@
-import React from "react";
-import {
-  addValidation,
-  ErrorMessages,
-  ErrorMessage
-} from "react-nebo15-validate";
+import React from 'react';
+import { addValidation, ErrorMessages, ErrorMessage } from 'react-nebo15-validate';
 
 export default class ErrorMessagesTranslated extends React.Component {
   render() {

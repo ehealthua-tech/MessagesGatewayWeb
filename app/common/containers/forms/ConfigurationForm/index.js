@@ -1,28 +1,22 @@
-import React from "react";
-import { connect } from "react-redux";
-import withStyles from "withStyles";
-import { reduxForm, Field, getFormValues } from "redux-form";
-import FieldInput from "../../../components/reduxForm/FieldInput";
-import Button from "components/Button";
-import styles from "./styles.scss";
-import requiredValidate from "../../../helpers/validators/required-validate";
+import React from 'react';
+import { connect } from 'react-redux';
+import withStyles from 'withStyles';
+import { reduxForm, Field, getFormValues } from 'redux-form';
+import FieldInput from '../../../components/reduxForm/FieldInput';
+import Button from 'components/Button';
+import styles from './styles.scss';
+import requiredValidate from '../../../helpers/validators/required-validate';
 
 @withStyles(styles)
 @reduxForm({
-  form: "system-configuration-form"
+  form: 'system-configuration-form',
 })
 @connect(state => ({
-  values: getFormValues("system-configuration-form")(state)
+  values: getFormValues('system-configuration-form')(state),
 }))
 export default class ConfigurationForm extends React.Component {
   render() {
-    const {
-      handleSubmit,
-      initialValues,
-      onSubmit,
-      pristine,
-      submitting
-    } = this.props;
+    const { handleSubmit, initialValues, onSubmit, pristine, submitting } = this.props;
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -38,7 +32,7 @@ export default class ConfigurationForm extends React.Component {
         </div>
         <div>
           <Button type="submit" disabled={pristine || submitting}>
-            {submitting ? "Збереження..." : "Зберегти"}
+            {submitting ? 'Збереження...' : 'Зберегти'}
           </Button>
         </div>
       </form>

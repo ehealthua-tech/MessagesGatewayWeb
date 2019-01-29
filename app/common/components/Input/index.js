@@ -1,19 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-import ErrorMessages from "components/ErrorMessages";
-import ColoredText from "components/ColoredText";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import ErrorMessages from 'components/ErrorMessages';
+import ColoredText from 'components/ColoredText';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
-const Prefix = ({ prefix }) => (
-  <span className={styles["prefix-wrapper"]}>{prefix}</span>
-);
+const Prefix = ({ prefix }) => <span className={styles['prefix-wrapper']}>{prefix}</span>;
 
-const Postfix = ({ postfix }) => (
-  <span className={styles["postfix-wrapper"]}>{postfix}</span>
-);
+const Postfix = ({ postfix }) => <span className={styles['postfix-wrapper']}>{postfix}</span>;
 
 export const Input = ({
   children,
@@ -32,19 +28,19 @@ export const Input = ({
   onChange,
   onBlur,
   onFocus,
-  inputComponent = "input",
+  inputComponent = 'input',
   component = inputComponent,
-  theme = "gray",
+  theme = 'gray',
   label_bold,
   requiredStar = false,
   className,
-  ...rest
+  ...rest,
 }) => {
   const decorInputProps = {
     errored: !!error,
     focused: active,
     prefix,
-    postfix
+    postfix,
   };
 
   const prefixComp = prefix && <Prefix {...decorInputProps} />;
@@ -60,29 +56,21 @@ export const Input = ({
     name,
     onChange,
     onBlur,
-    onFocus
+    onFocus,
   };
 
   return (
     <span>
-      <label
-        className={styles["label-wrapper"]}
-        onClick={e => e.preventDefault()}
-      >
+      <label className={styles['label-wrapper']} onClick={e => e.preventDefault()}>
         {labelText && (
-          <div
-            className={classnames(
-              styles["label-text"],
-              label_bold && styles["label-bold"]
-            )}
-          >
+          <div className={classnames(styles['label-text'], label_bold && styles['label-bold'])}>
             {labelText}
             {requiredStar && <ColoredText color="red">*</ColoredText>}
           </div>
         )}
         <span
           className={classnames(
-            styles["group-input"],
+            styles['group-input'],
             styles[`theme-${theme}`],
             error && styles.error,
             active && !readOnly && styles.active,
@@ -92,12 +80,12 @@ export const Input = ({
           {prefixComp}
           {React.createElement(component, {
             ...rest,
-            ...inputProps
+            ...inputProps,
           })}
           {postfixComp}
           {error && (
-            <div className={styles["error-label"]}>
-              {typeof error === "string" ? (
+            <div className={styles['error-label']}>
+              {typeof error === 'string' ? (
                 error
               ) : (
                 <ErrorMessages error={error}>{children}</ErrorMessages>
@@ -111,7 +99,7 @@ export const Input = ({
 };
 
 Input.propTypes = {
-  theme: PropTypes.oneOf(["light", "disabled"])
+  theme: PropTypes.oneOf(['light', 'disabled']),
 };
 
 export default withStyles(styles)(Input);

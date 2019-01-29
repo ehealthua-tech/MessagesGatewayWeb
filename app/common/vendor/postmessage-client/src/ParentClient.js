@@ -1,4 +1,4 @@
-import Client from "./Client";
+import Client from './Client';
 
 export default class ParentClient extends Client {
   methods = {
@@ -8,12 +8,12 @@ export default class ParentClient extends Client {
       const { origin } = window.location;
 
       return { origin };
-    }
+    },
   };
 
-  open({ url, name = "PopupWindow", features = {} }) {
+  open({ url, name = 'PopupWindow', features = {} }) {
     if (this.remoteWindow == null || this.remoteWindow.closed) {
-      const result = new Promise(resolve => {
+      const result = new Promise((resolve) => {
         this.fulfillHandshake = resolve;
       });
 
@@ -22,7 +22,7 @@ export default class ParentClient extends Client {
 
       const featureString = formatFeatures({
         ...calculatePosition(features),
-        ...features
+        ...features,
       });
 
       this.remoteWindow = window.open(url, name, featureString);
@@ -53,13 +53,9 @@ export default class ParentClient extends Client {
 }
 
 const calculatePosition = ({ height, width }) => {
-  const top = Number.isFinite(height)
-    ? (window.screen.height - height) / 2
-    : undefined;
+  const top = Number.isFinite(height) ? (window.screen.height - height) / 2 : undefined;
 
-  const left = Number.isFinite(width)
-    ? (window.screen.width - width) / 2
-    : undefined;
+  const left = Number.isFinite(width) ? (window.screen.width - width) / 2 : undefined;
 
   return { top, left };
 };
@@ -67,5 +63,5 @@ const calculatePosition = ({ height, width }) => {
 const formatFeatures = features =>
   Object.entries(features)
     .filter(([name, value]) => Boolean(value))
-    .map(e => e.join("="))
-    .join(",");
+    .map(e => e.join('='))
+    .join(',');
