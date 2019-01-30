@@ -1,4 +1,4 @@
-import DeferredRegistry from "./DeferredRegistry";
+import DeferredRegistry from './DeferredRegistry';
 
 export default class Client {
   remoteWindow = null;
@@ -11,14 +11,14 @@ export default class Client {
   }
 
   listen() {
-    window.addEventListener("message", this.handleMessage);
+    window.addEventListener('message', this.handleMessage);
   }
 
   disconnect() {
-    window.removeEventListener("message", this.handleMessage);
+    window.removeEventListener('message', this.handleMessage);
   }
 
-  handleMessage = event => {
+  handleMessage = (event) => {
     const { data } = event;
 
     if (!this.checkMessageAuthenticity(event)) return;
@@ -31,7 +31,7 @@ export default class Client {
   };
 
   checkMessageAuthenticity() {
-    throw new Error("Unimplemented method checkMessageAuthenticity was called");
+    throw new Error('Unimplemented method checkMessageAuthenticity was called');
   }
 
   call(method, params = []) {
@@ -62,14 +62,11 @@ export default class Client {
   postMessage(callObject) {
     if (!this.checkPostMessageAbility(callObject)) return;
 
-    this.remoteWindow.postMessage(
-      { jsonrpc: "2.0", ...callObject },
-      this.targetOrigin
-    );
+    this.remoteWindow.postMessage({ jsonrpc: '2.0', ...callObject }, this.targetOrigin);
   }
 
   checkPostMessageAbility() {
-    throw new Error("Unimplemented method checkPostMessageAbility was called");
+    throw new Error('Unimplemented method checkPostMessageAbility was called');
   }
 }
 

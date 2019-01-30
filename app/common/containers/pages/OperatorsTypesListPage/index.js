@@ -1,42 +1,35 @@
-import React from "react";
-import withStyles from "withStyles";
-import Helmet from "react-helmet";
-import SortableList from "../../forms/OperatorTypesPriorityForm";
-import { H1 } from "../../../components/Title";
-import styles from "./styles.scss";
-import { connect } from "react-redux";
-import { provideHooks } from "redial";
+import React from 'react';
+import withStyles from 'withStyles';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { provideHooks } from 'redial';
+import SortableList from '../../forms/OperatorTypesPriorityForm';
+import { H1 } from '../../../components/Title';
+import styles from './styles.scss';
 import {
   fetchOperatorsTypes,
   showChangedOperatorsTypes,
   combineOperatorsTypes,
-  deleteOperatorType
-} from "./redux";
-import { getOperatorsTypes } from "../../../reducers";
-import { Popup } from "../../../components/Popup";
-import Button from "../../../components/Button";
+  deleteOperatorType,
+} from './redux';
+import { getOperatorsTypes } from '../../../reducers';
+import { Popup } from '../../../components/Popup';
+import Button from '../../../components/Button';
 
 @withStyles(styles)
 @provideHooks({
-  fetch: ({ dispatch }) => dispatch(fetchOperatorsTypes())
+  fetch: ({ dispatch }) => dispatch(fetchOperatorsTypes()),
 })
 @connect(
   state => ({
-    operatorsTypes: getOperatorsTypes(state)
+    operatorsTypes: getOperatorsTypes(state),
   }),
   { showChangedOperatorsTypes, combineOperatorsTypes, deleteOperatorType }
 )
 export default class OperatorsTypesListPage extends React.Component {
   state = {
     isOpened: false,
-    id: ""
-  };
-
-  openPopup = id => {
-    this.setState({
-      isOpened: true,
-      id
-    });
+    id: '',
   };
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -44,12 +37,15 @@ export default class OperatorsTypesListPage extends React.Component {
     showChangedOperatorsTypes({ operatorsTypes, oldIndex, newIndex });
   };
 
+  openPopup = (id) => {
+    this.setState({
+      isOpened: true,
+      id,
+    });
+  };
+
   render() {
-    const {
-      operatorsTypes,
-      combineOperatorsTypes,
-      deleteOperatorType
-    } = this.props;
+    const { operatorsTypes, combineOperatorsTypes, deleteOperatorType } = this.props;
 
     const { isOpened, id } = this.state;
 
@@ -57,7 +53,7 @@ export default class OperatorsTypesListPage extends React.Component {
       <div id="priority-page">
         <Helmet
           title="Список типів операторів"
-          meta={[{ property: "og:title", content: "Список типів операторів" }]}
+          meta={[{ property: 'og:title', content: 'Список типів операторів' }]}
         />
 
         <H1>Список типів операторів</H1>
@@ -67,14 +63,12 @@ export default class OperatorsTypesListPage extends React.Component {
             items={operatorsTypes}
             onSortEnd={this.onSortEnd}
             onDeleteType={id => this.openPopup(id)}
-            onSubmit={values =>
-              combineOperatorsTypes({ operatorsTypes, values })
-            }
+            onSubmit={values => combineOperatorsTypes({ operatorsTypes, values })}
             useDragHandle
-            hideSortableGhost={true}
+            hideSortableGhost
             lockAxis="y"
             lockToContainerEdges
-            lockOffset={["0%", "100%"]}
+            lockOffset={['0%', '100%']}
           />
         </div>
         <Popup
@@ -84,17 +78,15 @@ export default class OperatorsTypesListPage extends React.Component {
         >
           <div className={styles.buttons_block}>
             <Button
-              onClick={() => {
-                return deleteOperatorType(id).then(() => {
+              onClick={() =>
+                deleteOperatorType(id).then(() => {
                   this.setState({ isOpened: false });
-                });
-              }}
+                })
+              }
             >
               Видалити
             </Button>
-            <Button onClick={() => this.setState({ isOpened: false })}>
-              Cкасувати
-            </Button>
+            <Button onClick={() => this.setState({ isOpened: false })}>Cкасувати</Button>
           </div>
         </Popup>
       </div>

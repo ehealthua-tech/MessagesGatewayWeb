@@ -1,12 +1,11 @@
-import { combineReducers } from "redux";
-import { createAction, handleAction } from "redux-actions";
-import * as OperatorsAPI from "../../../redux/operators";
-import * as Notifications from "../../../redux/notification";
-import { push } from "react-router-redux";
+import { combineReducers } from 'redux';
+import { createAction, handleAction } from 'redux-actions';
+import { push } from 'react-router-redux';
 
-export const showOperatorDetails = createAction(
-  "operatorsPage/SHOW_OPERATOR_DETAILS"
-);
+import * as OperatorsAPI from '../../../redux/operators';
+import * as Notifications from '../../../redux/notification';
+
+export const showOperatorDetails = createAction('operatorsPage/SHOW_OPERATOR_DETAILS');
 
 /**
  * Receives operator configuration from server
@@ -14,9 +13,9 @@ export const showOperatorDetails = createAction(
  */
 
 export const fetchOperator = id => dispatch =>
-  dispatch(OperatorsAPI.fetchOperatorDetail(id)).then(action => {
-    return action.error
-      ? dispatch(push({ pathname: `/operators/` }))
+  dispatch(OperatorsAPI.fetchOperatorDetail(id)).then((action) => {
+    action.error
+      ? dispatch(push({ pathname: '/operators/' }))
       : dispatch(showOperatorDetails(action.payload));
   });
 
@@ -27,24 +26,20 @@ export const fetchOperator = id => dispatch =>
  */
 
 export const updateOperator = values => dispatch =>
-  dispatch(OperatorsAPI.updateOperatorDetail(values)).then(action => {
+  dispatch(OperatorsAPI.updateOperatorDetail(values)).then((action) => {
     action.error
       ? dispatch(
           Notifications.showNotification({
             showing: true,
             message: action.payload.message,
-            type: "warning"
+            type: 'warning',
           })
         )
-      : dispatch(push({ pathname: `/operators/` }));
+      : dispatch(push({ pathname: '/operators/' }));
   });
 
-const operatorDetails = handleAction(
-  showOperatorDetails,
-  (state, action) => action.payload,
-  {}
-);
+const operatorDetails = handleAction(showOperatorDetails, (state, action) => action.payload, {});
 
 export default combineReducers({
-  operatorDetails
+  operatorDetails,
 });

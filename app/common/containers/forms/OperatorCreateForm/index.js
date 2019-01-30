@@ -1,17 +1,17 @@
-import React from "react";
-import withStyles from "withStyles";
-import { reduxForm, Field, FormSection } from "redux-form";
-import FieldInput from "../../../components/reduxForm/FieldInput";
-import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
-import Button from "../../../components/Button";
-import styles from "./styles.scss";
-import isNumber from "../../../helpers/validators/number";
-import requiredValidate from "../../../helpers/validators/required-validate";
-import numberValidate from "../../../helpers/validators/number-validate";
+import React from 'react';
+import withStyles from 'withStyles';
+import { reduxForm, Field, FormSection } from 'redux-form';
+import FieldInput from '../../../components/reduxForm/FieldInput';
+import FieldCheckbox from '../../../components/reduxForm/FieldCheckbox';
+import Button from '../../../components/Button';
+import styles from './styles.scss';
+import isNumber from '../../../helpers/validators/number';
+import requiredValidate from '../../../helpers/validators/required-validate';
+import numberValidate from '../../../helpers/validators/number-validate';
 
 @withStyles(styles)
 @reduxForm({
-  form: "operator-create-form"
+  form: 'operator-create-form',
 })
 export default class OperatorCreateForm extends React.Component {
   render() {
@@ -28,12 +28,7 @@ export default class OperatorCreateForm extends React.Component {
             component={FieldInput}
             validate={[requiredValidate, numberValidate]}
           />
-          <Field
-            name="name"
-            labelText="name"
-            component={FieldInput}
-            validate={requiredValidate}
-          />
+          <Field name="name" labelText="name" component={FieldInput} validate={requiredValidate} />
           <Field
             name="price"
             labelText="price"
@@ -64,7 +59,7 @@ export default class OperatorCreateForm extends React.Component {
         </div>
 
         <Button type="submit" disabled={pristine || submitting}>
-          {submitting ? "Збереження..." : "Зберегти"}
+          {submitting ? 'Збереження...' : 'Зберегти'}
         </Button>
       </form>
     );

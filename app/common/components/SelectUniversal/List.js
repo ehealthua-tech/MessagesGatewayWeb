@@ -1,15 +1,9 @@
-import React from "react";
-import classnames from "classnames";
-import styles from "./styles.scss";
-import ListItem from "./ListItem";
+import React from 'react';
+import classnames from 'classnames';
+import styles from './styles.scss';
+import ListItem from './ListItem';
 
-const List = ({
-  open,
-  options = [],
-  onClickItem,
-  emptyText,
-  isActiveItem = () => {}
-}) => (
+const List = ({ open, options = [], onClickItem, emptyText, isActiveItem = () => {} }) => (
   <ul className={classnames(styles.list, open && styles.open)}>
     {options.map(item => (
       <ListItem

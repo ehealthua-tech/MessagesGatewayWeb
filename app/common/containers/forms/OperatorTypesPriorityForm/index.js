@@ -1,14 +1,14 @@
-import React from "react";
-import withStyles from "withStyles";
-import styles from "./styles.scss";
-import { SortableContainer } from "react-sortable-hoc";
-import SortableItem from "../../../components/SortableElement";
-import Button from "components/Button";
-import { Field, reduxForm } from "redux-form";
-import { compose } from "redux";
-import { connect } from "react-redux";
-import { getOperatorsFormFields } from "../../../reducers";
-import FieldCheckbox from "../../../components/reduxForm/FieldCheckbox";
+import React from 'react';
+import withStyles from 'withStyles';
+import styles from './styles.scss';
+import { SortableContainer } from 'react-sortable-hoc';
+import SortableItem from '../../../components/SortableElement';
+import Button from 'components/Button';
+import { Field, reduxForm } from 'redux-form';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { getOperatorsFormFields } from '../../../reducers';
+import FieldCheckbox from '../../../components/reduxForm/FieldCheckbox';
 
 const SortableList = SortableContainer(
   ({
@@ -20,7 +20,7 @@ const SortableList = SortableContainer(
     openPopup,
     valid,
     pristine,
-    onSubmit
+    onSubmit,
   }) => {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -48,9 +48,9 @@ const SortableList = SortableContainer(
         </div>
         <div className={styles.buttons_block}>
           <Button type="submit" disabled={submitting}>
-            {submitting ? "Збереження..." : "Зберегти"}
+            {submitting ? 'Збереження...' : 'Зберегти'}
           </Button>
-          <Button to={"operators-types/create/"}>Додати тип оператора</Button>
+          <Button to={'operators-types/create/'}>Додати тип оператора</Button>
         </div>
       </form>
     );
@@ -58,14 +58,14 @@ const SortableList = SortableContainer(
 );
 
 export default compose(
-  connect(state => {
+  connect((state) => {
     return {
-      initialValues: getOperatorsFormFields(state)
+      initialValues: getOperatorsFormFields(state),
     };
   }),
   reduxForm({
-    form: "operator-type-form",
-    enableReinitialize: true
+    form: 'operator-type-form',
+    enableReinitialize: true,
   }),
   withStyles(styles)
 )(SortableList);

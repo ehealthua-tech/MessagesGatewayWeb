@@ -1,14 +1,14 @@
-import React from "react";
-import withStyles from "withStyles";
-import { reduxForm, Field } from "redux-form";
-import Button from "../../../components/Button";
-import styles from "./styles.scss";
-import { SelectUniversal } from "../../../components/SelectUniversal";
-import requiredValidate from "../../../helpers/validators/required-validate";
+import React from 'react';
+import withStyles from 'withStyles';
+import { reduxForm, Field } from 'redux-form';
+import Button from '../../../components/Button';
+import styles from './styles.scss';
+import { SelectUniversal } from '../../../components/SelectUniversal';
+import requiredValidate from '../../../helpers/validators/required-validate';
 
 @withStyles(styles)
 @reduxForm({
-  form: "operator-type-selection-form"
+  form: 'operator-type-selection-form',
 })
 export default class OperatorTypeSelectionForm extends React.Component {
   render() {
@@ -19,7 +19,7 @@ export default class OperatorTypeSelectionForm extends React.Component {
       onSubmit,
       isOpenedNew,
       pristine,
-      submitting
+      submitting,
     } = this.props;
 
     return (
@@ -29,12 +29,12 @@ export default class OperatorTypeSelectionForm extends React.Component {
           placeholder="Виберіть тип оператора"
           component={SelectUniversal}
           validate={requiredValidate}
-          options={operatorsTypes.map(operatorType => {
+          options={operatorsTypes.map((operatorType) => {
             const { name, id } = operatorType;
             return {
               name,
               title: name,
-              id
+              id,
             };
           })}
         />
@@ -45,12 +45,12 @@ export default class OperatorTypeSelectionForm extends React.Component {
           validate={requiredValidate}
           options={protocols.protocols.map(protocol => ({
             name: protocol,
-            title: protocol
+            title: protocol,
           }))}
         />
         <div className={styles.buttons_block}>
           <Button type="submit" disabled={pristine || submitting}>
-            {submitting ? "Додавання..." : "Додати"}
+            {submitting ? 'Додавання...' : 'Додати'}
           </Button>
           <Button onClick={() => isOpenedNew()}>Cкасувати</Button>
         </div>

@@ -1,11 +1,11 @@
-import React from "react";
-import { connect } from "react-redux";
-import Toast from "../../../components/Toast";
+import React from 'react';
+import { connect } from 'react-redux';
+import Toast from '../../../components/Toast';
 
 @connect(state => ({
   show: state.notification.showing,
   message: state.notification.message,
-  type: state.notification.type
+  type: state.notification.type,
 }))
 export default class NotificationContainer extends React.Component {
   render() {

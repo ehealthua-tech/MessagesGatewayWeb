@@ -1,22 +1,22 @@
-import React from "react";
-import withStyles from "withStyles";
-import Helmet from "react-helmet";
-import { H1 } from "../../../components/Title";
-import styles from "../OperatorsTypesListPage/styles.scss";
-import OperatorDetailForm from "../../forms/OperatorDetailForm";
-import { provideHooks } from "redial";
-import BackLink from "../../../containers/blocks/BackLink";
-import { connect } from "react-redux";
-import { getOperatorsDetailFormFields } from "../../../reducers";
-import { fetchOperator, updateOperator } from "./redux";
+import React from 'react';
+import withStyles from 'withStyles';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { provideHooks } from 'redial';
+import { H1 } from '../../../components/Title';
+import styles from '../OperatorsTypesListPage/styles.scss';
+import OperatorDetailForm from '../../forms/OperatorDetailForm';
+import BackLink from '../../../containers/blocks/BackLink';
+import { getOperatorsDetailFormFields } from '../../../reducers';
+import { fetchOperator, updateOperator } from './redux';
 
 @withStyles(styles)
 @provideHooks({
-  fetch: ({ dispatch, params: { id } }) => dispatch(fetchOperator(id))
+  fetch: ({ dispatch, params: { id } }) => dispatch(fetchOperator(id)),
 })
 @connect(
   state => ({
-    operatorFields: getOperatorsDetailFormFields(state)
+    operatorFields: getOperatorsDetailFormFields(state),
   }),
   { updateOperator }
 )
@@ -27,12 +27,10 @@ export default class OperatorDetailPage extends React.Component {
       <div id="operator-detail-page">
         <Helmet
           title="Деталі  оператора"
-          meta={[{ property: "og:title", content: "Деталі  оператора" }]}
+          meta={[{ property: 'og:title', content: 'Деталі  оператора' }]}
         />
 
-        <BackLink onClick={() => router.goBack()}>
-          Повернутись до cписку операторів
-        </BackLink>
+        <BackLink onClick={() => router.goBack()}>Повернутись до cписку операторів</BackLink>
 
         <H1>Деталі оператора </H1>
 
