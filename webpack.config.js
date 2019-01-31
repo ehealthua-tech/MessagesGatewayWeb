@@ -54,12 +54,11 @@ const serverConfig = webpackMerge(
     entry: {
       server: './app/server/server.js',
     },
+    target: 'node',
     node: {
-      fs: 'empty',
       __dirname: true,
       __filename: true,
     },
-    target: 'node',
     output: {
       path: path.join(__dirname, 'static'),
       filename: '[name].js',

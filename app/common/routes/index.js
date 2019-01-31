@@ -17,6 +17,7 @@ import OperatorCreatePage from '../containers/pages/OperatorCreatePage';
 import OperatorDetailPage from '../containers/pages/OperatorDetailPage';
 import OperatorsTypesListPage from '../containers/pages/OperatorsTypesListPage';
 import OperatorTypeCreatePage from '../containers/pages/OperatorTypeCreatePage';
+import KeysPairsListPage from '../containers/pages/KeysPairsListPage';
 
 import { isAuthorized, getScope } from '../reducers';
 
@@ -51,7 +52,7 @@ export const configureRoutes = ({ store }) => {
 
   return (
     <Route component={App}>
-      <Route component={Main} onEnter={requireAuth}>
+      <Route component={Main}>
         <Route path="/">
           <IndexRedirect to="dashboard" />
           <Route path="dashboard" component={DashboardPage} />
@@ -65,6 +66,7 @@ export const configureRoutes = ({ store }) => {
             <Route path="detail/:id" component={OperatorDetailPage} />
           </Route>
           <Route path="configuration" component={SystemConfigurationPage} />
+          <Route path="keys-pairs-configuration" component={KeysPairsListPage} />
         </Route>
         <Route path="401" component={AccessDeniedPage} />
       </Route>

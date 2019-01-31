@@ -5,7 +5,16 @@ import { getForm } from 'reducers';
 
 import Input from '../Input';
 
-let Field = ({ component = Input, input, meta, children, formSubmitFailed, ...props }) =>
+let Field = ({
+  component = Input,
+  input,
+  meta,
+  children,
+  formName,
+  dispatch,
+  formSubmitFailed,
+  ...props,
+}) =>
   React.createElement(
     component,
     {

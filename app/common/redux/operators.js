@@ -1,6 +1,6 @@
 import { handleAction, combineActions } from 'redux-actions';
-import { API_URL } from '../config';
 import { createUrl } from 'helpers/url';
+import { API_URL } from '../config';
 import { invoke } from './api';
 
 export const fetchOperators = options =>
