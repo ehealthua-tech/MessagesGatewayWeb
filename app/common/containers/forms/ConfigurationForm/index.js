@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import withStyles from 'withStyles';
 import { reduxForm, Field, getFormValues } from 'redux-form';
-import FieldInput from '../../../components/reduxForm/FieldInput';
 import Button from 'components/Button';
+import FieldInput from '../../../components/reduxForm/FieldInput';
 import styles from './styles.scss';
 import requiredValidate from '../../../helpers/validators/required-validate';
 

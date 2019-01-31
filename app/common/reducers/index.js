@@ -8,6 +8,7 @@ import configurationData from '../containers/pages/ConfigurationFormPage/redux';
 import operatorsData from '../containers/pages/OperatorsListPage/redux';
 import operatorData from '../containers/pages/OperatorDetailPage/redux';
 import operatorsTypesData from '../containers/pages/OperatorsTypesListPage/redux';
+import keysPairsData from '../containers/pages/KeysPairsListPage/redux';
 
 const blocks = combineReducers({
   Aside,
@@ -18,6 +19,7 @@ const data = combineReducers({
   operatorsTypesData,
   operatorsData,
   operatorData,
+  keysPairsData,
 });
 
 export default combineReducers({
@@ -37,6 +39,7 @@ export const getConfiguration = state => state.data.configurationData.configurat
 export const getOperators = state => state.data.operatorsData.operators;
 export const getProtocols = state => state.data.operatorsData.protocols;
 export const getOperatorsTypes = state => state.data.operatorsTypesData.operatorsTypes;
+export const getKeysPairs = state => state.data.keysPairsData.keysPairs.keys;
 export const getOperatorsFormFields = state =>
   Object.assign(
     {},

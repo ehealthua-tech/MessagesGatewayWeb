@@ -49,6 +49,11 @@ export default class Nav extends React.Component {
               Конфігурація системи
             </Link>
           </NavItem>
+          <NavItem to="keys-pairs-configuration" activeClassName={styles.active}>
+            <Link id="keys-pairs-nav" to="/keys-pairs-configuration">
+              Конфігурація ключів
+            </Link>
+          </NavItem>
         </ul>
         <ul className={styles.down}>
           <li className={styles.logout} onClick={() => this.props.logOut()}>
