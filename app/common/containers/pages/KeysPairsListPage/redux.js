@@ -60,7 +60,7 @@ export const generateKeyPair = () => dispatch =>
  */
 
 export const activateKeyPair = body => (dispatch) => {
-  dispatch(KeysPairsAPI.activateKeyPairDetail(body)).then((action) => {
+  return dispatch(KeysPairsAPI.activateKeyPairDetail(body)).then((action) => {
     action.error
       ? dispatch(
           Notifications.showNotification({
@@ -97,7 +97,7 @@ export const activateKeyPair = body => (dispatch) => {
  */
 
 export const deactivateKeyPair = body => (dispatch) => {
-  dispatch(KeysPairsAPI.deactivateKeyPairDetail(body)).then((action) => {
+  return dispatch(KeysPairsAPI.deactivateKeyPairDetail(body)).then((action) => {
     action.error
       ? dispatch(
           Notifications.showNotification({
