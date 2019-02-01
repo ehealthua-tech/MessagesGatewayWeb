@@ -12,17 +12,17 @@ export const HOSTNAME =
     ? window.location.origin
     : config.HOSTNAME || 'http://localhost:8080';
 export const HOST = process.env.HOST || 'http://192.168.12.249:4011';
-export const API_HOST = `${HOST}/api`;
+export const API_HOST = `${HOST}${API_PROXY_PATH}`;
 
 export const SITEMAP_HOSTNAME = process.env.SITEMAP_HOSTNAME || 'http://localhost:8080'; // used in sitemap
 
 export const LANG_COOKIE_NAME = 'lang';
 export const AUTH_COOKIE_NAME = process.env.AUTH_COOKIE_NAME || 'authorization';
 
-export const API_PROXY_PATH = '/api';
+export const API_PROXY_PATH = process.env.API_PROXY_PATH || '/api';
 
-export const PUBLIC_INDEX_ROUTE = '/auth';
-export const PRIVATE_INDEX_ROUTE = '/dashboard';
+export const PUBLIC_INDEX_ROUTE = process.env.PUBLIC_INDEX_ROUTE || '/auth';
+export const PRIVATE_INDEX_ROUTE = process.env.PRIVATE_INDEX_ROUTE || '/dashboard';
 
 export const CLIENT_ID =
   config.CLIENT_ID || process.env.CLIENT_ID || 'a50c9298-badd-47db-a6bd-7850ef8727fe';
