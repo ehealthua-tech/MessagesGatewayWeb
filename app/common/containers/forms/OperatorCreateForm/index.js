@@ -36,25 +36,29 @@ export default class OperatorCreateForm extends React.Component {
             component={FieldInput}
             validate={[requiredValidate, numberValidate]}
           />
-          <Field
-            name="priority"
-            labelText="priority"
-            parse={isNumber}
-            component={FieldInput}
-            validate={[requiredValidate, numberValidate]}
-          />
         </div>
         <div>
           <FormSection name="config">
-            {Object.entries(fields).map(([key], index) => (
-              <Field
-                name={key}
-                key={index}
-                labelText={key}
-                component={FieldInput}
-                validate={requiredValidate}
-              />
-            ))}
+            {Object.entries(fields)
+              .filter(([key]) => key !== 'method_name' && key !== 'module_name')
+              .map(([key], index) => {
+                switch (key) {
+                  case 'code':
+                    return <Field name={key} key={index} labelText={key} component={FieldInput} />;
+                  case 'password':
+                    return <Field name={key} key={index} labelText={key} component={FieldInput} />;
+                  default:
+                    return (
+                      <Field
+                        name={key}
+                        key={index}
+                        labelText={key}
+                        component={FieldInput}
+                        validate={requiredValidate}
+                      />
+                    );
+                }
+              })}
           </FormSection>
         </div>
 

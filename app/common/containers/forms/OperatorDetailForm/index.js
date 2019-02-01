@@ -26,6 +26,7 @@ export default class OperatorDetailForm extends React.Component {
                 key !== 'id' &&
                 key !== 'last_update' &&
                 key !== 'operator_type_id' &&
+                key !== 'priority' &&
                 key !== 'config'
             )
             .map(([key, value], index) => {
