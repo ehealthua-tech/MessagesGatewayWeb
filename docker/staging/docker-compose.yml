@@ -1,0 +1,13 @@
+version: '2'
+
+
+services:
+  mgaw:
+    image: 'docker.skywell/message_gateway_admin_web/mgaw:latest'
+    container_name: message_gateway_admin_web
+    build:
+      context: ../..
+      dockerfile: ./Dockerfile
+    restart: 'no'
+    networks:
+      - default

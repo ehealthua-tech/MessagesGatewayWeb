@@ -1,14 +1,12 @@
-import React from "react";
-import { Provider } from "react-redux";
+import React from 'react';
+import { Provider } from 'react-redux';
 
-import { Router, applyRouterMiddleware } from "react-router";
-import { useRedial } from "react-router-redial";
+import { Router, applyRouterMiddleware } from 'react-router';
+import { useRedial } from 'react-router-redial';
 
-import { I18nextProvider } from "react-i18next";
+import { I18nextProvider } from 'react-i18next';
 
-import { showLoading, hideLoading } from "redux/loading";
-
-const trackPage = route => {};
+const trackPage = (route) => {};
 
 export default class RootComponent extends React.Component {
   constructor(props) {
@@ -35,28 +33,16 @@ export default class RootComponent extends React.Component {
             render={applyRouterMiddleware(
               useRedial({
                 locals,
-                beforeTransition: ["fetch"],
-                afterTransition: ["defer", "done"],
+                beforeTransition: ['fetch'],
+                afterTransition: ['defer', 'done'],
                 parallel: true,
                 initialLoading:
-                  process.env.NODE_ENV === "production"
-                    ? null
-                    : () => <div>Loading...</div>,
-                onStarted: () => {
-                  store.dispatch(showLoading());
-                },
-                onCompleted: transition => {
-                  store.dispatch([hideLoading()]);
-                  if (transition === "beforeTransition") {
+                  process.env.NODE_ENV === 'production' ? null : () => <div>Loading...</div>,
+                onCompleted: (transition) => {
+                  if (transition === 'beforeTransition') {
                     window.scrollTo(0, 0);
                   }
                 },
-                onAborted: () => {
-                  store.dispatch(hideLoading());
-                },
-                onError: () => {
-                  store.dispatch(hideLoading());
-                }
               })
             )}
           />

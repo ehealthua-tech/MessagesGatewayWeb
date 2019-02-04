@@ -1,22 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import classnames from "classnames";
-import { Link } from "react-router";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-import ShowWithScope from "containers/blocks/ShowWithScope";
+import React from 'react';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
+import { Link } from 'react-router';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import ShowWithScope from 'containers/blocks/ShowWithScope';
 
-import NavItem from "components/NavItem";
-import Icon from "components/Icon";
+import NavItem from 'components/NavItem';
+import Icon from 'components/Icon';
 
+import { logOut } from './redux';
 
-import { logOut } from "./redux";
-
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
 @withStyles(styles)
 @connect(
   state => ({
-    location: state.routing
+    location: state.routing,
   }),
   { logOut }
 )
@@ -35,9 +34,14 @@ export default class Nav extends React.Component {
     return (
       <nav className={classnames(styles.nav, isOpen && styles.open)}>
         <ul>
-          <NavItem to="/priority" activeClassName={styles.active}>
-            <Link id="priority-nav" to="/priority">
-              Сторінка пріорітезації
+          <NavItem to="/operators-types" activeClassName={styles.active}>
+            <Link id="operator-types-nav" to="/operators-types">
+              Типи операторів
+            </Link>
+          </NavItem>
+          <NavItem to="/operators" activeClassName={styles.active}>
+            <Link id="operator-nav" to="/operators">
+              Оператори
             </Link>
           </NavItem>
           <NavItem to="configuration" activeClassName={styles.active}>
@@ -45,10 +49,15 @@ export default class Nav extends React.Component {
               Конфігурація системи
             </Link>
           </NavItem>
+          <NavItem to="keys-pairs-configuration" activeClassName={styles.active}>
+            <Link id="keys-pairs-nav" to="/keys-pairs-configuration">
+              Конфігурація ключів
+            </Link>
+          </NavItem>
         </ul>
         <ul className={styles.down}>
           <li className={styles.logout} onClick={() => this.props.logOut()}>
-            <Icon name="exit"/>
+            <Icon name="exit" />
             Вихід
           </li>
         </ul>

@@ -1,11 +1,15 @@
 node_modules
 .tmp
+.vscode
 .idea
 .DS_Store
 *.log
 static
 screenshots
 .env
+.env.test
+.env.production
+.env.development
 coverage
 lcov.info
 tests_output

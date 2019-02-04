@@ -1,4 +1,4 @@
-import isRequired from "./required";
+import isRequired from './required';
 
 /**
  * We need this wrapper because:
@@ -9,10 +9,9 @@ import isRequired from "./required";
  *
  * @param value string Value to be validated.
  *
- * @returns {(undefined|string)} Undefined for ok, string for errors.
+ * @returns {function(*=): *} Undefined for ok, string for errors.
  */
-const requiredValidate = value => {
-  return isRequired(value) ? undefined : "Обов'язкове поле";
-};
+
+const requiredValidate = value => (isRequired(value) ? undefined : "Обов'язкове поле");
 
 export default requiredValidate;

@@ -1,24 +1,24 @@
-import Express from "express";
+import Express from 'express';
 
-import * as config from "../common/config";
-import { CLIENT_SECRET } from "./config";
+import * as config from '../common/config';
+import { CLIENT_SECRET } from './config';
 
 const router = new Express.Router();
 
 const createSessionToken = code =>
-  fetch(`${config.API_HOST}/oauth/tokens`, {
-    method: "POST",
-    headers: { "content-type": "application/json" },
+  fetch(`${config.HOST}/oauth/tokens`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
       token: {
-        grant_type: "authorization_code",
+        grant_type: 'authorization_code',
         client_id: config.CLIENT_ID,
         client_secret: CLIENT_SECRET,
         redirect_uri: config.OAUTH_REDIRECT_URL,
         scope: config.SCOPES,
-        code
-      }
-    })
+        code,
+      },
+    }),
   }).then(response => response.json());
 
 router.get(config.OAUTH_REDIRECT_PATH, (req, resp) => {
@@ -34,9 +34,9 @@ router.get(config.OAUTH_REDIRECT_PATH, (req, resp) => {
     }
 
     const cookieOption = { secure: false, httpOnly: true };
-    if (req.secure) {
-      cookieOption.secure = true;
-    }
+    // if (req.secure) {
+    //   cookieOption.secure = true;
+    // }
 
     resp.cookie(config.AUTH_COOKIE_NAME, data.value, cookieOption);
 
@@ -44,7 +44,7 @@ router.get(config.OAUTH_REDIRECT_PATH, (req, resp) => {
   });
 });
 
-router.delete("/logout", (req, resp) => {
+router.delete('/logout', (req, resp) => {
   resp.clearCookie(config.AUTH_COOKIE_NAME);
   resp.status(204).send();
 });

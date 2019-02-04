@@ -1,22 +1,25 @@
-import { combineReducers } from "redux";
-import { reducer as form } from "redux-form";
-import { routerReducer as routing } from "react-router-redux";
-import labels from "../redux/labels";
-import Aside from "../containers/blocks/Aside/redux";
-import session from "../redux/session";
-import loading from "../redux/loading";
-import configuration from "../containers/pages/ConfigurationFormPage/redux";
-import priority from "../containers/pages/PriorityPage/redux";
-
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
+import { routerReducer as routing } from 'react-router-redux';
+import Aside from '../containers/blocks/Aside/redux';
+import session from '../redux/session';
+import notification from '../redux/notification';
+import configurationData from '../containers/pages/ConfigurationFormPage/redux';
+import operatorsData from '../containers/pages/OperatorsListPage/redux';
+import operatorData from '../containers/pages/OperatorDetailPage/redux';
+import operatorsTypesData from '../containers/pages/OperatorsTypesListPage/redux';
+import keysPairsData from '../containers/pages/KeysPairsListPage/redux';
 
 const blocks = combineReducers({
-  Aside
+  Aside,
 });
 
 const data = combineReducers({
-  labels,
-  configuration,
-  priority
+  configurationData,
+  operatorsTypesData,
+  operatorsData,
+  operatorData,
+  keysPairsData,
 });
 
 export default combineReducers({
@@ -26,24 +29,26 @@ export default combineReducers({
   // external libraries
   form,
   routing,
-  loading
+  notification,
 });
 
 export const isAuthorized = state => state.session.authorized;
-export const getScope = state => state.session.scope;
 export const getForm = (state, formName) => state.form[formName] || {};
-export const getConfiguration = state => state.data.configuration;
-export const getPriority = state => state.data.priority.priority;
-export const getPriorityFormFields = (state) => {
-  return Object.assign({}, ...getPriority(state).map((operator) => {
-    return {
-      [operator.name]: operator.active
-    };
-  }));
-};
+export const getScope = state => state.session.scope;
+export const getConfiguration = state => state.data.configurationData.configuration;
+export const getOperators = state => state.data.operatorsData.operators;
+export const getProtocols = state => state.data.operatorsData.protocols;
+export const getOperatorsTypes = state => state.data.operatorsTypesData.operatorsTypes;
+export const getKeysPairs = state => state.data.keysPairsData.keysPairs.keys;
+export const getOperatorsFormFields = state =>
+  Object.assign(
+    {},
+    ...getOperatorsTypes(state).map((operator) => {
+      const { name, active } = operator;
+      return {
+        [name]: active,
+      };
+    })
+  );
 
-
-
-
-
-
+export const getOperatorsDetailFormFields = state => state.data.operatorData.operatorDetails;

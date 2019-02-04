@@ -1,16 +1,14 @@
-import Url from "url";
-import qs from "qs";
+import Url from 'url';
+import qs from 'qs';
 
 export const createUrl = (endpoint, options) => {
   const url = Url.parse(endpoint, false);
 
   url.search = qs.stringify({
     ...qs.parse(url.search),
-    ...options
+    ...options,
   });
   return Url.format(url);
 };
 
-export const stripProtocol = url => {
-  return url && url.replace(/(^\w+:|^)\/\//, "");
-};
+export const stripProtocol = url => url && url.replace(/(^\w+:|^)\/\//, '');
