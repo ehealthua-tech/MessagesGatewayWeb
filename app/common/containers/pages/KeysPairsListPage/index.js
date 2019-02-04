@@ -65,7 +65,12 @@ export default class OperatorsTypesListPage extends React.Component {
             return (
               <div className={styles.key_pair_item} key={index}>
                 <div>
-                  <code> {`user "${id}" key "${key}"`}</code>
+                  <div className={styles.code_item}>
+                    user <code> {id}</code>
+                  </div>
+                  <div className={styles.code_item}>
+                    key <code> {key}</code>
+                  </div>
                 </div>
                 <DeleteButton onClick={() => this.openPopup(id)} />
                 <Button
