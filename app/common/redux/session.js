@@ -1,12 +1,12 @@
-import { createAction, handleActions } from 'redux-actions';
-import { AUTH_COOKIE_NAME, API_URL } from 'config';
+import { handleActions } from 'redux-actions';
+import { AUTH_COOKIE_NAME } from 'config';
 import { invoke } from './api';
 import { HOST } from '../config';
 
 export const getToken = () => (dispatch, getState, { req }) => req.cookies[AUTH_COOKIE_NAME];
 
-export const verifyToken = (token) => {
-  return invoke({
+export const verifyToken = token =>
+  invoke({
     endpoint: `${HOST}/admin/tokens/${token}/verify`,
     method: 'GET',
     types: [
@@ -22,7 +22,6 @@ export const verifyToken = (token) => {
       'session/VERIFY_TOKEN_FAILURE',
     ],
   });
-};
 
 export const logout = () =>
   invoke({

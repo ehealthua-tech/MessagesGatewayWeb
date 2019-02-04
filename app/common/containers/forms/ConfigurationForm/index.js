@@ -6,6 +6,9 @@ import Button from 'components/Button';
 import FieldInput from '../../../components/reduxForm/FieldInput';
 import styles from './styles.scss';
 import requiredValidate from '../../../helpers/validators/required-validate';
+import FieldCheckbox from '../../../components/reduxForm/FieldCheckbox';
+import isNumber from '../../../helpers/validators/number';
+import numberValidate from '../../../helpers/validators/number-validate';
 
 @withStyles(styles)
 @reduxForm({
@@ -20,15 +23,33 @@ export default class ConfigurationForm extends React.Component {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          {Object.entries(initialValues).map(([key], index) => (
-            <Field
-              name={key}
-              key={index}
-              labelText={key}
-              component={FieldInput}
-              validate={requiredValidate}
-            />
-          ))}
+          {Object.entries(initialValues).map(([key, value], index) => {
+            switch (typeof value) {
+              case 'boolean':
+                return <Field name={key} key={index} labelText={key} component={FieldCheckbox} />;
+              case 'number':
+                return (
+                  <Field
+                    name={key}
+                    key={index}
+                    labelText={key}
+                    parse={isNumber}
+                    component={FieldInput}
+                    validate={[requiredValidate, numberValidate]}
+                  />
+                );
+              default:
+                return (
+                  <Field
+                    name={key}
+                    key={index}
+                    labelText={key}
+                    component={FieldInput}
+                    validate={requiredValidate}
+                  />
+                );
+            }
+          })}
         </div>
         <div>
           <Button type="submit" disabled={pristine || submitting}>

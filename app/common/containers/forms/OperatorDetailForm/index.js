@@ -26,6 +26,7 @@ export default class OperatorDetailForm extends React.Component {
                 key !== 'id' &&
                 key !== 'last_update' &&
                 key !== 'operator_type_id' &&
+                key !== 'priority' &&
                 key !== 'config'
             )
             .map(([key, value], index) => {
@@ -56,33 +57,37 @@ export default class OperatorDetailForm extends React.Component {
               }
             })}
           <FormSection name="config">
-            {Object.entries(initialValues.config).map(([key, value], index) => {
-              switch (typeof value) {
-                case 'boolean':
-                  return <Field name={key} key={index} labelText={key} component={FieldCheckbox} />;
-                case 'number':
-                  return (
-                    <Field
-                      name={key}
-                      key={index}
-                      labelText={key}
-                      parse={isNumber}
-                      component={FieldInput}
-                      validate={[requiredValidate, numberValidate]}
-                    />
-                  );
-                default:
-                  return (
-                    <Field
-                      name={key}
-                      key={index}
-                      labelText={key}
-                      component={FieldInput}
-                      validate={requiredValidate}
-                    />
-                  );
-              }
-            })}
+            {Object.entries(initialValues.config)
+              .filter(([key]) => key !== 'method_name' && key !== 'module_name')
+              .map(([key, value], index) => {
+                switch (typeof value) {
+                  case 'boolean':
+                    return (
+                      <Field name={key} key={index} labelText={key} component={FieldCheckbox} />
+                    );
+                  case 'number':
+                    return (
+                      <Field
+                        name={key}
+                        key={index}
+                        labelText={key}
+                        parse={isNumber}
+                        component={FieldInput}
+                        validate={[requiredValidate, numberValidate]}
+                      />
+                    );
+                  default:
+                    return (
+                      <Field
+                        name={key}
+                        key={index}
+                        labelText={key}
+                        component={FieldInput}
+                        validate={requiredValidate}
+                      />
+                    );
+                }
+              })}
           </FormSection>
         </div>
         <div>

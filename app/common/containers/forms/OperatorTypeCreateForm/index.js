@@ -22,12 +22,6 @@ export default class OperatorTypeCreateForm extends React.Component {
             component={FieldInput}
             validate={requiredValidate}
           />
-          <Field
-            name="priority"
-            labelText="priority"
-            component={FieldInput}
-            validate={requiredValidate}
-          />
         </div>
         <div>
           <Button type="submit" disabled={pristine || submitting}>

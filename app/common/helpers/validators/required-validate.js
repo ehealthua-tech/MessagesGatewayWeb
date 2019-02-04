@@ -11,6 +11,7 @@ import isRequired from './required';
  *
  * @returns {function(*=): *} Undefined for ok, string for errors.
  */
+
 const requiredValidate = value => (isRequired(value) ? undefined : "Обов'язкове поле");
 
 export default requiredValidate;
