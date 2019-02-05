@@ -1,6 +1,6 @@
-import * as OperatorsTypesAPI from "../../../redux/operators-types";
-import * as Notifications from "../../../redux/notification";
-import { push } from "react-router-redux";
+import { push } from 'react-router-redux';
+import * as OperatorsTypesAPI from '../../../redux/operators-types';
+import * as Notifications from '../../../redux/notification';
 
 /**
  * Creates new operator type and sending that to server
@@ -8,14 +8,14 @@ import { push } from "react-router-redux";
  * @returns {function}
  */
 export const addOperatorType = values => dispatch =>
-  dispatch(OperatorsTypesAPI.addOperatorTypeDetail(values)).then(action => {
+  dispatch(OperatorsTypesAPI.addOperatorTypeDetail(values)).then((action) => {
     action.error
       ? dispatch(
           Notifications.showNotification({
             showing: true,
             message: action.payload.message,
-            type: "warning"
+            type: 'warning',
           })
         )
-      : dispatch(push({ pathname: `/operators-types/` }));
+      : dispatch(push({ pathname: '/operators-types/' }));
   });

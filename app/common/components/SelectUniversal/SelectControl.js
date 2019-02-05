@@ -1,8 +1,8 @@
-import React from "react";
-import classnames from "classnames";
-import styles from "./styles.scss";
+import React from 'react';
+import classnames from 'classnames';
+import styles from './styles.scss';
 
-import SelectControlItem from "./SelectControlItem";
+import SelectControlItem from './SelectControlItem';
 
 const SelectControl = ({
   multiple,
@@ -11,17 +11,14 @@ const SelectControl = ({
   onRemoveItem,
   error,
   onClick,
-  value = "",
+  value = '',
   placeholder,
   onEnterItem = () => {},
   onInputRemove = () => {},
   onInputFocus,
-  onInputChange = () => {}
+  onInputChange = () => {},
 }) => (
-  <div
-    className={classnames(styles.control, error && styles.error)}
-    onClick={onClick}
-  >
+  <div className={classnames(styles.control, error && styles.error)} onClick={onClick}>
     {(multiple || (!multiple && !searchable)) &&
       !!items.length && (
         <ul
@@ -35,7 +32,7 @@ const SelectControl = ({
             items.map(item => (
               <SelectControlItem
                 title={item.title}
-                onRemove={e => {
+                onRemove={(e) => {
                   onRemoveItem(item);
                   e.stopPropagation();
                 }}
@@ -62,11 +59,9 @@ const SelectControl = ({
           // keyDown is using to prevent form submission on enter press
           onKeyDown={e =>
             (e.target.value &&
-              e.key === "Enter" &&
-              (onEnterItem(e.target.value),
-              e.stopPropagation(),
-              e.preventDefault())) ||
-            (!e.target.value && e.key === "Backspace" && onInputRemove())
+              e.key === 'Enter' &&
+              (onEnterItem(e.target.value), e.stopPropagation(), e.preventDefault())) ||
+            (!e.target.value && e.key === 'Backspace' && onInputRemove())
           }
         />
       </div>

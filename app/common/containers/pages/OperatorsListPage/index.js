@@ -1,26 +1,22 @@
-import React from "react";
-import withStyles from "withStyles";
-import Helmet from "react-helmet";
-import { H1 } from "../../../components/Title";
-import Button from "../../../components/Button";
-import { Popup } from "../../../components/Popup";
-import styles from "./styles.scss";
-import { connect } from "react-redux";
-import { provideHooks } from "redial";
+import React from 'react';
+import withStyles from 'withStyles';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
+import { provideHooks } from 'redial';
+import { H1 } from '../../../components/Title';
+import Button from '../../../components/Button';
+import { Popup } from '../../../components/Popup';
+import styles from './styles.scss';
 import {
   deleteOperator,
   fetchOperators,
   fetchOperatorsTypes,
   fetchProtocols,
-  fetchOperatorFields
-} from "./redux";
-import {
-  getOperators,
-  getOperatorsTypes,
-  getProtocols
-} from "../../../reducers";
-import OperatorTypeSelectionForm from "../../forms/OperatorTypeSelectionForm";
-import DeleteButton from "../../../components/DeleteButton";
+  fetchOperatorFields,
+} from './redux';
+import { getOperators, getOperatorsTypes, getProtocols } from '../../../reducers';
+import OperatorTypeSelectionForm from '../../forms/OperatorTypeSelectionForm';
+import DeleteButton from '../../../components/DeleteButton';
 
 @withStyles(styles)
 @provideHooks({
@@ -28,25 +24,34 @@ import DeleteButton from "../../../components/DeleteButton";
     Promise.all([
       dispatch(fetchOperators()),
       dispatch(fetchOperatorsTypes()),
-      dispatch(fetchProtocols())
-    ])
+      dispatch(fetchProtocols()),
+    ]),
 })
 @connect(
   state => ({
     operators: getOperators(state),
     operatorsTypes: getOperatorsTypes(state),
-    protocols: getProtocols(state)
+    protocols: getProtocols(state),
   }),
   { fetchOperatorFields, deleteOperator }
 )
 export default class OperatorsListPage extends React.Component {
   state = {
-    isOpened: false
+    isOpenedNew: false,
+    isOpenedDelete: false,
+    id: '',
   };
 
-  openPopup = () => {
+  openPopupNew = () => {
     this.setState({
-      isOpened: true
+      isOpenedNew: true,
+    });
+  };
+
+  openPopupDelete = (id) => {
+    this.setState({
+      isOpenedDelete: true,
+      id,
     });
   };
 
@@ -57,16 +62,16 @@ export default class OperatorsListPage extends React.Component {
       operatorsTypes,
       protocols,
       fetchOperatorFields,
-      deleteOperator
+      deleteOperator,
     } = this.props;
 
-    const { isOpened } = this.state;
+    const { isOpenedNew, isOpenedDelete, id } = this.state;
 
     return (
       <div id="operator-list-page">
         <Helmet
           title="Оператори"
-          meta={[{ property: "og:title", content: "Сторінка операторів" }]}
+          meta={[{ property: 'og:title', content: 'Сторінка операторів' }]}
         />
 
         <H1>Оператори</H1>
@@ -79,15 +84,15 @@ export default class OperatorsListPage extends React.Component {
                 <div className={styles.operator_type} key={index}>
                   <div>{operator.name}</div>
                   <div>
-                    <DeleteButton onClick={() => deleteOperator(id)} />
+                    <DeleteButton onClick={() => this.openPopupDelete(id)} />
                     <Button
                       className={styles.detail_button}
                       onClick={() =>
                         router.push({
                           pathname: `/operators/detail/${id}/`,
                           params: {
-                            name
-                          }
+                            name,
+                          },
                         })
                       }
                     >
@@ -103,20 +108,39 @@ export default class OperatorsListPage extends React.Component {
             </div>
           )}
           <div>
-            <Button onClick={this.openPopup}>Додати оператора</Button>
+            <Button onClick={this.openPopupNew}>Додати оператора</Button>
           </div>
         </div>
-
         <Popup
           title={<span>Оберіть налаштування для створення</span>}
-          active={isOpened}
-          onClose={() => this.setState({ isOpened: false })}
+          active={isOpenedNew}
+          onClose={() => this.setState({ isOpenedNew: false })}
         >
           <OperatorTypeSelectionForm
             operatorsTypes={operatorsTypes}
             protocols={protocols}
-            onSubmit={values => fetchOperatorFields({values})}
+            isOpenedNew={() => this.setState({ isOpenedNew: false })}
+            onSubmit={values => fetchOperatorFields({ values })}
           />
+        </Popup>
+
+        <Popup
+          title={<span>Ви впевнені, що хочете видалити оператора?</span>}
+          active={isOpenedDelete}
+          onClose={() => this.setState({ isOpenedDelete: false })}
+        >
+          <div className={styles.buttons_block}>
+            <Button
+              onClick={() =>
+                deleteOperator(id).then(() => {
+                  this.setState({ isOpenedDelete: false });
+                })
+              }
+            >
+              Видалити
+            </Button>
+            <Button onClick={() => this.setState({ isOpenedDelete: false })}>Cкасувати</Button>
+          </div>
         </Popup>
       </div>
     );

@@ -1,86 +1,83 @@
-import { handleAction, combineActions } from "redux-actions";
-import { API_URL } from "config";
-import { createUrl } from "helpers/url";
-import { invoke } from "./api";
+import { handleAction, combineActions } from 'redux-actions';
+import { API_URL } from 'config';
+import { createUrl } from 'helpers/url';
+import { invoke } from './api';
 
 export const fetchOperatorsTypes = options =>
   invoke({
     endpoint: createUrl(`${API_URL}/operator_type`, options),
-    method: "GET",
+    method: 'GET',
     headers: {
-      "content-type": "application/json"
+      'content-type': 'application/json',
     },
     types: [
-      "operatorsTypes/FETCH_OPERATORS_TYPES_REQUEST",
+      'operatorsTypes/FETCH_OPERATORS_TYPES_REQUEST',
       {
-        type: "operatorsTypes/FETCH_OPERATORS_TYPES_SUCCESS",
-        payload: (action, state, res) => res.json().then(resp => resp.data)
+        type: 'operatorsTypes/FETCH_OPERATORS_TYPES_SUCCESS',
+        payload: (action, state, res) => res.json().then(resp => resp.data),
       },
-      "operatorsTypes/FETCH_OPERATORS_TYPES_FAILURE"
-    ]
+      'operatorsTypes/FETCH_OPERATORS_TYPES_FAILURE',
+    ],
   });
 
 export const addOperatorTypeDetail = body =>
   invoke({
     endpoint: `${API_URL}/operator_type`,
-    method: "POST",
+    method: 'POST',
     headers: {
-      "content-type": "application/json"
+      'content-type': 'application/json',
     },
     types: [
-      "operatorsTypes/ADD_OPERATOR_TYPE_REQUEST",
+      'operatorsTypes/ADD_OPERATOR_TYPE_REQUEST',
       {
-        type: "operatorsTypes/ADD_OPERATOR_TYPE_SUCCESS",
-        payload: (action, state, res) => res.json().then(resp => resp.data)
+        type: 'operatorsTypes/ADD_OPERATOR_TYPE_SUCCESS',
+        payload: (action, state, res) => res.json().then(resp => resp.data),
       },
-      "operatorsTypes/ADD_OPERATOR_TYPE_FAILURE"
+      'operatorsTypes/ADD_OPERATOR_TYPE_FAILURE',
     ],
-    body
+    body,
   });
 
 export const deleteOperatorTypeDetail = id =>
   invoke({
     endpoint: `${API_URL}/operator_type/${id}`,
-    method: "DELETE",
+    method: 'DELETE',
     headers: {
-      "content-type": "application/json"
+      'content-type': 'application/json',
     },
     types: [
-      "operatorsTypes/DELETE_OPERATOR_TYPE_REQUEST",
+      'operatorsTypes/DELETE_OPERATOR_TYPE_REQUEST',
       {
-        type: "operatorsTypes/DELETE_OPERATOR_TYPE_SUCCESS",
-        payload: (action, state, res) => res.json().then(resp => resp.data)
+        type: 'operatorsTypes/DELETE_OPERATOR_TYPE_SUCCESS',
+        payload: (action, state, res) => res.json().then(resp => resp.data),
       },
-      "operatorsTypes/DELETE_OPERATOR_TYPE_FAILURE"
-    ]
+      'operatorsTypes/DELETE_OPERATOR_TYPE_FAILURE',
+    ],
   });
 
 export const updateOperatorsTypes = body =>
   invoke({
     endpoint: `${API_URL}/operator_type/update_priority`,
-    method: "POST",
+    method: 'POST',
     headers: {
-      "content-type": "application/json"
+      'content-type': 'application/json',
     },
     types: [
-      "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_REQUEST",
+      'operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_REQUEST',
       {
-        type: "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_SUCCESS",
-        payload: (action, state, res) => res.json().then(resp => resp.data)
+        type: 'operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_SUCCESS',
+        payload: (action, state, res) => res.json().then(resp => resp.data),
       },
-      "operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_FAILURE"
+      'operatorsTypes/UPDATE_OPERATORS_TYPES_PRIORITY_FAILURE',
     ],
-    body
+    body,
   });
 
 export default handleAction(
-  combineActions(
-    "dictionaries/FETCH_PRIORITY_SUCCESS",
-    "dictionaries/UPDATE_PRIORITY_SUCCESS"
-  ),
+  combineActions('dictionaries/FETCH_PRIORITY_SUCCESS', 'dictionaries/UPDATE_PRIORITY_SUCCESS'),
   (state, action) => ({
     ...state,
-    ...action.payload
+    ...action.payload,
   }),
   []
 );

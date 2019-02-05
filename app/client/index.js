@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import { AppContainer } from "react-hot-loader";
+import { AppContainer } from 'react-hot-loader';
 
-import { browserHistory, match } from "react-router";
-import { syncHistoryWithStore } from "react-router-redux";
+import { browserHistory, match } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-import i18n from "services/i18next";
+import i18n from 'services/i18next';
 
-import { configureStore } from "store";
-import { configureRoutes } from "routes";
+import { configureStore } from 'store';
+import { configureRoutes } from 'routes';
 
-import Root from "./root";
+import Root from './root';
 
 let reduxState = {};
 
@@ -25,13 +25,13 @@ const store = configureStore({ history: browserHistory, i18n }, reduxState);
 
 const { dispatch, getState } = store;
 const history = syncHistoryWithStore(browserHistory, store);
-const trackPage = route => {};
+const trackPage = (route) => {};
 const routes = configureRoutes({ store });
 
 const locals = {
   // Allow lifecycle hooks to dispatch Redux actions:
   dispatch,
-  getState
+  getState,
 };
 
 const render = (Component, { renderProps }) => {
@@ -44,11 +44,11 @@ const render = (Component, { renderProps }) => {
           store,
           routes,
           i18n,
-          history
+          history,
         }}
       />
     </AppContainer>,
-    document.getElementById("root")
+    document.getElementById('root')
   );
 };
 
@@ -59,16 +59,13 @@ match({ history, routes }, (error, redirectLocation, renderProps) => {
 });
 
 // enable hot reloading, will be stripped in production
-if (process.env.NODE_ENV !== "production" && module.hot) {
-  module.hot.accept(
-    ["./root", "../common/routes", "../common/services/i18next"],
-    () => {
-      render(Root, lastRenderProps);
-    }
-  );
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  module.hot.accept(['./root', '../common/routes', '../common/services/i18next'], () => {
+    render(Root, lastRenderProps);
+  });
 
-  module.hot.accept("../common/reducers", () => {
-    const nextRootReducer = require("../common/reducers").default;
+  module.hot.accept('../common/reducers', () => {
+    const nextRootReducer = require('../common/reducers').default;
     store.replaceReducer(nextRootReducer);
   });
 }

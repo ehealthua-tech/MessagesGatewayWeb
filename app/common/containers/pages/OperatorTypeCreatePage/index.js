@@ -1,13 +1,13 @@
-import React from "react";
-import withStyles from "withStyles";
-import Helmet from "react-helmet";
+import React from 'react';
+import withStyles from 'withStyles';
+import Helmet from 'react-helmet';
+import { connect } from 'react-redux';
 
-import { H1 } from "../../../components/Title";
-import styles from "../OperatorsTypesListPage/styles.scss";
-import OperatorTypeCreateForm from "../../forms/OperatorTypeCreateForm";
-import { connect } from "react-redux";
-import { addOperatorType } from "./redux";
-import BackLink from "../../blocks/BackLink";
+import { H1 } from '../../../components/Title';
+import styles from '../OperatorsTypesListPage/styles.scss';
+import OperatorTypeCreateForm from '../../forms/OperatorTypeCreateForm';
+import { addOperatorType } from './redux';
+import BackLink from '../../blocks/BackLink';
 
 @withStyles(styles)
 @connect(null, { addOperatorType })
@@ -18,12 +18,10 @@ export default class OperatorCreatePage extends React.Component {
       <div id="operator-type-create-page">
         <Helmet
           title="Створення типу оператора"
-          meta={[{ property: "og:title", content: "Створення типу оператора" }]}
+          meta={[{ property: 'og:title', content: 'Створення типу оператора' }]}
         />
 
-        <BackLink onClick={() => router.goBack()}>
-          Повернутись до cписку типів операторів
-        </BackLink>
+        <BackLink onClick={() => router.goBack()}>Повернутись до cписку типів операторів</BackLink>
 
         <H1>Створення типу оператора</H1>
 

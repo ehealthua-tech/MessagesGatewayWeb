@@ -1,21 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import classnames from "classnames";
-import { Link } from "react-router";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
-import ShowWithScope from "containers/blocks/ShowWithScope";
+import React from 'react';
+import { connect } from 'react-redux';
+import classnames from 'classnames';
+import { Link } from 'react-router';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
+import ShowWithScope from 'containers/blocks/ShowWithScope';
 
-import NavItem from "components/NavItem";
-import Icon from "components/Icon";
+import NavItem from 'components/NavItem';
+import Icon from 'components/Icon';
 
-import { logOut } from "./redux";
+import { logOut } from './redux';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
 @withStyles(styles)
 @connect(
   state => ({
-    location: state.routing
+    location: state.routing,
   }),
   { logOut }
 )
@@ -47,6 +47,11 @@ export default class Nav extends React.Component {
           <NavItem to="configuration" activeClassName={styles.active}>
             <Link id="configuration-nav" to="/configuration">
               Конфігурація системи
+            </Link>
+          </NavItem>
+          <NavItem to="keys-pairs-configuration" activeClassName={styles.active}>
+            <Link id="keys-pairs-nav" to="/keys-pairs-configuration">
+              Конфігурація ключів
             </Link>
           </NavItem>
         </ul>

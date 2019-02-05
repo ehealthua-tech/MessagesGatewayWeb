@@ -10,8 +10,8 @@
  * @returns {(undefined|string)} Undefined for ok, string for errors.
  */
 
-const numberValidate = value => {
-  return parseInt(value, 10) ? undefined : "Тількі число";
-};
+const ifZero = value => parseInt(value, 10) >= 0 && true;
+
+const numberValidate = value => (ifZero(value) ? undefined : 'Тількі число');
 
 export default numberValidate;

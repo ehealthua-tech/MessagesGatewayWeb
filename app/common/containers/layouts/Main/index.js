@@ -1,9 +1,9 @@
-import React from "react";
-import withStyles from "nebo15-isomorphic-style-loader/lib/withStyles";
+import React from 'react';
+import withStyles from 'nebo15-isomorphic-style-loader/lib/withStyles';
 
-import Aside from "containers/blocks/Aside";
-import styles from "./styles.scss";
-import NotificationContainer from "../../blocks/NotificationContainer";
+import Aside from 'containers/blocks/Aside';
+import styles from './styles.scss';
+import NotificationContainer from '../../blocks/NotificationContainer';
 
 const Main = ({ children }) => (
   <div className={styles.main}>

@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
-import withStyles from "withStyles";
-import { ErrorMessages } from "react-nebo15-validate";
-import findFn from "lodash/find";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import withStyles from 'withStyles';
+import { ErrorMessages } from 'react-nebo15-validate';
+import findFn from 'lodash/find';
 
-import OuterClick from "../OuterClick";
-import List from "./List";
-import SelectControl from "./SelectControl";
+import OuterClick from '../OuterClick';
+import List from './List';
+import SelectControl from './SelectControl';
 
-import styles from "./styles.scss";
+import styles from './styles.scss';
 
 const LIST_HEIGHT_PADDING = 32;
 
@@ -19,11 +19,11 @@ export class SelectUniversal extends React.Component {
       onChange: PropTypes.func,
       onBlur: PropTypes.func,
       onFocus: PropTypes.func,
-      value: PropTypes.any
+      value: PropTypes.any,
     }),
     meta: PropTypes.shape({
       // active: PropTypes.object,
-      error: PropTypes.any
+      error: PropTypes.any,
     }),
 
     /**
@@ -78,19 +78,19 @@ export class SelectUniversal extends React.Component {
       PropTypes.shape({
         title: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        disabled: PropTypes.bool
+        disabled: PropTypes.bool,
       })
-    ).isRequired
+    ).isRequired,
   };
 
   static defaultProps = {
     input: {
-      value: "",
-      onChange: () => {}
+      value: '',
+      onChange: () => {},
     },
     meta: {
-      error: {}
-    }
+      error: {},
+    },
   };
 
   constructor(props) {
@@ -105,15 +105,15 @@ export class SelectUniversal extends React.Component {
     this.onInputRemove = this.onInputRemove.bind(this);
 
     this.state = {
-      value: "",
-      open: false
+      value: '',
+      open: false,
     };
   }
 
   onInputChange(value) {
     this.setState({
       value,
-      open: true
+      open: true,
     });
     !this.props.meta.active && this.props.input.onFocus();
     this.props.onChangeSearch && this.props.onChangeSearch(value);
@@ -126,7 +126,7 @@ export class SelectUniversal extends React.Component {
   onControlClick() {
     !this.props.meta.active && this.props.input.onFocus();
     this.setState({
-      open: !this.state.open
+      open: !this.state.open,
     });
   }
   onFocus() {
@@ -138,9 +138,7 @@ export class SelectUniversal extends React.Component {
 
     const value = this.value;
     const isSelected = this.isSelected(item);
-    const newValue = isSelected
-      ? value.filter(i => i.name !== item.name)
-      : [...value, item];
+    const newValue = isSelected ? value.filter(i => i.name !== item.name) : [...value, item];
 
     if (searchable && !multiple) {
       // item title is displaying in input
@@ -148,12 +146,12 @@ export class SelectUniversal extends React.Component {
     }
 
     if (searchable && multiple) {
-      newState.value = "";
-      onChangeSearch && onChangeSearch("");
+      newState.value = '';
+      onChangeSearch && onChangeSearch('');
     }
 
     if (isSelected && item.title === this.state.value) {
-      newState.value = "";
+      newState.value = '';
     }
 
     if (isBlur || !multiple) {
@@ -173,13 +171,13 @@ export class SelectUniversal extends React.Component {
 
   onOuterClick() {
     this.setState({
-      open: false
+      open: false,
     });
     this.props.input.onBlur(this.props.input.value);
   }
 
   changeValue(value, isBlur) {
-    return this.props.input[isBlur ? "onBlur" : "onChange"](value || "");
+    return this.props.input[isBlur ? 'onBlur' : 'onChange'](value || '');
   }
 
   isSelected(item) {
@@ -193,7 +191,7 @@ export class SelectUniversal extends React.Component {
 
   get position() {
     if (!this.selectNode) {
-      return "bottom";
+      return 'bottom';
     }
 
     const selectSize = this.selectNode.getBoundingClientRect();
@@ -201,10 +199,10 @@ export class SelectUniversal extends React.Component {
     const selectHeight = this.listNode.clientHeight;
 
     if (screenHeight - selectSize.bottom > selectHeight + LIST_HEIGHT_PADDING) {
-      return "bottom";
+      return 'bottom';
     }
 
-    return "top";
+    return 'top';
   }
 
   render() {
@@ -216,11 +214,11 @@ export class SelectUniversal extends React.Component {
       labelText,
       multiple,
       searchable,
-      emptyText = "Not found",
+      emptyText = 'Not found',
       allowAddItem,
       onAddNewItem,
       label_bold,
-      children
+      children,
     } = this.props;
 
     const isErrored = (submitFailed || (dirty && !active)) && error;
@@ -237,14 +235,10 @@ export class SelectUniversal extends React.Component {
     const value = this.value;
     return (
       <section ref={ref => (this.selectNode = ref)} className={classNames}>
-        <div
-          className={classnames(styles.label, label_bold && styles.label__bold)}
-        >
+        <div className={classnames(styles.label, label_bold && styles.label__bold)}>
           {labelText}
         </div>
-        <OuterClick
-          onClick={() => (this.state.open || active) && this.onOuterClick()}
-        >
+        <OuterClick onClick={() => (this.state.open || active) && this.onOuterClick()}>
           <div>
             <div className={styles.wrap}>
               <SelectControl
@@ -260,16 +254,13 @@ export class SelectUniversal extends React.Component {
                 onInputRemove={this.onInputRemove}
                 onEnterItem={value =>
                   allowAddItem &&
-                  (this.onSelect(
-                    { title: value, name: Math.random() % 1000000 + 1 },
-                    false
-                  ),
+                  (this.onSelect({ title: value, name: Math.random() % 1000000 + 1 }, false),
                   onAddNewItem && onAddNewItem(value))
                 }
               />
               {isErrored && (
-                <div className={styles["error-label"]}>
-                  {typeof error === "string" ? (
+                <div className={styles['error-label']}>
+                  {typeof error === 'string' ? (
                     error
                   ) : (
                     <ErrorMessages error={error}>{children}</ErrorMessages>
