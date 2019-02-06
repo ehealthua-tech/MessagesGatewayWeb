@@ -26,7 +26,7 @@ export default class OperatorCreatePage extends React.Component {
         <H1>Створення оператора </H1>
 
         <OperatorCreateForm
-          fields={fields}
+          initialValues={{ config: { ...fields } }}
           onSubmit={values => addOperator({ values, id, name })}
         />
       </div>
