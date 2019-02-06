@@ -15,7 +15,7 @@ import numberValidate from '../../../helpers/validators/number-validate';
 })
 export default class OperatorCreateForm extends React.Component {
   render() {
-    const { fields, handleSubmit, onSubmit, pristine, submitting } = this.props;
+    const { initialValues, handleSubmit, onSubmit, pristine, submitting } = this.props;
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -39,7 +39,7 @@ export default class OperatorCreateForm extends React.Component {
         </div>
         <div>
           <FormSection name="config">
-            {Object.entries(fields)
+            {Object.entries(initialValues.config)
               .filter(([key]) => key !== 'method_name' && key !== 'module_name')
               .map(([key], index) => {
                 switch (key) {
