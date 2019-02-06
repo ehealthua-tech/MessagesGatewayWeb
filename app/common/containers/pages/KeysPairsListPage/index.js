@@ -61,28 +61,36 @@ export default class OperatorsTypesListPage extends React.Component {
 
         {keysPairs.length ? (
           keysPairs.map((item, index) => {
-            const { id, key, active } = item;
+            const { id, key, active, created, updated } = item;
             return (
               <div className={styles.key_pair_item} key={index}>
-                <div>
-                  <div className={styles.code_item}>
-                    user <code> {id}</code>
-                  </div>
-                  <div className={styles.code_item}>
-                    key <code> {key}</code>
-                  </div>
+                <div className={styles.key_pair_row}>
+                  <div className={styles.date}>Додано {created}</div>
+                  <div className={styles.date}>Змінено {updated}</div>
                 </div>
-                <DeleteButton onClick={() => this.openPopup(id)} />
-                <Button
-                  className={styles.detail_button}
-                  onClick={active ? () => deactivateKeyPair({ id }) : () => activateKeyPair({ id })}
-                >
-                  {active ? (
-                    <div className={styles.deactive_button}>Деактувати</div>
-                  ) : (
-                    <div className={styles.active_button}>Aктивувати</div>
-                  )}
-                </Button>
+                <div className={styles.key_pair_row}>
+                  <div className={styles.key_pair_block}>
+                    <div className={styles.code_item}>
+                      user <code> {id}</code>
+                    </div>
+                    <div className={styles.code_item}>
+                      key <code> {key}</code>
+                    </div>
+                  </div>
+                  <DeleteButton onClick={() => this.openPopup(id)} />
+                  <Button
+                    className={styles.detail_button}
+                    onClick={
+                      active ? () => deactivateKeyPair({ id }) : () => activateKeyPair({ id })
+                    }
+                  >
+                    {active ? (
+                      <div className={styles.deactive_button}>Деактувати</div>
+                    ) : (
+                      <div className={styles.active_button}>Aктивувати</div>
+                    )}
+                  </Button>
+                </div>
               </div>
             );
           })
