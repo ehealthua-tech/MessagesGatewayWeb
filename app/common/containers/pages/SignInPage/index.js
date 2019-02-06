@@ -16,7 +16,9 @@ export default class SignInPage extends React.Component {
         <Helmet title="Вхід" meta={[{ property: 'og:title', content: 'Вхід' }]} />
 
         <div className={styles.main__content}>
-          <header className={styles.header}>{/* <img src="" alt="Logo" />*/}</header>
+          <header className={styles.header}>
+            <img src="/images/mgw-logo.svg" alt="Logo" />
+          </header>
           {query.error && <section className={styles.error}>Помилка отримання токена</section>}
           <article className={styles.form}>
             <a
