@@ -27,7 +27,7 @@ import { getKeysPairs } from '../../../reducers';
   }),
   { activateKeyPair, deactivateKeyPair, deleteKeyPair, generateKeyPair }
 )
-export default class OperatorsTypesListPage extends React.Component {
+export default class KeysPairsListPage extends React.Component {
   state = {
     isOpened: false,
     id: '',
@@ -51,7 +51,7 @@ export default class OperatorsTypesListPage extends React.Component {
     const { isOpened, id } = this.state;
 
     return (
-      <div id="priority-page">
+      <div id="keys-pairs-list-page">
         <Helmet
           title="Конфігурація ключів"
           meta={[{ property: 'og:title', content: 'Конфігурація ключів' }]}
