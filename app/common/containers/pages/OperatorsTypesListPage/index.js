@@ -50,7 +50,7 @@ export default class OperatorsTypesListPage extends React.Component {
     const { isOpened, id } = this.state;
 
     return (
-      <div id="priority-page">
+      <div id="operators-types-list-page">
         <Helmet
           title="Список типів операторів"
           meta={[{ property: 'og:title', content: 'Список типів операторів' }]}
