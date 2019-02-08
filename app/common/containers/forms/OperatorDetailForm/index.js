@@ -77,15 +77,26 @@ export default class OperatorDetailForm extends React.Component {
                       />
                     );
                   default:
-                    return (
-                      <Field
-                        name={key}
-                        key={index}
-                        labelText={key}
-                        component={FieldInput}
-                        validate={requiredValidate}
-                      />
-                    );
+                    switch (key) {
+                      case 'code':
+                        return (
+                          <Field name={key} key={index} labelText={key} component={FieldInput} />
+                        );
+                      case 'password':
+                        return (
+                          <Field name={key} key={index} labelText={key} component={FieldInput} />
+                        );
+                      default:
+                        return (
+                          <Field
+                            name={key}
+                            key={index}
+                            labelText={key}
+                            component={FieldInput}
+                            validate={requiredValidate}
+                          />
+                        );
+                    }
                 }
               })}
           </FormSection>
