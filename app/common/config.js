@@ -11,7 +11,7 @@ export const HOSTNAME =
   typeof window !== 'undefined'
     ? window.location.origin
     : config.HOSTNAME || 'http://localhost:8080';
-export const HOST = process.env.HOST || 'http://192.168.12.249:4011';
+export const HOST = process.env.HOST || 'http://dev-messagesgateway.skywell.software';
 export const API_PROXY_PATH = process.env.API_PROXY_PATH || '/api';
 export const API_HOST = `${HOST}${API_PROXY_PATH}`;
 
