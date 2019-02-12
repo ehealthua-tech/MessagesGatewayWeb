@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
+
 const parts = require('./webpack/parts');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
