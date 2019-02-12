@@ -3,6 +3,9 @@ const webpackMerge = require('webpack-merge');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const UglifyJsPlugin = require('uglifyjs-3-webpack-plugin');
+
+
 const DEBUG = process.env.NODE_ENV !== 'production';
 
 const extractStyles = new ExtractTextPlugin('[name].css?[hash]');
