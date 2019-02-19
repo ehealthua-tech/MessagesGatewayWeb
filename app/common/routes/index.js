@@ -53,7 +53,7 @@ export const configureRoutes = ({ store }) => {
   return (
     <Route component={App}>
       <Route component={Main}>
-        <Route path="/">
+        <Route path="/" onEnter={requireAuth}>
           <IndexRedirect to="dashboard" />
           <Route path="dashboard" component={DashboardPage} />
           <Route path="operators-types">
