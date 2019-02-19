@@ -27,7 +27,9 @@ export const CLIENT_ID =
   config.CLIENT_ID || process.env.CLIENT_ID || 'a50c9298-badd-47db-a6bd-7850ef8727fe';
 export const SCOPES = config.SCOPES || process.env.SCOPES || '';
 export const OAUTH_URL =
-  config.OAUTH_URL || process.env.OAUTH_URL || 'http://192.168.100.165:3000/sign-in';
+  config.OAUTH_URL ||
+  process.env.OAUTH_URL ||
+  'http://admin-dev-messagesgateway.skywell.software:3000/sing-in';
 export const OAUTH_REDIRECT_PATH =
   config.OAUTH_REDIRECT_PATH || process.env.OAUTH_REDIRECT_PATH || '/auth/redirect';
 export const OAUTH_REDIRECT_URL =
