@@ -1,7 +1,5 @@
 # Messages Gateway Administration Panel
 
-[![Build Status]()]() [![code style: prettier]()]()
-
 MessagesGateway consists of two main parts:
 
 See [REST API back-end]().
@@ -9,8 +7,6 @@ See [REST API back-end]().
 See [Admin UI]().
 
 ## Installation
-
-### Docker
 
 Dashboard can be deployed as a single container from []() Docker Hub.
 
@@ -24,6 +20,7 @@ See [ENVIRONMENT.md](/docs/ENVIRONMENT.md).
 * Redux
 * Webpack
 * Jest
+* Puppeteer
 
 ### Git flow
 
@@ -35,6 +32,7 @@ its corresponding.
 To contribute to the repository be ready to write some tests.
 
 * Unit tests for business logic (we use Jest)
+* Acceptance tests for user stories (we use Puppeteer)
 
 ## License
 

@@ -10,7 +10,7 @@
     "preproduction": "NODE_ENV=production npm run build",
     "production": "NODE_ENV=production npm start",
     "prestart": "bin/runtime/inject-env-vars.js && bin/runtime/create-robots-txt.js",
-    "start": "NODE_ENV=production node static/server.js",
+    "start": "NODE_ENV=production node -r dotenv/config static/server.js",
     "build": "NODE_ENV=production webpack",
     "test": "NODE_ENV=test jest app",
     "test:coverage": "NODE_ENV=test jest app/common/containers --no-cache --coverage",

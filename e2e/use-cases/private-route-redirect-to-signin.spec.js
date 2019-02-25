@@ -17,9 +17,9 @@ describe('Trying to go to private route', () => {
       await page.waitForSelector('#sign-in-page > div > article > a');
 
       // After redirect we must be on signIn page.
-      const dashboardText = await page.evaluate(() => {
-        return document.querySelector('#sign-in-page > div > article > a').textContent;
-      });
+      const dashboardText = await page.evaluate(
+        () => document.querySelector('#sign-in-page > div > article > a').textContent
+      );
 
       expect(dashboardText).toEqual('Увійти за допомогою EHEALTH');
 

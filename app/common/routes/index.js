@@ -70,7 +70,7 @@ export const configureRoutes = ({ store }) => {
         </Route>
         <Route path="401" component={AccessDeniedPage} />
       </Route>
-      <Route path="auth" component={SignInPage} />
+      <Route path="sign-in" component={SignInPage} />
       <Route path="internal-error" component={InternalErrorPage} />
       <Route path="*" component={NotFoundPage} />
     </Route>
